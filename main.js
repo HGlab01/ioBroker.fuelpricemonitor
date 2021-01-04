@@ -12,11 +12,8 @@ const utils = require('@iobroker/adapter-core');
 const request = require('request');
 const JsonHelper = require(__dirname + '/lib/JsonHelper.js');
 
-
 //global variables
-//let latitude, longitude;
-//let polling = null;
-//let executioninterval=0;
+let polling = null;
 
 class FuelPriceMonitor extends utils.Adapter {
 
@@ -34,8 +31,7 @@ class FuelPriceMonitor extends utils.Adapter {
         //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
         this.createdStatesDetails = {};
-        this.executioninterval=0;
-        this.polling = null;
+        this.executioninterval = 0;
         this.latitude = 0;
         this.longitude = 0;
     }
@@ -46,9 +42,10 @@ class FuelPriceMonitor extends utils.Adapter {
     async onReady() {
         // Initialize adapter
         //get adapter configuration
-        this.executioninterval = parseInt(this.config.executioninterval)*60;
-        if (isNaN(this.executioninterval)) { this.executioninterval = 20*60}
-        this.log.info('DataRequest will be done every ' + this.executioninterval/60 + ' minutes');
+        this.executioninterval = parseInt(this.config.executioninterval) * 60;
+        if (isNaN(this.executioninterval)) { this.executioninterval = 20 * 60 }
+        this.log.info('DataRequest will be done every ' + this.executioninterval / 60 + ' minutes');
+
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
 
@@ -58,13 +55,13 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.error('Adapter was not able to read iobroker configuration');
             return;
         }
-        this.latitude = Math.round(obj.common.latitude*100000)/100000;
-        this.longitude = Math.round(obj.common.longitude*100000)/100000;
+        this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
+        this.longitude = Math.round(obj.common.longitude * 100000) / 100000;
         this.log.debug('LATITUDE from config: ' + this.latitude);
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
         this.ExecuteRequest();
-    } 
+    }
 
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -72,9 +69,9 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     onUnload(callback) {
         try {
-            if (this.polling) {
-                clearTimeout(this.polling);
-                this.polling = null;
+            if (polling) {
+                clearTimeout(polling);
+                polling = null;
             }
             this.log.info('cleaned everything up...');
             callback();
@@ -98,6 +95,10 @@ class FuelPriceMonitor extends utils.Adapter {
         }
     }
 
+    /**
+     * Retrieves fuel data from REST-API
+     * @param {string} fuelType
+     */
     async getData(fuelType) {
         return new Promise((resolve, reject) => {
             //var request = require('request');
@@ -113,15 +114,29 @@ class FuelPriceMonitor extends utils.Adapter {
         });
     }
 
+    /**
+     * Handles json-object and creates states
+     */
     async ExecuteRequest() {
-        let result = await this.getData('DIE');
-        JsonHelper.TraverseJson(this, result, 'DIE',true, false);
-        result = await this.getData('SUP');
-        JsonHelper.TraverseJson(this, result, 'SUP',true, false);
-        result = await this.getData('GAS');
-        JsonHelper.TraverseJson(this, result, 'GAS',true, false);
+        try {
+            let result = await this.getData('DIE');
+            JsonHelper.TraverseJson(this, result, 'DIE', true, false);
+            result = await this.getData('SUP');
+            JsonHelper.TraverseJson(this, result, 'SUP', true, false);
+            result = await this.getData('GAS');
+            JsonHelper.TraverseJson(this, result, 'GAS', true, false);
 
-        JsonHelper.create_state(this, 'online', 'online', true);
+            JsonHelper.create_state(this, 'online', 'online', true);
+
+            //Timmer
+            (function () { if (polling) { clearTimeout(polling); polling = null; } })();
+            polling = setTimeout(() => {
+                this.log.info(`New calculation triggered by polling (every ${this.executioninterval} seconds)`);
+                this.ExecuteRequest();
+            }, this.executioninterval * 1000);
+        } catch (error) {
+            this.log.error(error);
+        }
     }
 }
 

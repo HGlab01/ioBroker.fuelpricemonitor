@@ -14,7 +14,8 @@
 
 ## fuelpricemonitor adapter for ioBroker
 
-This adapter requests the fuel (Diesel or Super) prices from the offical Austria database for fuel registration based on your configered geo-position.
+This adapter retrieves the fuel (Diesel, Super and Gas) prices from the offical Austria database based on your configered geo-position.
+Polling interval can be configured in the adapter settings.
 
 ## Changelog
 <!--
