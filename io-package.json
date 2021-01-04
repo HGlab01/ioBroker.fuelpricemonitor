@@ -1,0 +1,54 @@
+{
+    "common": {
+        "name": "fuelpricemonitor",
+        "version": "0.0.0",
+        "news": {
+            "0.0.0": {
+                "en": "First alpha"
+            }
+        },
+        "title": "Fuel Price Monitor Austria",
+        "titleLang": {
+            "en": "Fuel Price Monitor Austria",
+            "de": "Spritpreismonitor Österreich"
+        },
+        "desc": {
+            "en": "Fuel Price Monitor Austria",
+            "de": "Spritpreismonitor Österreich"
+        },
+        "authors": [
+            "HGlab01 <iobroker.fuelpricemonitor@gmail.com>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "Spritpreismonitor Österreich",
+            "Benzin",
+            "Diesel",
+            "Treibstoff"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "fuelpricemonitor.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/HGlab01/ioBroker.fuelpricemonitor/master/admin/fuelpricemonitor.png",
+        "readme": "https://github.com/HGlab01/ioBroker.fuelpricemonitor/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "vehicle",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=1.4.2"
+            }
+        ]
+    },
+    "native": {
+        "executioninterval": "20"
+    },
+    "objects": [],
+    "instanceObjects": []
+}
