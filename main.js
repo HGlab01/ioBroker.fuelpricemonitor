@@ -134,7 +134,6 @@ class FuelPriceMonitor extends utils.Adapter {
                 this.log.info(`New calculation triggered by polling (every ${this.executioninterval} seconds)`);
                 this.ExecuteRequest();
             }, this.executioninterval * 1000);
-
         } catch (error) {
             this.log.error(error);
         }
