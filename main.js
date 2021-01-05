@@ -80,11 +80,13 @@ class FuelPriceMonitor extends utils.Adapter {
         }
     }
 
+    /*
     /**
      * Is called if a subscribed state changes
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
+    /*
     onStateChange(id, state) {
         if (state) {
             // The state was changed
@@ -93,7 +95,7 @@ class FuelPriceMonitor extends utils.Adapter {
             // The state was deleted
             this.log.debug(`state ${id} deleted`);
         }
-    }
+    }*/
 
     /**
      * Retrieves fuel data from REST-API
