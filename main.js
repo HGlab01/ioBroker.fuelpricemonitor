@@ -119,19 +119,21 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            let result = await this.getData('DIE');
-            JsonHelper.TraverseJson(this, result, 'DIE', true, false);
-            result = await this.getData('SUP');
-            JsonHelper.TraverseJson(this, result, 'SUP', true, false);
-            result = await this.getData('GAS');
-            JsonHelper.TraverseJson(this, result, 'GAS', true, false);
+            await JsonHelper.create_state(this, 'online', 'online', true);
 
-            JsonHelper.create_state(this, 'online', 'online', true);
+            let result = await this.getData('DIE');
+            await JsonHelper.TraverseJson(this, result, 'DIE', true, false);
+            result = await this.getData('SUP');
+            await JsonHelper.TraverseJson(this, result, 'SUP', true, false);
+            result = await this.getData('GAS');
+            await JsonHelper.TraverseJson(this, result, 'GAS', true, false);
+
+            JsonHelper.checkExpire(this);
 
             //Timmer
             (function () { if (polling) { clearTimeout(polling); polling = null; } })();
             polling = setTimeout(() => {
-                this.log.info(`New calculation triggered by polling (every ${this.executioninterval} seconds)`);
+                this.log.info(`New calculation triggered by polling (every ${this.executioninterval/60} minutes)`);
                 this.ExecuteRequest();
             }, this.executioninterval * 1000);
         } catch (error) {
