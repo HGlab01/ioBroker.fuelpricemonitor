@@ -27,7 +27,7 @@ class FuelPriceMonitor extends utils.Adapter {
         });
         this.on('ready', this.onReady.bind(this));
         //this.on('objectChange', this.onObjectChange.bind(this));
-        this.on('stateChange', this.onStateChange.bind(this));
+        //this.on('stateChange', this.onStateChange.bind(this));
         //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
         this.createdStatesDetails = {};
@@ -80,11 +80,13 @@ class FuelPriceMonitor extends utils.Adapter {
         }
     }
 
+    /*
     /**
      * Is called if a subscribed state changes
      * @param {string} id
      * @param {ioBroker.State | null | undefined} state
      */
+    /*
     onStateChange(id, state) {
         if (state) {
             // The state was changed
@@ -93,7 +95,7 @@ class FuelPriceMonitor extends utils.Adapter {
             // The state was deleted
             this.log.debug(`state ${id} deleted`);
         }
-    }
+    }*/
 
     /**
      * Retrieves fuel data from REST-API
@@ -108,8 +110,15 @@ class FuelPriceMonitor extends utils.Adapter {
             };
             this.log.info(options.url);
             request(options, (error, response) => {
-                if (error) reject(error);
-                resolve(JSON.parse(response.body));
+                if (error) {
+                    reject(`Error in function getData: ${error}`);
+                } else {
+                    try {
+                    resolve(JSON.parse(response.body));
+                    } catch(error) {
+                        this.log.error('Error in function getData: ' + error);
+                    }
+                }
             });
         });
     }
@@ -119,23 +128,28 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            let result = await this.getData('DIE');
-            JsonHelper.TraverseJson(this, result, 'DIE', true, false);
-            result = await this.getData('SUP');
-            JsonHelper.TraverseJson(this, result, 'SUP', true, false);
-            result = await this.getData('GAS');
-            JsonHelper.TraverseJson(this, result, 'GAS', true, false);
+            await JsonHelper.create_state(this, 'online', 'online', true);
 
-            JsonHelper.create_state(this, 'online', 'online', true);
+            let result = await this.getData('DIE');
+            this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
+            await JsonHelper.TraverseJson(this, result, 'DIE', true, false);
+            result = await this.getData('SUP');
+            this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
+            await JsonHelper.TraverseJson(this, result, 'SUP', true, false);
+            result = await this.getData('GAS');
+            this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
+            await JsonHelper.TraverseJson(this, result, 'GAS', true, false);
+
+            JsonHelper.checkExpire(this);
 
             //Timmer
             (function () { if (polling) { clearTimeout(polling); polling = null; } })();
             polling = setTimeout(() => {
-                this.log.info(`New calculation triggered by polling (every ${this.executioninterval} seconds)`);
+                this.log.info(`New calculation triggered by polling (every ${this.executioninterval / 60} minutes)`);
                 this.ExecuteRequest();
             }, this.executioninterval * 1000);
         } catch (error) {
-            this.log.error(error);
+            this.log.error(`Error in function ExecuteRequest: ${error}`);
         }
     }
 }

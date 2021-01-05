@@ -22,7 +22,7 @@ Polling interval can be configured in the adapter settings.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### 0.0.1-0 (2021-01-04)
+### 0.0.1-2 (2021-01-05)
 * (HGlab01) first alpha version
 
 ## License
