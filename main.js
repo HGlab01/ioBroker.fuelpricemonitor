@@ -108,8 +108,15 @@ class FuelPriceMonitor extends utils.Adapter {
             };
             this.log.info(options.url);
             request(options, (error, response) => {
-                if (error) reject(error);
-                resolve(JSON.parse(response.body));
+                if (error) {
+                    reject(`Error in function getData: ${error}`);
+                } else {
+                    try {
+                    resolve(JSON.parse(response.body));
+                    } catch(error) {
+                        this.log.error('Error in function getData: ' + error);
+                    }
+                }
             });
         });
     }
@@ -140,7 +147,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 this.ExecuteRequest();
             }, this.executioninterval * 1000);
         } catch (error) {
-            this.log.error(error);
+            this.log.error(`Error in function ExecuteRequest: ${error}`);
         }
     }
 }
