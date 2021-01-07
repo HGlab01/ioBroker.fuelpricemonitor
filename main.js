@@ -10,7 +10,8 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 const request = require('request');
-const JsonHelper = require(`${__dirname}/lib/JsonHelper.js`);
+const JsonHelper = require('iobroker-jsonexplorer');
+const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 
 //global variables
 let polling = null;
@@ -33,13 +34,14 @@ class FuelPriceMonitor extends utils.Adapter {
         this.executioninterval = 0;
         this.latitude = 0;
         this.longitude = 0;
-        JsonHelper.init(this);
+        JsonHelper.init(this, stateAttr);
     }
 
     /**
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
+        //this.log.info(`DIRNAME ${__dirname}`);
         // Initialize adapter
         //get adapter configuration
         this.executioninterval = parseInt(this.config.executioninterval) * 60;
@@ -128,7 +130,9 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            await JsonHelper.create_state(this, 'online', 'online', true);
+            //await JsonHelper.create_state(this, 'online', 'online', true);
+
+            JsonHelper.setLastStartTime(this);
 
             let result = await this.getData('DIE');
             this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
