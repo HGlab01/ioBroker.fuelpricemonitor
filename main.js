@@ -10,7 +10,7 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 const request = require('request');
-const JsonHelper = require(__dirname + '/lib/JsonHelper.js');
+const JsonHelper = require(`${__dirname}/lib/JsonHelper.js`);
 
 //global variables
 let polling = null;
@@ -30,10 +30,10 @@ class FuelPriceMonitor extends utils.Adapter {
         //this.on('stateChange', this.onStateChange.bind(this));
         //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        this.createdStatesDetails = {};
         this.executioninterval = 0;
         this.latitude = 0;
         this.longitude = 0;
+        JsonHelper.init(this);
     }
 
     /**
@@ -108,14 +108,14 @@ class FuelPriceMonitor extends utils.Adapter {
                 'method': 'GET',
                 'url': `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${this.latitude}&longitude=${this.longitude}&fuelType=${fuelType}&includeClosed=true`
             };
-            this.log.info(options.url);
+            this.log.debug(options.url);
             request(options, (error, response) => {
                 if (error) {
                     reject(`Error in function getData: ${error}`);
                 } else {
                     try {
-                    resolve(JSON.parse(response.body));
-                    } catch(error) {
+                        resolve(JSON.parse(response.body));
+                    } catch (error) {
                         this.log.error('Error in function getData: ' + error);
                     }
                 }
@@ -140,12 +140,12 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
             await JsonHelper.TraverseJson(this, result, 'GAS', true, false);
 
-            JsonHelper.checkExpire(this);
+            JsonHelper.checkExpire(this, '*');
 
             //Timmer
             (function () { if (polling) { clearTimeout(polling); polling = null; } })();
             polling = setTimeout(() => {
-                this.log.info(`New calculation triggered by polling (every ${this.executioninterval / 60} minutes)`);
+                this.log.debug(`New calculation triggered by polling (every ${this.executioninterval / 60} minutes)`);
                 this.ExecuteRequest();
             }, this.executioninterval * 1000);
         } catch (error) {
