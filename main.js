@@ -46,7 +46,7 @@ class FuelPriceMonitor extends utils.Adapter {
         //get adapter configuration
         this.executioninterval = parseInt(this.config.executioninterval) * 60;
         if (isNaN(this.executioninterval)) { this.executioninterval = 20 * 60 }
-        this.log.info('DataRequest will be done every ' + this.executioninterval / 60 + ' minutes');
+        this.log.info(`DataRequest will be done every ${this.executioninterval / 60} minutes`);
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -132,19 +132,19 @@ class FuelPriceMonitor extends utils.Adapter {
         try {
             //await JsonHelper.create_state(this, 'online', 'online', true);
 
-            JsonHelper.setLastStartTime(this);
+            JsonHelper.setLastStartTime();
 
             let result = await this.getData('DIE');
             this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(this, result, 'DIE', true, false);
+            await JsonHelper.TraverseJson(result, 'DIE', true, false);
             result = await this.getData('SUP');
             this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(this, result, 'SUP', true, false);
+            await JsonHelper.TraverseJson(result, 'SUP', true, false);
             result = await this.getData('GAS');
             this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(this, result, 'GAS', true, false);
+            await JsonHelper.TraverseJson(result, 'GAS', true, false);
 
-            JsonHelper.checkExpire(this, '*');
+            JsonHelper.checkExpire('*');
 
             //Timmer
             (function () { if (polling) { clearTimeout(polling); polling = null; } })();
