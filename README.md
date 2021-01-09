@@ -22,6 +22,10 @@ Polling interval can be configured in the adapter settings.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+
+### 0.0.1-4 (2021-01-09)
+* (HGlab01) update to use new iobroker-jsonexplorer version
+
 ### 0.0.1-3 (2021-01-07)
 * (HGlab01) first alpha version
 

@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.0.1-3",
+        "version": "0.0.1-4",
         "news": {
+            "0.0.1-4": {
+                "en": "update to use new iobroker-jsonexplorer version",
+                "de": "Update zur Verwendung der neuen Version von iobroker-jsonexplorer",
+                "ru": "обновить, чтобы использовать новую версию iobroker-jsonexplorer",
+                "pt": "atualize para usar a nova versão do iobroker-jsonexplorer",
+                "nl": "update om de nieuwe iobroker-jsonexplorer-versie te gebruiken",
+                "fr": "mise à jour pour utiliser la nouvelle version d'iobroker-jsonexplorer",
+                "it": "aggiornamento per utilizzare la nuova versione di iobroker-jsonexplorer",
+                "es": "actualice para usar la nueva versión de iobroker-jsonexplorer",
+                "pl": "zaktualizuj do nowej wersji iobroker-jsonexplorer",
+                "zh-cn": "更新以使用新的iobroker-jsonexplorer版本"
+            },
             "0.0.1-3": {
                 "en": "* first alpha version\n\n## License\nMIT License\n\nCopyright (c) 2021 HGlab01 <iobroker.fuelpricemonitor@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n\n[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHGlab01%2FioBroker.fuelpricemonitor.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHGlab01%2FioBroker.fuelpricemonitor?ref=badge_large)",
                 "de": "* erste Alpha-Version\n\n## Lizenz\nMIT-Lizenz\n\nCopyright (c) 2021 HGlab01 <iobroker.fuelpricemonitor@gmail.com>\n\nHiermit wird jeder Person, die eine Kopie erhält, kostenlos die Erlaubnis erteilt\ndieser Software und der dazugehörigen Dokumentationsdateien (die \"Software\") zu behandeln\nin der Software ohne Einschränkung, einschließlich ohne Einschränkung der Rechte\nzu verwenden, zu kopieren, zu ändern, zusammenzuführen, zu veröffentlichen, zu verteilen, Unterlizenzen zu vergeben und / oder zu verkaufen\nKopien der Software und um Personen zuzulassen, für die die Software bestimmt ist\ndafür eingerichtet, unter folgenden Bedingungen:\n\nDer oben genannte Copyright-Hinweis und dieser Erlaubnishinweis sind in allen enthalten\nKopien oder wesentliche Teile der Software.\n\nDIE SOFTWARE WIRD \"WIE BESEHEN\" OHNE JEGLICHE AUSDRÜCKLICHE ODER AUSDRÜCKLICHE GARANTIE ZUR VERFÜGUNG GESTELLT\nSTILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE GARANTIEN DER MARKTGÄNGIGKEIT,\nEIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG. In keinem Fall wird das\nAUTOREN ODER COPYRIGHT-INHABER HAFTEN FÜR ANSPRÜCHE, SCHÄDEN ODER ANDERE\nHAFTUNG, OB BEI VERTRAGS-, TORT- ODER ANDERWEITIGEN MASSNAHMEN AUS,\nAUS ODER IM ZUSAMMENHANG MIT DER SOFTWARE ODER DER NUTZUNG ODER ANDEREN HANDELN IN DER\nSOFTWARE.\n\n\n[! [FOSSA-Status] (https://app.fossa.com/api/projects/git%2Bgithub.com%2FHGlab01%2FioBroker.fuelpricemonitor.svg?type=large)] (https://app.fossa.com /projects/git%2Bgithub.com%2FHGlab01%2FioBroker.fuelpricemonitor?ref=badge_large)",
