@@ -137,12 +137,12 @@ class FuelPriceMonitor extends utils.Adapter {
             let result = await this.getData('DIE');
             this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
             await JsonHelper.TraverseJson(result, 'DIE', true, false);
-            result = await this.getData('SUP');
-            this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(result, 'SUP', true, false);
-            result = await this.getData('GAS');
-            this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(result, 'GAS', true, false);
+            //result = await this.getData('SUP');
+            //this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
+            //await JsonHelper.TraverseJson(result, 'SUP', true, false);
+            //result = await this.getData('GAS');
+            //this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
+            //await JsonHelper.TraverseJson(result, 'GAS', true, false);
 
             JsonHelper.checkExpire('*');
 
