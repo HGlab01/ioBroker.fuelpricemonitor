@@ -1,6 +1,6 @@
 {
   "name": "iobroker.fuelpricemonitor",
-  "version": "0.0.1-4",
+  "version": "0.0.1-5",
   "author": {
     "name": "HGlab01",
     "email": "iobroker.fuelpricemonitor@gmail.com"
@@ -25,7 +25,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
-    "iobroker-jsonexplorer": "^0.0.0-2",
+    "iobroker-jsonexplorer": "^0.0.0-3",
     "request": "^2.88.2"
   },
   "deprecated": false,
