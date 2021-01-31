@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.0.1-6",
+        "version": "0.0.1-7",
         "news": {
+            "0.0.1-7": {
+                "en": "update to iobroker-jsonexplorer v0.0.0-7",
+                "de": "Update auf iobroker-jsonexplorer v0.0.0-7",
+                "ru": "обновление до iobroker-jsonexplorer v0.0.0-7",
+                "pt": "atualização para iobroker-jsonexplorer v0.0.0-7",
+                "nl": "update naar iobroker-jsonexplorer v0.0.0-7",
+                "fr": "mise à jour vers iobroker-jsonexplorer v0.0.0-7",
+                "it": "aggiornamento a iobroker-jsonexplorer v0.0.0-7",
+                "es": "actualizar a iobroker-jsonexplorer v0.0.0-7",
+                "pl": "aktualizacja do iobroker-jsonexplorer v0.0.0-7",
+                "zh-cn": "更新到iobroker-jsonexplorer v0.0.0-7"
+            },
             "0.0.1-6": {
                 "en": "update to iobroker-jsonexplorer v0.0.0-6\nreadability improvements",
                 "de": "Update auf iobroker-jsonexplorer v0.0.0-6\nVerbesserungen der Lesbarkeit",
