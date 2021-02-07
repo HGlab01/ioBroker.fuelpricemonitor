@@ -23,7 +23,7 @@ Polling interval can be configured in the adapter settings.
     ### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 0.1.0 (2021-02-07)
 * (HGlab01) first beta version
 
 ### 0.0.1-7 (2021-01-31)
