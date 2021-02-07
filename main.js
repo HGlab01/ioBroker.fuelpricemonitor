@@ -10,7 +10,8 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 const request = require('request');
-const JsonHelper = require(`${__dirname}/lib/JsonHelper.js`);
+const JsonExplorer = require('iobroker-jsonexplorer');
+const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 
 //global variables
 let polling = null;
@@ -33,18 +34,19 @@ class FuelPriceMonitor extends utils.Adapter {
         this.executioninterval = 0;
         this.latitude = 0;
         this.longitude = 0;
-        JsonHelper.init(this);
+        JsonExplorer.init(this, stateAttr);
     }
 
     /**
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
+        //this.log.info(`DIRNAME ${__dirname}`);
         // Initialize adapter
         //get adapter configuration
         this.executioninterval = parseInt(this.config.executioninterval) * 60;
         if (isNaN(this.executioninterval)) { this.executioninterval = 20 * 60 }
-        this.log.info('DataRequest will be done every ' + this.executioninterval / 60 + ' minutes');
+        this.log.info(`DataRequest will be done every ${this.executioninterval / 60} minutes`);
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -128,19 +130,19 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            await JsonHelper.create_state(this, 'online', 'online', true);
+            JsonExplorer.setLastStartTime();
 
             let result = await this.getData('DIE');
             this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(this, result, 'DIE', true, false);
+            await JsonExplorer.TraverseJson(result, 'DIE', true, false);
             result = await this.getData('SUP');
             this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(this, result, 'SUP', true, false);
+            await JsonExplorer.TraverseJson(result, 'SUP', true, false);
             result = await this.getData('GAS');
             this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(this, result, 'GAS', true, false);
+            await JsonExplorer.TraverseJson(result, 'GAS', true, false);
 
-            JsonHelper.checkExpire(this, '*');
+            JsonExplorer.checkExpire('*');
 
             //Timmer
             (function () { if (polling) { clearTimeout(polling); polling = null; } })();
