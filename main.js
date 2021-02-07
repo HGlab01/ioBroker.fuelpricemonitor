@@ -10,7 +10,7 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 const request = require('request');
-const JsonHelper = require('iobroker-jsonexplorer');
+const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 
 //global variables
@@ -34,7 +34,7 @@ class FuelPriceMonitor extends utils.Adapter {
         this.executioninterval = 0;
         this.latitude = 0;
         this.longitude = 0;
-        JsonHelper.init(this, stateAttr);
+        JsonExplorer.init(this, stateAttr);
     }
 
     /**
@@ -130,21 +130,19 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            //await JsonHelper.create_state(this, 'online', 'online', true);
-
-            JsonHelper.setLastStartTime();
+            JsonExplorer.setLastStartTime();
 
             let result = await this.getData('DIE');
             this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
-            await JsonHelper.TraverseJson(result, 'DIE', true, false);
-            //result = await this.getData('SUP');
-            //this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
-            //await JsonHelper.TraverseJson(result, 'SUP', true, false);
-            //result = await this.getData('GAS');
-            //this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-            //await JsonHelper.TraverseJson(result, 'GAS', true, false);
+            await JsonExplorer.TraverseJson(result, 'DIE', true, false);
+            result = await this.getData('SUP');
+            this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
+            await JsonExplorer.TraverseJson(result, 'SUP', true, false);
+            result = await this.getData('GAS');
+            this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
+            await JsonExplorer.TraverseJson(result, 'GAS', true, false);
 
-            JsonHelper.checkExpire('*');
+            JsonExplorer.checkExpire('*');
 
             //Timmer
             (function () { if (polling) { clearTimeout(polling); polling = null; } })();
