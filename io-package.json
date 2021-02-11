@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "round distance (3 digits)",
+                "de": "runde Entfernung (3 Ziffern)",
+                "ru": "расстояние округления (3 цифры)",
+                "pt": "distância da volta (3 dígitos)",
+                "nl": "ronde afstand (3 cijfers)",
+                "fr": "distance ronde (3 chiffres)",
+                "it": "distanza rotonda (3 cifre)",
+                "es": "distancia redonda (3 dígitos)",
+                "pl": "okrągła odległość (3 cyfry)",
+                "zh-cn": "舍入距离（3位数字）"
+            },
             "0.1.0": {
                 "en": "first beta version",
                 "de": "erste Beta-Version",
