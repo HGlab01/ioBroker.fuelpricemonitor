@@ -168,6 +168,7 @@
         "loglevel": "info",
         "mode": "schedule",
         "schedule": "25 */20 * * * *",
+        "allowInit": true,
         "type": "vehicle",
         "compact": true,
         "connectionType": "local",
