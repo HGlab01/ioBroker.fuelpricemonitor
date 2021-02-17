@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.1.2-3",
+        "version": "0.1.2-4",
         "news": {
+            "0.1.2-4": {
+                "en": "first beta version",
+                "de": "erste Beta-Version",
+                "ru": "первая бета версия",
+                "pt": "primeira versão beta",
+                "nl": "eerste bètaversie",
+                "fr": "première version bêta",
+                "it": "prima versione beta",
+                "es": "primera versión beta",
+                "pl": "pierwsza wersja beta",
+                "zh-cn": "第一个测试版"
+            },
             "0.1.2-3": {
                 "en": "first beta version",
                 "de": "erste Beta-Version",
@@ -70,7 +82,12 @@
             {
                 "js-controller": ">=2.0.0"
             }
-        ]
+        ],
+        "plugins": {
+            "sentry": {
+                "dsn": "https://accf1b9ec0ee4e4d8217655642077725@sentry.iobroker.net/118"
+            }
+        }
     },
     "native": {},
     "objects": [],
