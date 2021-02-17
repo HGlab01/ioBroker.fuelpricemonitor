@@ -23,25 +23,8 @@ Default schedule is done every 20 minutes and can be changed in the "instance" t
     ### __WORK IN PROGRESS__
 -->
 
-### 0.1.2-1 (2021-02-17)
-* (HGlab01) switch to schedule mode
-* (HGlab01) improve readability
-
-### 0.1.1 (2021-02-11)
-* (HGlab01) round distance (3 digits)
-
-### 0.1.0 (2021-02-07)
+### 0.1.2-2 (2021-02-17)
 * (HGlab01) first beta version
-
-### 0.0.1-7 (2021-01-31)
-* (HGlab01) update to iobroker-jsonexplorer v0.0.0-7
-
-### 0.0.1-6 (2021-01-13)
-* (HGlab01) update to iobroker-jsonexplorer v0.0.0-6
-* (HGlab01) readability improvements
-
-### 0.0.1-4 (2021-01-09)
-* (HGlab01) update to use new iobroker-jsonexplorer version
 
 ### 0.0.1-3 (2021-01-07)
 * (HGlab01) first alpha version
