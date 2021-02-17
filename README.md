@@ -23,7 +23,7 @@ Default schedule is done every 20 minutes and can be changed in the "instance" t
     ### __WORK IN PROGRESS__
 -->
 
-### 0.1.2-0 (2021-02-17)
+### 0.1.2-1 (2021-02-17)
 * (HGlab01) switch to schedule mode
 * (HGlab01) improve readability
 
