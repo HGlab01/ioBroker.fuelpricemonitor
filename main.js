@@ -108,7 +108,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     try {
                         this.log.debug(`Response in GetData(): ${response.body}`);
                         if (!response || !response.body) {
-                            error = `Response or response.body empty in getData()`;
+                            throw `Response or response.body empty in getData()`;
                         } else {
                             let result = JSON.parse(response.body);
                             resolve(result);
