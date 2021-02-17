@@ -15,7 +15,10 @@
 ## fuelpricemonitor adapter for ioBroker
 
 This adapter retrieves the fuel (Diesel, Super and Gas) prices from the offical Austria database based on your configered geo-position.
-Default schedule is done every 20 minutes and can be changed in the "instance" tab.
+Default schedule is done every 20 minutes and can be changed in the "instance" tab.  
+
+
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)!
 
 ## Changelog
 <!--
@@ -23,7 +26,7 @@ Default schedule is done every 20 minutes and can be changed in the "instance" t
     ### __WORK IN PROGRESS__
 -->
 
-### 0.1.2-3 (2021-02-17)
+### __WORK IN PROGRESS__
 * (HGlab01) first beta version
 
 ### 0.0.1-3 (2021-01-07)
