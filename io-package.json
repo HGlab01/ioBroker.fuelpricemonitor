@@ -154,7 +154,8 @@
         "extIcon": "https://raw.githubusercontent.com/HGlab01/ioBroker.fuelpricemonitor/master/admin/fuelpricemonitor.png",
         "readme": "https://github.com/HGlab01/ioBroker.fuelpricemonitor/blob/master/README.md",
         "loglevel": "info",
-        "mode": "daemon",
+        "mode": "schedule",
+        "schedule": "25 */20 * * * *",
         "type": "vehicle",
         "compact": true,
         "connectionType": "local",
@@ -162,13 +163,11 @@
         "materialize": true,
         "dependencies": [
             {
-                "js-controller": ">=1.4.2"
+                "js-controller": ">=2.0.0"
             }
         ]
     },
-    "native": {
-        "executioninterval": "20"
-    },
+    "native": {},
     "objects": [],
     "instanceObjects": []
 }

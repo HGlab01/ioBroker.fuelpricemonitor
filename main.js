@@ -14,7 +14,6 @@ const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 
 //global variables
-let polling = null;
 
 class FuelPriceMonitor extends utils.Adapter {
 
@@ -31,7 +30,6 @@ class FuelPriceMonitor extends utils.Adapter {
         //this.on('stateChange', this.onStateChange.bind(this));
         //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        this.executioninterval = 0;
         this.latitude = 0;
         this.longitude = 0;
         JsonExplorer.init(this, stateAttr);
@@ -41,12 +39,8 @@ class FuelPriceMonitor extends utils.Adapter {
      * Is called when databases are connected and adapter received configuration.
      */
     async onReady() {
-        //this.log.info(`DIRNAME ${__dirname}`);
         // Initialize adapter
         //get adapter configuration
-        this.executioninterval = parseInt(this.config.executioninterval) * 60;
-        if (isNaN(this.executioninterval)) { this.executioninterval = 20 * 60 }
-        this.log.info(`DataRequest will be done every ${this.executioninterval / 60} minutes`);
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -62,7 +56,8 @@ class FuelPriceMonitor extends utils.Adapter {
         this.log.debug('LATITUDE from config: ' + this.latitude);
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
-        this.ExecuteRequest();
+        await this.ExecuteRequest();
+        this.terminate ? this.terminate(0) : process.exit(0);
     }
 
     /**
@@ -71,10 +66,6 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     onUnload(callback) {
         try {
-            if (polling) {
-                clearTimeout(polling);
-                polling = null;
-            }
             this.log.info('cleaned everything up...');
             callback();
         } catch (e) {
@@ -105,7 +96,6 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async getData(fuelType) {
         return new Promise((resolve, reject) => {
-            //var request = require('request');
             var options = {
                 'method': 'GET',
                 'url': `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${this.latitude}&longitude=${this.longitude}&fuelType=${fuelType}&includeClosed=true`
@@ -116,7 +106,13 @@ class FuelPriceMonitor extends utils.Adapter {
                     reject(`Error in function getData: ${error}`);
                 } else {
                     try {
-                        resolve(JSON.parse(response.body));
+                        this.log.debug(`Response in GetData(): ${response.body}`);
+                        if (!response || !response.body) {
+                            error = `Response or response.body empty in getData()`;
+                        } else {
+                            let result = JSON.parse(response.body);
+                            resolve(result);
+                        }
                     } catch (error) {
                         this.log.error('Error in function getData: ' + error);
                     }
@@ -130,7 +126,7 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            JsonExplorer.setLastStartTime();
+            await JsonExplorer.setLastStartTime();
 
             let result = await this.getData('DIE');
             this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
@@ -142,14 +138,8 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
             await JsonExplorer.TraverseJson(result, 'GAS', true, false);
 
-            JsonExplorer.checkExpire('*');
+            await JsonExplorer.checkExpire('*');
 
-            //Timmer
-            (function () { if (polling) { clearTimeout(polling); polling = null; } })();
-            polling = setTimeout(() => {
-                this.log.debug(`New calculation triggered by polling (every ${this.executioninterval / 60} minutes)`);
-                this.ExecuteRequest();
-            }, this.executioninterval * 1000);
         } catch (error) {
             this.log.error(`Error in function ExecuteRequest: ${error}`);
         }

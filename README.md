@@ -15,13 +15,17 @@
 ## fuelpricemonitor adapter for ioBroker
 
 This adapter retrieves the fuel (Diesel, Super and Gas) prices from the offical Austria database based on your configered geo-position.
-Polling interval can be configured in the adapter settings.
+Default schedule is done every 20 minutes and can be changed in the "instance" tab.
 
 ## Changelog
 <!--
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+
+### __WORK IN PROGRESS__
+* (HGlab01) switch to schedule mode
+* (HGlab01) improve readability
 
 ### 0.1.1 (2021-02-11)
 * (HGlab01) round distance (3 digits)
