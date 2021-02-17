@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.1.1",
+        "version": "0.1.2-0",
         "news": {
+            "0.1.2-0": {
+                "en": "switch to schedule mode\nimprove readability",
+                "de": "Wechseln Sie in den Zeitplanmodus\nVerbesserung der Lesbarkeit",
+                "ru": "перейти в режим расписания\nулучшить читаемость",
+                "pt": "mudar para o modo de programação\nmelhorar a legibilidade",
+                "nl": "overschakelen naar de schemamodus\nleesbaarheid verbeteren",
+                "fr": "passer en mode horaire\naméliorer la lisibilité",
+                "it": "passare alla modalità di programmazione\nmigliorare la leggibilità",
+                "es": "cambiar al modo de programación\nmejorar la legibilidad",
+                "pl": "przejść do trybu harmonogramu\npoprawić czytelność",
+                "zh-cn": "切换到计划模式\n提高可读性"
+            },
             "0.1.1": {
                 "en": "round distance (3 digits)",
                 "de": "runde Entfernung (3 Ziffern)",
