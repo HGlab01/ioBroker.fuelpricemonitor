@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.1.2-4",
+        "version": "0.1.2",
         "news": {
+            "0.1.2": {
+                "en": "first beta version",
+                "de": "erste Beta-Version",
+                "ru": "первая бета версия",
+                "pt": "primeira versão beta",
+                "nl": "eerste bètaversie",
+                "fr": "première version bêta",
+                "it": "prima versione beta",
+                "es": "primera versión beta",
+                "pl": "pierwsza wersja beta",
+                "zh-cn": "第一个测试版"
+            },
             "0.1.2-4": {
                 "en": "first beta version",
                 "de": "erste Beta-Version",
