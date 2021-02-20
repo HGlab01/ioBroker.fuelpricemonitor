@@ -101,7 +101,11 @@
             }
         }
     },
-    "native": {},
+    "native": {
+        "diesel": true,
+        "super": false,
+        "gas": false
+    },
     "objects": [],
     "instanceObjects": []
 }
