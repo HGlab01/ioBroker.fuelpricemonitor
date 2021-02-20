@@ -14,6 +14,9 @@ const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 
 //global variables
+let dieselSelected = false;
+let superSelected = false;
+let gasSelected = false;
 
 class FuelPriceMonitor extends utils.Adapter {
 
@@ -41,6 +44,12 @@ class FuelPriceMonitor extends utils.Adapter {
     async onReady() {
         // Initialize adapter
         //get adapter configuration
+        dieselSelected = this.config.diesel;
+        this.log.debug(`Diesel selected : ${dieselSelected}`);
+        superSelected = this.config.super;
+        this.log.debug(`Super selected : ${superSelected}`);
+        gasSelected = this.config.gas;
+        this.log.debug(`Gas selected : ${gasSelected}`);
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -129,16 +138,40 @@ class FuelPriceMonitor extends utils.Adapter {
     async ExecuteRequest() {
         try {
             await JsonExplorer.setLastStartTime();
-
-            let result = await this.getData('DIE');
-            this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
-            await JsonExplorer.TraverseJson(result, 'DIE', true, false);
-            result = await this.getData('SUP');
-            this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
-            await JsonExplorer.TraverseJson(result, 'SUP', true, false);
-            result = await this.getData('GAS');
-            this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-            await JsonExplorer.TraverseJson(result, 'GAS', true, false);
+            let result = null;
+            if (dieselSelected) {
+                result = await this.getData('DIE');
+                this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
+                console.log(`JSON-Response DIE: ${JSON.stringify(result)}`);
+                await JsonExplorer.TraverseJson(result, 'DIE', true, false);
+            } else {
+                let states = await this.getStatesAsync('*DIE.*');
+                for (const idS in states) {
+                    this.delObjectAsync(idS);
+                }
+            }
+            if (superSelected) {
+                result = await this.getData('SUP');
+                this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
+                console.log(`JSON-Response SUP: ${JSON.stringify(result)}`);
+                await JsonExplorer.TraverseJson(result, 'SUP', true, false);
+            } else {
+                let states = await this.getStatesAsync('*SUP.*');
+                for (const idS in states) {
+                    this.delObjectAsync(idS);
+                }
+            }
+            if (gasSelected) {
+                result = await this.getData('GAS');
+                this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
+                console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
+                await JsonExplorer.TraverseJson(result, 'GAS', true, false);
+            } else {
+                let states = await this.getStatesAsync('*GAS.*');
+                for (const idS in states) {
+                    this.delObjectAsync(idS);
+                }
+            }
 
             await JsonExplorer.checkExpire('*');
 
