@@ -145,6 +145,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 console.log(`JSON-Response DIE: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, 'DIE', true, false);
             } else {
+                this.deleteDeviceAsync('DIE');
                 let states = await this.getStatesAsync('*DIE.*');
                 for (const idS in states) {
                     this.delObjectAsync(idS);
@@ -156,6 +157,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 console.log(`JSON-Response SUP: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, 'SUP', true, false);
             } else {
+                this.deleteDeviceAsync('SUP');
                 let states = await this.getStatesAsync('*SUP.*');
                 for (const idS in states) {
                     this.delObjectAsync(idS);
@@ -167,6 +169,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, 'GAS', true, false);
             } else {
+                this.deleteDeviceAsync('GAS');
                 let states = await this.getStatesAsync('*GAS.*');
                 for (const idS in states) {
                     this.delObjectAsync(idS);
@@ -183,11 +186,15 @@ class FuelPriceMonitor extends utils.Adapter {
     }
 
     sendSentry(error) {
-        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-            const sentryInstance = this.getPluginInstance('sentry');
-            if (sentryInstance) {
-                sentryInstance.getSentryObject().captureException(error);
+        try {
+            if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                const sentryInstance = this.getPluginInstance('sentry');
+                if (sentryInstance) {
+                    sentryInstance.getSentryObject().captureException(error);
+                }
             }
+        } catch (error) {
+            this.log.error(`Error in function sendSentry(): ${error}`);
         }
     }
 }
