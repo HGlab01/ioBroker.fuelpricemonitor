@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.1.4-0",
+        "version": "0.1.4",
         "news": {
+            "0.1.4": {
+                "en": "optimize device/channel deletion\nimprove Sentry handling",
+                "de": "Optimieren Sie das Löschen von Geräten / Kanälen\nVerbesserung der Sentry-Handhabung",
+                "ru": "оптимизировать удаление устройства / канала\nулучшить обработку Sentry",
+                "pt": "otimizar dispositivo / exclusão de canal\nmelhorar o manuseio de Sentinelas",
+                "nl": "optimaliseer het verwijderen van apparaten / kanalen\nde afhandeling van Sentry verbeteren",
+                "fr": "optimiser la suppression des appareils / canaux\naméliorer la gestion de Sentry",
+                "it": "ottimizzare l'eliminazione del dispositivo / canale\nmigliorare la gestione di Sentry",
+                "es": "optimizar la eliminación de dispositivo / canal\nmejorar el manejo de Sentry",
+                "pl": "zoptymalizować usuwanie urządzenia / kanału\npoprawić obsługę działka",
+                "zh-cn": "优化设备/通道删除\n改善哨兵处理"
+            },
             "0.1.4-0": {
                 "en": "optimize device/channel deletion",
                 "de": "Optimieren Sie das Löschen von Geräten / Kanälen",
