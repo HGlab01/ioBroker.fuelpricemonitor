@@ -152,7 +152,8 @@
     "native": {
         "diesel": true,
         "super": false,
-        "gas": false
+        "gas": false,
+        "address": []
     },
     "objects": [],
     "instanceObjects": []

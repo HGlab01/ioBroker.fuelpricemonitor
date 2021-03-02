@@ -25,6 +25,12 @@ Default schedule is done every 20 minutes and can be changed in the "instance" t
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+
+### __WORK IN PROGRESS__
+* (HGlab01) additional locations can be added
+* (HGlab01) for a propper working of the new version a uninstall/install is recommended
+* (HGlab01) small improvements
+
 ### 0.1.4 (2021-02-22)
 * (HGlab01) optimize device/channel deletion
 * (HGlab01) improve Sentry handling
