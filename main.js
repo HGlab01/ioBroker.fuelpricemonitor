@@ -119,7 +119,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     try {
                         this.log.debug(`Response in GetData(): ${response.body}`);
                         if (!response || !response.body) {
-                            throw `Response or response.body empty in getData()`;
+                            throw new Error(`Response or response.body empty in getData()`);
                         } else {
                             let result = JSON.parse(response.body);
                             resolve(result);
@@ -168,14 +168,22 @@ class FuelPriceMonitor extends utils.Adapter {
 
             //go trough all configured locations 
             for (const i in this.config.address) {
+                // @ts-ignore
                 let location = this.config.address[i].location;
                 location = location.replace(/[^a-zA-Z0-9]/g, '_');
+                if(!location) throw new Error(`Location name not set. Aborted!`);
+                // @ts-ignore
                 let latitude = parseFloat(this.config.address[i].latitude);
                 latitude = Math.round(latitude * 100000) / 100000;
+                if(!latitude) throw new Error(`Latitude not set. Aborted!`);
+                // @ts-ignore
                 let longitude = parseFloat(this.config.address[i].longitude);
+                if(!longitude) throw new Error(`Longitude not set. Aborted!`);
                 longitude = Math.round(longitude * 100000) / 100000;
+                // @ts-ignore
                 let fuelType = this.config.address[i].fuelType;
-                this.log.debug(`City | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} ${fuelType}`);
+                if(!fuelType) throw new Error(`FuelType not set. Aborted!`);
+                this.log.info(`City | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} ${fuelType}`);
 
                 //call API and create states
                 result = await this.getData(fuelType, latitude, longitude);
@@ -195,7 +203,7 @@ class FuelPriceMonitor extends utils.Adapter {
             let statesToDelete = await this.getStatesAsync('*0.id');
             for (const idS in statesToDelete) {
                 let state = await this.getStateAsync(idS);
-                if (state.val == null) {
+                if (state != null && state.val == null) {
                     let statename = idS.split('.');
                     this.log.debug(`State "${statename[2]}" will be deleted`);
                     await this.deleteEverything(statename[2]);
