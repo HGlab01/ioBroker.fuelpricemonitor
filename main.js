@@ -58,6 +58,14 @@ class FuelPriceMonitor extends utils.Adapter {
         let obj = await this.getForeignObjectAsync('system.config');
         if (!obj) {
             this.log.error('Adapter was not able to read iobroker configuration');
+            this.terminate ? this.terminate(0) : process.exit(0);
+            return;
+        }
+        this.latitude = parseFloat(obj.common.latitude);
+        this.longitude = parseFloat(obj.common.longitude);
+        if (!this.latitude || !this.longitude) {
+            this.log.error('Latitude or Longitude not set in main configuration!');
+            this.terminate ? this.terminate(0) : process.exit(0);
             return;
         }
         this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
@@ -183,7 +191,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 // @ts-ignore
                 let fuelType = this.config.address[i].fuelType;
                 if(!fuelType) throw new Error(`FuelType not set. Aborted!`);
-                this.log.info(`City | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} ${fuelType}`);
+                this.log.debug(`City | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} ${fuelType}`);
 
                 //call API and create states
                 result = await this.getData(fuelType, latitude, longitude);
