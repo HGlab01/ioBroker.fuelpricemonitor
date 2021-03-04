@@ -58,14 +58,14 @@ class FuelPriceMonitor extends utils.Adapter {
         let obj = await this.getForeignObjectAsync('system.config');
         if (!obj) {
             this.log.error('Adapter was not able to read iobroker configuration');
-            this.terminate ? this.terminate(0) : process.exit(0);
+            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
         this.latitude = parseFloat(obj.common.latitude);
         this.longitude = parseFloat(obj.common.longitude);
         if (!this.latitude || !this.longitude) {
             this.log.error('Latitude or Longitude not set in main configuration!');
-            this.terminate ? this.terminate(0) : process.exit(0);
+            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
         this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
