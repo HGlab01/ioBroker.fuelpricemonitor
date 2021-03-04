@@ -58,6 +58,14 @@ class FuelPriceMonitor extends utils.Adapter {
         let obj = await this.getForeignObjectAsync('system.config');
         if (!obj) {
             this.log.error('Adapter was not able to read iobroker configuration');
+            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
+            return;
+        }
+        this.latitude = parseFloat(obj.common.latitude);
+        this.longitude = parseFloat(obj.common.longitude);
+        if (!this.latitude || !this.longitude) {
+            this.log.error('Latitude or Longitude not set in main configuration!');
+            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
         this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
@@ -101,13 +109,15 @@ class FuelPriceMonitor extends utils.Adapter {
 
     /**
      * Retrieves fuel data from REST-API
-     * @param {string} fuelType
+     * @param {string} fuelType can be DIE or SUP or GAS
+     * @param {number} latitude
+     * @param {number} longitude
      */
-    async getData(fuelType) {
+    async getData(fuelType, latitude, longitude) {
         return new Promise((resolve, reject) => {
             var options = {
                 'method': 'GET',
-                'url': `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${this.latitude}&longitude=${this.longitude}&fuelType=${fuelType}&includeClosed=true`
+                'url': `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=true`
             };
             this.log.debug(options.url);
             request(options, (error, response) => {
@@ -117,7 +127,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     try {
                         this.log.debug(`Response in GetData(): ${response.body}`);
                         if (!response || !response.body) {
-                            throw `Response or response.body empty in getData()`;
+                            throw new Error(`Response or response.body empty in getData()`);
                         } else {
                             let result = JSON.parse(response.body);
                             resolve(result);
@@ -140,43 +150,73 @@ class FuelPriceMonitor extends utils.Adapter {
             await JsonExplorer.setLastStartTime();
             let result = null;
             if (dieselSelected) {
-                result = await this.getData('DIE');
+                result = await this.getData('DIE', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
                 console.log(`JSON-Response DIE: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, 'DIE', true, false);
+                await JsonExplorer.TraverseJson(result, '0_Home_Diesel', true, false);
             } else {
-                this.deleteDeviceAsync('DIE');
-                let states = await this.getStatesAsync('*DIE.*');
-                for (const idS in states) {
-                    this.delObjectAsync(idS);
-                }
+                await this.deleteEverything('0_Home_Diesel');
             }
             if (superSelected) {
-                result = await this.getData('SUP');
+                result = await this.getData('SUP', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
                 console.log(`JSON-Response SUP: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, 'SUP', true, false);
+                await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, false);
             } else {
-                this.deleteDeviceAsync('SUP');
-                let states = await this.getStatesAsync('*SUP.*');
-                for (const idS in states) {
-                    this.delObjectAsync(idS);
-                }
+                await this.deleteEverything('0_Home_Super');
             }
             if (gasSelected) {
-                result = await this.getData('GAS');
+                result = await this.getData('GAS', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
                 console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, 'GAS', true, false);
+                await JsonExplorer.TraverseJson(result, '0_Home_CNG', true, false);
             } else {
-                this.deleteDeviceAsync('GAS');
-                let states = await this.getStatesAsync('*GAS.*');
-                for (const idS in states) {
-                    this.delObjectAsync(idS);
+                await this.deleteEverything('0_Home_CNG');
+            }
+
+            //go trough all configured locations 
+            for (const i in this.config.address) {
+                // @ts-ignore
+                let location = this.config.address[i].location;
+                location = location.replace(/[^a-zA-Z0-9]/g, '_');
+                if(!location) throw new Error(`Location name not set. Aborted!`);
+                // @ts-ignore
+                let latitude = parseFloat(this.config.address[i].latitude);
+                latitude = Math.round(latitude * 100000) / 100000;
+                if(!latitude) throw new Error(`Latitude not set. Aborted!`);
+                // @ts-ignore
+                let longitude = parseFloat(this.config.address[i].longitude);
+                if(!longitude) throw new Error(`Longitude not set. Aborted!`);
+                longitude = Math.round(longitude * 100000) / 100000;
+                // @ts-ignore
+                let fuelType = this.config.address[i].fuelType;
+                if(!fuelType) throw new Error(`FuelType not set. Aborted!`);
+                this.log.debug(`City | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} ${fuelType}`);
+
+                //call API and create states
+                result = await this.getData(fuelType, latitude, longitude);
+                this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
+                console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
+                switch (fuelType) {
+                    case 'DIE': fuelType = 'Diesel'; break;
+                    case 'SUP': fuelType = 'Super95'; break;
+                    case 'GAS': fuelType = 'CNG'; break;
                 }
+                await JsonExplorer.TraverseJson(result, `${location}_${fuelType}`, true, false);
             }
 
             await JsonExplorer.checkExpire('*');
+
+            // check for outdated states to delete whole device
+            let statesToDelete = await this.getStatesAsync('*0.id');
+            for (const idS in statesToDelete) {
+                let state = await this.getStateAsync(idS);
+                if (state != null && state.val == null) {
+                    let statename = idS.split('.');
+                    this.log.debug(`State "${statename[2]}" will be deleted`);
+                    await this.deleteEverything(statename[2]);
+                }
+            }
 
         } catch (error) {
             error = `Error in ExecuteRequest(): ${error}`;
@@ -185,6 +225,22 @@ class FuelPriceMonitor extends utils.Adapter {
         }
     }
 
+    /**
+     * Deletes device + channels + states
+     * @param {string} devicename devicename (not the whole path) to be deleted
+     */
+    async deleteEverything(devicename) {
+        await this.deleteDeviceAsync(devicename);
+        let states = await this.getStatesAsync(`${devicename}.*`);
+        for (const idS in states) {
+            await this.delObjectAsync(idS);
+        }
+    }
+
+    /**
+     * Handles sentry message
+     * @param {any} error Error message for sentry
+     */
     sendSentry(error) {
         try {
             if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
