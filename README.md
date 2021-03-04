@@ -26,7 +26,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     ### __WORK IN PROGRESS__
 -->
 
-### 0.2.0-1 (2021-03-02)
+### 0.2.0-2 (2021-03-04)
 * (HGlab01) additional locations can be added
 * (HGlab01) for a propper working of the new version a uninstall/install is recommended
 * (HGlab01) small improvements

@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.0-1",
+        "version": "0.2.0-2",
         "news": {
+            "0.2.0-2": {
+                "en": "additional locations can be added\nfor a propper working of the new version a uninstall/install is recommended\nsmall improvements",
+                "de": "zusätzliche Standorte können hinzugefügt werden\nFür ein ordnungsgemäßes Funktionieren der neuen Version wird eine Deinstallation / Installation empfohlen\nkleine Verbesserungen",
+                "ru": "могут быть добавлены дополнительные локации\nдля правильной работы новой версии рекомендуется удалить / установить\nнебольшие улучшения",
+                "pt": "locais adicionais podem ser adicionados\npara um funcionamento adequado da nova versão, uma desinstalação / instalação é recomendada\npequenas melhorias",
+                "nl": "extra locaties kunnen worden toegevoegd\nvoor een goede werking van de nieuwe versie wordt een uninstall / install aanbevolen\nkleine verbeteringen",
+                "fr": "des emplacements supplémentaires peuvent être ajoutés\npour un bon fonctionnement de la nouvelle version, une désinstallation / installation est recommandée\npetites améliorations",
+                "it": "è possibile aggiungere ulteriori posizioni\nper un corretto funzionamento della nuova versione si consiglia una disinstallazione / installazione\npiccoli miglioramenti",
+                "es": "se pueden agregar ubicaciones adicionales\npara un correcto funcionamiento de la nueva versión se recomienda desinstalar / instalar\npequeñas mejoras",
+                "pl": "można dodać dodatkowe lokalizacje\naby nowa wersja działała poprawnie, zaleca się odinstalowanie / instalację\nmałe ulepszenia",
+                "zh-cn": "可以添加其他位置\n为了正确使用新版本，建议卸载/安装\n小改进"
+            },
             "0.2.0-1": {
                 "en": "additional locations can be added\nfor a propper working of the new version a uninstall/install is recommended\nsmall improvements",
                 "de": "zusätzliche Standorte können hinzugefügt werden\nFür ein ordnungsgemäßes Funktionieren der neuen Version wird eine Deinstallation / Installation empfohlen\nkleine Verbesserungen",
