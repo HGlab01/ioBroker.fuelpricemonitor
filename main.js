@@ -208,7 +208,7 @@ class FuelPriceMonitor extends utils.Adapter {
             await JsonExplorer.checkExpire('*');
 
             // check for outdated states to delete whole device
-            let statesToDelete = await this.getStatesAsync('*0.id');
+            let statesToDelete = await this.getStatesAsync('*.0.id');
             for (const idS in statesToDelete) {
                 let state = await this.getStateAsync(idS);
                 if (state != null && state.val == null) {
