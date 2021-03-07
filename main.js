@@ -155,7 +155,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 console.log(`JSON-Response DIE: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_Diesel', true, false);
             } else {
-                await this.deleteEverything('0_Home_Diesel');
+                await JsonExplorer.deleteEverything('0_Home_Diesel');
             }
             if (superSelected) {
                 result = await this.getData('SUP', this.latitude, this.longitude);
@@ -163,7 +163,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 console.log(`JSON-Response SUP: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, false);
             } else {
-                await this.deleteEverything('0_Home_Super');
+                await JsonExplorer.deleteEverything('0_Home_Super');
             }
             if (gasSelected) {
                 result = await this.getData('GAS', this.latitude, this.longitude);
@@ -171,7 +171,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_CNG', true, false);
             } else {
-                await this.deleteEverything('0_Home_CNG');
+                await JsonExplorer.deleteEverything('0_Home_CNG');
             }
 
             //go trough all configured locations 
@@ -214,7 +214,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 if (state != null && state.val == null) {
                     let statename = idS.split('.');
                     this.log.debug(`State "${statename[2]}" will be deleted`);
-                    await this.deleteEverything(statename[2]);
+                    await JsonExplorer.deleteEverything(statename[2]);
                 }
             }
 
@@ -222,18 +222,6 @@ class FuelPriceMonitor extends utils.Adapter {
             error = `Error in ExecuteRequest(): ${error}`;
             this.log.error(error);
             this.sendSentry(error);
-        }
-    }
-
-    /**
-     * Deletes device + channels + states
-     * @param {string} devicename devicename (not the whole path) to be deleted
-     */
-    async deleteEverything(devicename) {
-        await this.deleteDeviceAsync(devicename);
-        let states = await this.getStatesAsync(`${devicename}.*`);
-        for (const idS in states) {
-            await this.delObjectAsync(idS);
         }
     }
 
