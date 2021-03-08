@@ -26,9 +26,9 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### 0.2.1-0 (2021-03-07)
+### 0.2.1 (2021-03-08)
 * (HGlab01) Bump js-controller to 3.2.16 for proper device/channel/state deletion
-* (HGlab01) use funcion deleteEverything from json-Explorer@0.0.13
+* (HGlab01) use function deleteEverything from json-Explorer@0.0.13
 * (HGlab01) improve device/channel/state cleaning
 
 ### 0.2.0 (2021-03-04)
