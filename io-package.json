@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.0",
+        "version": "0.2.1-0",
         "news": {
+            "0.2.1-0": {
+                "en": "Bump js-controller to 3.2.16 for proper device/channel/state deletion\nuse funcion deleteEverything from json-Explorer@0.0.13",
+                "de": "Bump js-controller auf 3.2.16 für die korrekte Löschung von Gerät / Kanal / Status\nVerwenden Sie die Funktion deleteEverything von json-Explorer@0.0.13",
+                "ru": "Поднимите js-контроллер до 3.2.16 для правильного удаления устройства / канала / состояния\nиспользуйте функцию deleteEverything из json-Explorer@0.0.13",
+                "pt": "Bump js-controller para 3.2.16 para a eliminação adequada de dispositivo / canal / estado\nusar a função deleteTudo de json-Explorer@0.0.13",
+                "nl": "Bump js-controller naar 3.2.16 voor correcte verwijdering van apparaat / kanaal / status\ngebruik de functie deleteEverything van json-Explorer@0.0.13",
+                "fr": "Bump js-controller à 3.2.16 pour une suppression correcte de périphérique / canal / état\nutilisez la fonction deleteEverything de json-Explorer@0.0.13",
+                "it": "Bump js-controller a 3.2.16 per una corretta cancellazione di dispositivo / canale / stato\nusa la funzione deleteEverything da json-Explorer@0.0.13",
+                "es": "Bump js-controller a 3.2.16 para la eliminación adecuada de dispositivo / canal / estado\nuse la función deleteEverything de json-Explorer@0.0.13",
+                "pl": "Zmień kontroler js na 3.2.16, aby poprawnie usunąć urządzenie / kanał / stan\nużyj funkcji deleteEverything z json-Explorer@0.0.13",
+                "zh-cn": "将js-controller推送到3.2.16以正确删除设备/通道/状态\n使用funcion deleteEverything from json-Explorer@0.0.13"
+            },
             "0.2.0": {
                 "en": "additional locations can be added\nfor a propper working of the new version a uninstall/install is recommended\nsmall improvements",
                 "de": "zusätzliche Standorte können hinzugefügt werden\nFür ein ordnungsgemäßes Funktionieren der neuen Version wird eine Deinstallation / Installation empfohlen\nkleine Verbesserungen",
