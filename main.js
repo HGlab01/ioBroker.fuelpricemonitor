@@ -45,11 +45,9 @@ class FuelPriceMonitor extends utils.Adapter {
         // Initialize adapter
         //get adapter configuration
         dieselSelected = this.config.diesel;
-        this.log.debug(`Diesel selected : ${dieselSelected}`);
         superSelected = this.config.super;
-        this.log.debug(`Super selected : ${superSelected}`);
         gasSelected = this.config.gas;
-        this.log.debug(`Gas selected : ${gasSelected}`);
+        this.log.debug(`Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`);
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -73,8 +71,12 @@ class FuelPriceMonitor extends utils.Adapter {
         this.log.debug('LATITUDE from config: ' + this.latitude);
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
-        await this.ExecuteRequest();
-        this.terminate ? this.terminate(0) : process.exit(0);
+        let result = await this.ExecuteRequest();
+        if (result == 'error') {
+            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
+        } else {
+            this.terminate ? this.terminate(0) : process.exit(0);
+        }
     }
 
     /**
@@ -119,15 +121,17 @@ class FuelPriceMonitor extends utils.Adapter {
                 'method': 'GET',
                 'url': `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=true`
             };
-            this.log.debug(options.url);
+            this.log.debug(`API-Call ${options.url}`);
+            console.log(`API-Call ${options.url}`);
             request(options, (error, response) => {
                 if (error) {
                     reject(`Error in function getData: ${error}`);
                 } else {
                     try {
-                        this.log.debug(`Response in GetData(): ${response.body}`);
-                        if (!response || !response.body) {
-                            throw new Error(`Response or response.body empty in getData()`);
+                        this.log.debug(`Response in GetData(): [${response.statusCode}] ${response.body}`);
+                        console.log(`Response in GetData(): [${response.statusCode}] ${response.body}`);
+                        if (!response || !response.body || response.statusCode != 200) {
+                            throw new Error(`Error requesting URL ${options.url} with status code ${response.statusCode}.`);
                         } else {
                             let result = JSON.parse(response.body);
                             resolve(result);
@@ -151,24 +155,21 @@ class FuelPriceMonitor extends utils.Adapter {
             let result = null;
             if (dieselSelected) {
                 result = await this.getData('DIE', this.latitude, this.longitude);
-                this.log.debug(`JSON-Response DIE: ${JSON.stringify(result)}`);
-                console.log(`JSON-Response DIE: ${JSON.stringify(result)}`);
+                this.log.debug(`JSON-Response for location Home Diesel: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_Diesel', true, false);
             } else {
                 await JsonExplorer.deleteEverything('0_Home_Diesel');
             }
             if (superSelected) {
                 result = await this.getData('SUP', this.latitude, this.longitude);
-                this.log.debug(`JSON-Response SUP: ${JSON.stringify(result)}`);
-                console.log(`JSON-Response SUP: ${JSON.stringify(result)}`);
+                this.log.debug(`JSON-Response for location Home Super: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, false);
             } else {
                 await JsonExplorer.deleteEverything('0_Home_Super');
             }
             if (gasSelected) {
                 result = await this.getData('GAS', this.latitude, this.longitude);
-                this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-                console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
+                this.log.debug(`JSON-Response for location Home CNG: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_CNG', true, false);
             } else {
                 await JsonExplorer.deleteEverything('0_Home_CNG');
@@ -178,25 +179,35 @@ class FuelPriceMonitor extends utils.Adapter {
             for (const i in this.config.address) {
                 // @ts-ignore
                 let location = this.config.address[i].location;
-                location = location.replace(/[^a-zA-Z0-9]/g, '_');
-                if(!location) throw new Error(`Location name not set. Aborted!`);
                 // @ts-ignore
                 let latitude = parseFloat(this.config.address[i].latitude);
-                latitude = Math.round(latitude * 100000) / 100000;
-                if(!latitude) throw new Error(`Latitude not set. Aborted!`);
                 // @ts-ignore
                 let longitude = parseFloat(this.config.address[i].longitude);
-                if(!longitude) throw new Error(`Longitude not set. Aborted!`);
-                longitude = Math.round(longitude * 100000) / 100000;
                 // @ts-ignore
                 let fuelType = this.config.address[i].fuelType;
-                if(!fuelType) throw new Error(`FuelType not set. Aborted!`);
-                this.log.debug(`City | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} ${fuelType}`);
+
+                if (!location) {
+                    this.log.error(`Location name not set. Aborted!`);
+                    return 'error';
+                }
+                if (!latitude || !longitude) {
+                    this.log.error(`Latitude or longitude not set for ${location}. Aborted!`);
+                    return 'error';
+                }
+                if (!fuelType) {
+                    this.log.error(`FuelType not set for ${location}. Aborted!`);
+                    return 'error';
+                }
+                location = location.replace(/[^a-zA-Z0-9]/g, '_');
+                latitude = Math.round(latitude * 100000) / 100000;
+                longitude = Math.round(longitude * 100000) / 100000;
+
+                this.log.debug(`Location | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} | ${fuelType}`);
 
                 //call API and create states
                 result = await this.getData(fuelType, latitude, longitude);
-                this.log.debug(`JSON-Response GAS: ${JSON.stringify(result)}`);
-                console.log(`JSON-Response GAS: ${JSON.stringify(result)}`);
+                this.log.debug(`JSON-Response for ${location}: ${JSON.stringify(result)}`);
+                console.log(`JSON-Response for ${location}: ${JSON.stringify(result)}`);
                 switch (fuelType) {
                     case 'DIE': fuelType = 'Diesel'; break;
                     case 'SUP': fuelType = 'Super95'; break;
