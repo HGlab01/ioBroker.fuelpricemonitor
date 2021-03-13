@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.1",
+        "version": "0.2.2-0",
         "news": {
+            "0.2.2-0": {
+                "en": "improve error handling and debug log",
+                "de": "Verbessern Sie die Fehlerbehandlung und das Debug-Protokoll",
+                "ru": "улучшить обработку ошибок и журнал отладки",
+                "pt": "melhorar o tratamento de erros e o registro de depuração",
+                "nl": "verbetering van foutafhandeling en foutopsporingslogboek",
+                "fr": "améliorer la gestion des erreurs et le journal de débogage",
+                "it": "migliorare la gestione degli errori e il registro di debug",
+                "es": "mejorar el manejo de errores y el registro de depuración",
+                "pl": "poprawić obsługę błędów i dziennik debugowania",
+                "zh-cn": "改善错误处理和调试日志"
+            },
             "0.2.1": {
                 "en": "Bump js-controller to 3.2.16 for proper device/channel/state deletion\nuse function deleteEverything from json-Explorer@0.0.13\nimprove device/channel/state cleaning",
                 "de": "Bump js-controller auf 3.2.16 für die korrekte Löschung von Gerät / Kanal / Status\nVerwenden Sie die Funktion deleteEverything von json-Explorer@0.0.13\nVerbesserung der Geräte- / Kanal- / Zustandsreinigung",
