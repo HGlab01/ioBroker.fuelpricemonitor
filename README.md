@@ -52,9 +52,6 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
 ### 0.1.2 (2021-02-17)
 * (HGlab01) first beta version
 
-### 0.0.1-3 (2021-01-07)
-* (HGlab01) first alpha version
-
 ## License
 MIT License
 

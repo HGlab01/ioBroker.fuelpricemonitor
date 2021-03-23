@@ -9,7 +9,7 @@
 const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
-const request = require('request');
+const axios = require('axios');
 const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 
@@ -115,35 +115,28 @@ class FuelPriceMonitor extends utils.Adapter {
      * @param {number} latitude
      * @param {number} longitude
      */
-    async getData(fuelType, latitude, longitude) {
+     async getData(fuelType, latitude, longitude) {
+        let uri = `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=true`;
+        this.log.debug(`API-Call ${uri}`);
+        console.log(`API-Call ${uri}`);
         return new Promise((resolve, reject) => {
-            var options = {
-                'method': 'GET',
-                'url': `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=true`
-            };
-            this.log.debug(`API-Call ${options.url}`);
-            console.log(`API-Call ${options.url}`);
-            request(options, (error, response) => {
-                if (error) {
-                    reject(`Error in function getData: ${error}`);
-                } else {
-                    try {
-                        this.log.debug(`Response in GetData(): [${response.statusCode}] ${response.body}`);
-                        console.log(`Response in GetData(): [${response.statusCode}] ${response.body}`);
-                        if (!response || !response.body || response.statusCode != 200) {
-                            throw new Error(`Error requesting URL ${options.url} with status code ${response.statusCode}.`);
-                        } else {
-                            let result = JSON.parse(response.body);
-                            resolve(result);
-                        }
-                    } catch (error) {
-                        error = 'Error in getData(): ' + error;
-                        this.log.error(error);
-                        this.sendSentry(error);
+            // @ts-ignore
+            axios.get(uri)
+                .then((response) => {
+                    if (!response || !response.data) {
+                        throw new Error(`Error requesting URL ${uri} with status code ${response.status}.`);
+                    } else {
+                        let body = JSON.stringify(response.data);
+                        this.log.debug(`Response in GetData(): [${response.status}] ${body}`);
+                        console.log(`Response in GetData(): [${response.status}] ${body}`);
+                        resolve(response.data);
                     }
-                }
-            });
-        });
+                })
+                .catch(error => {
+                    error = 'Error in getData(): ' + error;
+                    reject(error);
+                })
+        })
     }
 
     /**
