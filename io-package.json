@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.2",
+        "version": "0.2.3-0",
         "news": {
+            "0.2.3-0": {
+                "en": "switch library from deprecated \"request\" to \"axios\"",
+                "de": "Bibliothek von veralteter \"Anfrage\" zu \"Axios\" wechseln",
+                "ru": "переключить библиотеку с устаревшего \"запроса\" на \"аксиомы\"",
+                "pt": "mudar a biblioteca do obsoleto \"pedido\" para \"axios\"",
+                "nl": "schakel bibliotheek over van verouderd \"verzoek\" naar \"axios\"",
+                "fr": "changer la bibliothèque de \"request\" obsolète à \"axios\"",
+                "it": "cambia libreria dalla deprecata \"richiesta\" ad \"axios\"",
+                "es": "cambiar la biblioteca de \"solicitud\" obsoleta a \"axios\"",
+                "pl": "zmień bibliotekę z przestarzałego „request” na „axios”",
+                "zh-cn": "将库从已弃用的“请求”切换为“ axios”"
+            },
             "0.2.2": {
                 "en": "improve error handling and debug log",
                 "de": "Verbessern Sie die Fehlerbehandlung und das Debug-Protokoll",
