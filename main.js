@@ -124,11 +124,10 @@ class FuelPriceMonitor extends utils.Adapter {
             axios.get(uri)
                 .then((response) => {
                     if (!response || !response.data) {
-                        throw new Error(`Error requesting URL ${uri} with status code ${response.status}.`);
+                        throw new Error(`Respone empty for URL ${uri} with status code ${response.status}`);
                     } else {
-                        let body = JSON.stringify(response.data);
-                        this.log.debug(`Response in GetData(): [${response.status}] ${body}`);
-                        console.log(`Response in GetData(): [${response.status}] ${body}`);
+                        this.log.debug(`Response in GetData(): [${response.status}] ${JSON.stringify(response.data)}`);
+                        console.log(`Response in GetData(): [${response.status}] ${JSON.stringify(response.data)}`);
                         resolve(response.data);
                     }
                 })
