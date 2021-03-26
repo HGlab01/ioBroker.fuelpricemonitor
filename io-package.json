@@ -1,12 +1,12 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.3-0",
+        "version": "0.2.3",
         "news": {
-            "0.2.3-0": {
+            "0.2.3": {
                 "en": "switch library from deprecated \"request\" to \"axios\"",
                 "de": "Bibliothek von veralteter \"Anfrage\" zu \"Axios\" wechseln",
-                "ru": "переключить библиотеку с устаревшего \"запроса\" на \"аксиомы\"",
+                "ru": "переключить библиотеку с устаревшего \"запроса\" на \"axios\"",
                 "pt": "mudar a biblioteca do obsoleto \"pedido\" para \"axios\"",
                 "nl": "schakel bibliotheek over van verouderd \"verzoek\" naar \"axios\"",
                 "fr": "changer la bibliothèque de \"request\" obsolète à \"axios\"",
@@ -16,18 +16,6 @@
                 "zh-cn": "将库从已弃用的“请求”切换为“ axios”"
             },
             "0.2.2": {
-                "en": "improve error handling and debug log",
-                "de": "Verbessern Sie die Fehlerbehandlung und das Debug-Protokoll",
-                "ru": "улучшить обработку ошибок и журнал отладки",
-                "pt": "melhorar o tratamento de erros e o registro de depuração",
-                "nl": "verbetering van foutafhandeling en foutopsporingslogboek",
-                "fr": "améliorer la gestion des erreurs et le journal de débogage",
-                "it": "migliorare la gestione degli errori e il registro di debug",
-                "es": "mejorar el manejo de errores y el registro de depuración",
-                "pl": "poprawić obsługę błędów i dziennik debugowania",
-                "zh-cn": "改善错误处理和调试日志"
-            },
-            "0.2.2-0": {
                 "en": "improve error handling and debug log",
                 "de": "Verbessern Sie die Fehlerbehandlung und das Debug-Protokoll",
                 "ru": "улучшить обработку ошибок и журнал отладки",
