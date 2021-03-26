@@ -157,7 +157,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 this.log.debug(`JSON-Response for location Home Super: ${JSON.stringify(result)}`);
                 await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, false);
             } else {
-                await JsonExplorer.deleteEverything('0_Home_Super');
+                await JsonExplorer.deleteEverything('0_Home_Super95');
             }
             if (gasSelected) {
                 result = await this.getData('GAS', this.latitude, this.longitude);
