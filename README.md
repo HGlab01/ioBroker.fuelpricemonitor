@@ -27,7 +27,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     ### __WORK IN PROGRESS__
 -->
 
-### __WORK IN PROGRESS__
+### 0.2.4-0 (2021-04-07)
 * (HGlab01) feature to sort by ID instead of price (helps to monitor one specific gas station)
 
 ### 0.2.3 (2021-03-26)

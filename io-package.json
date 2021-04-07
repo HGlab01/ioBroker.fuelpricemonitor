@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.3",
+        "version": "0.2.4-0",
         "news": {
+            "0.2.4-0": {
+                "en": "feature to sort by ID instead of price (helps to monitor one specific gas station)",
+                "de": "Funktion zum Sortieren nach ID anstelle des Preises (hilft bei der Überwachung einer bestimmten Tankstelle)",
+                "ru": "возможность сортировки по ID вместо цены (помогает отслеживать одну конкретную АЗС)",
+                "pt": "recurso para classificar por ID em vez de preço (ajuda a monitorar um posto de gasolina específico)",
+                "nl": "functie om te sorteren op ID in plaats van op prijs (helpt bij het bewaken van een specifiek tankstation)",
+                "fr": "fonction pour trier par ID au lieu de prix (aide à surveiller une station-service spécifique)",
+                "it": "funzione per ordinare per ID invece che per prezzo (aiuta a monitorare una specifica stazione di servizio)",
+                "es": "función para ordenar por ID en lugar de precio (ayuda a monitorear una estación de servicio específica)",
+                "pl": "funkcja sortowania według identyfikatora zamiast ceny (pomaga monitorować jedną konkretną stację benzynową)",
+                "zh-cn": "通过ID而不是价格进行排序的功能（有助于监视一个特定的加油站）"
+            },
             "0.2.3": {
                 "en": "switch library from deprecated \"request\" to \"axios\"",
                 "de": "Bibliothek von veralteter \"Anfrage\" zu \"Axios\" wechseln",
@@ -139,7 +151,7 @@
         "super": false,
         "gas": false,
         "address": [],
-        "useIDs" : false
+        "useIDs": false
     },
     "objects": [],
     "instanceObjects": []
