@@ -138,7 +138,8 @@
         "diesel": true,
         "super": false,
         "gas": false,
-        "address": []
+        "address": [],
+        "useIDs" : false
     },
     "objects": [],
     "instanceObjects": []

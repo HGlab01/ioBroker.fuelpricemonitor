@@ -17,6 +17,7 @@ const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute li
 let dieselSelected = false;
 let superSelected = false;
 let gasSelected = false;
+let useIDs = false;
 
 class FuelPriceMonitor extends utils.Adapter {
 
@@ -48,6 +49,7 @@ class FuelPriceMonitor extends utils.Adapter {
         superSelected = this.config.super;
         gasSelected = this.config.gas;
         this.log.debug(`Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`);
+        if(this.config.useIDs) useIDs = this.config.useIDs;
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -148,21 +150,21 @@ class FuelPriceMonitor extends utils.Adapter {
             if (dieselSelected) {
                 result = await this.getData('DIE', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response for location Home Diesel: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, '0_Home_Diesel', true, false);
+                await JsonExplorer.TraverseJson(result, '0_Home_Diesel', true, useIDs);
             } else {
                 await JsonExplorer.deleteEverything('0_Home_Diesel');
             }
             if (superSelected) {
                 result = await this.getData('SUP', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response for location Home Super: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, false);
+                await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, useIDs);
             } else {
                 await JsonExplorer.deleteEverything('0_Home_Super95');
             }
             if (gasSelected) {
                 result = await this.getData('GAS', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response for location Home CNG: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, '0_Home_CNG', true, false);
+                await JsonExplorer.TraverseJson(result, '0_Home_CNG', true, useIDs);
             } else {
                 await JsonExplorer.deleteEverything('0_Home_CNG');
             }
@@ -205,7 +207,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     case 'SUP': fuelType = 'Super95'; break;
                     case 'GAS': fuelType = 'CNG'; break;
                 }
-                await JsonExplorer.TraverseJson(result, `${location}_${fuelType}`, true, false);
+                await JsonExplorer.TraverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }
 
             await JsonExplorer.checkExpire('*');
