@@ -27,7 +27,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     ### __WORK IN PROGRESS__
 -->
 
-### 0.2.4-1 (2021-04-21)
+### 0.2.4-2 (2021-04-21)
 * (HGlab01) add feature (experimental!) to sort by ID instead of price (helps to monitor one specific gas station)
 * (HGlab01) add attributes 'from', 'to', 'day' and 'orders'
 * (HGlab01) Bump iobroker-jsonexplorer to v0.0.0-18
