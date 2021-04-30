@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fuelpricemonitor",
-        "version": "0.2.5-0",
+        "version": "0.2.5",
         "news": {
+            "0.2.5": {
+                "en": "improve for js-controller v3.3.1\nBump iobroker-jsonexplorer to v0.0.0-19",
+                "de": "verbessern für js-controller v3.3.1\nBump iobroker-jsonexplorer auf v0.0.0-19",
+                "ru": "улучшение для js-controller v3.3.1\nУвеличьте iobroker-jsonexplorer до версии v0.0.0-19",
+                "pt": "melhorar para js-controller v3.3.1\nBump iobroker-jsonexplorer para v0.0.0-19",
+                "nl": "verbeteren voor js-controller v3.3.1\nBump iobroker-jsonexplorer naar v0.0.0-19",
+                "fr": "améliorer pour js-controller v3.3.1\nPassez iobroker-jsonexplorer à la v0.0.0-19",
+                "it": "migliorare per js-controller v3.3.1\nBump iobroker-jsonexplorer alla v0.0.0-19",
+                "es": "mejorar para js-controller v3.3.1\nPase iobroker-jsonexplorer a v0.0.0-19",
+                "pl": "poprawić dla js-controller v3.3.1\nUruchom iobroker-jsonexplorer na v0.0.0-19",
+                "zh-cn": "针对js-controller v3.3.1进行了改进\n将iobroker-jsonexplorer碰撞到v0.0.0-19"
+            },
             "0.2.5-0": {
                 "en": "improve for js-controller v3.3.1",
                 "de": "verbessern für js-controller v3.3.1",
