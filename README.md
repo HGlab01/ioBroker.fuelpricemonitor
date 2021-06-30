@@ -20,7 +20,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
 **This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)!  
 
 **WORKS WITH JSCONTROLER VERSION 3.2.16 OR LATER!**
-
+a
 ## Changelog
 <!--
     Placeholder for the next version (at the beginning of the line):
