@@ -12,6 +12,7 @@ const utils = require('@iobroker/adapter-core');
 const axios = require('axios');
 const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
+const ping = require('ping');
 
 //global variables
 let dieselSelected = false;
@@ -69,6 +70,14 @@ class FuelPriceMonitor extends utils.Adapter {
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
+        if(await this.checkInternetConnection() == false) {
+            this.log.error('No internet connection detected');
+            this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
+            return;
+        }
+        else {
+            this.log.debug('Internet connection detected. Everything fine!');
+        }
         this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
         this.longitude = Math.round(obj.common.longitude * 100000) / 100000;
         this.log.debug('LATITUDE from config: ' + this.latitude);
@@ -77,7 +86,7 @@ class FuelPriceMonitor extends utils.Adapter {
         let result = await this.ExecuteRequest();
         
         if (result == 'error') {
-            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
+            this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
         } else {
             this.terminate ? this.terminate(0) : process.exit(0);
         }
@@ -248,6 +257,11 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.error(`Error in function sendSentry(): ${error}`);
         }
     }
+
+    async checkInternetConnection(host = 'dns.google') {
+        let res = await ping.promise.probe(host);
+        return (res.alive);
+    };
 }
 
 // @ts-ignore parent is a valid property on module
