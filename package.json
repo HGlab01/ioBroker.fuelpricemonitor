@@ -1,6 +1,6 @@
 {
   "name": "iobroker.fuelpricemonitor",
-  "version": "0.2.5",
+  "version": "0.2.6-0",
   "author": {
     "name": "HGlab01",
     "email": "iobroker.fuelpricemonitor@gmail.com"
@@ -26,7 +26,8 @@
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "axios": "^0.21.1",
-    "iobroker-jsonexplorer": "0.1.1"
+    "iobroker-jsonexplorer": "0.1.1",
+    "ping": "^0.4.1"
   },
   "deprecated": false,
   "description": "Fuel Price Monitor Austria",
