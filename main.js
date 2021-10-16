@@ -51,7 +51,7 @@ class FuelPriceMonitor extends utils.Adapter {
         superSelected = this.config.super;
         gasSelected = this.config.gas;
         this.log.debug(`Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`);
-        if(this.config.useIDs) useIDs = this.config.useIDs;
+        if (this.config.useIDs) useIDs = this.config.useIDs;
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -70,7 +70,7 @@ class FuelPriceMonitor extends utils.Adapter {
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
-        if(await this.checkInternetConnection() == false) {
+        if (await this.checkInternetConnection() == false) {
             this.log.error('No internet connection detected');
             this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
             return;
@@ -84,7 +84,7 @@ class FuelPriceMonitor extends utils.Adapter {
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
         let result = await this.ExecuteRequest();
-        
+
         if (result == 'error') {
             this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
         } else {
@@ -128,7 +128,7 @@ class FuelPriceMonitor extends utils.Adapter {
      * @param {number} latitude
      * @param {number} longitude
      */
-     async getData(fuelType, latitude, longitude) {
+    async getData(fuelType, latitude, longitude) {
         let uri = `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=true`;
         this.log.debug(`API-Call ${uri}`);
         console.log(`API-Call ${uri}`);
@@ -235,9 +235,11 @@ class FuelPriceMonitor extends utils.Adapter {
             }
 
         } catch (error) {
-            error = `Error in ExecuteRequest(): ${error}`;
-            this.log.error(error);
-            this.sendSentry(error);
+            let error_text = String(`Error in ExecuteRequest(): ${error})`);
+            this.log.error(error_text);
+            if (error_text.includes('getaddrinfo EAI_AGAIN') == false) {
+                this.sendSentry(error_text);
+            }
         }
     }
 
