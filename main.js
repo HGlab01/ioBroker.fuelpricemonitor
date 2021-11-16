@@ -145,7 +145,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     }
                 })
                 .catch(error => {
-                    error = 'Error in getData(): ' + error;
+                    console.error('Error in getData(): ' + error);
                     reject(error);
                 })
         })
@@ -235,24 +235,26 @@ class FuelPriceMonitor extends utils.Adapter {
             }
 
         } catch (error) {
-            let error_text = String(`Error in ExecuteRequest(): ${error})`);
-            this.log.error(error_text);
-            if (error_text.includes('getaddrinfo EAI_AGAIN') == false) {
-                this.sendSentry(error_text);
+            let eMsg = `Error in ExecuteRequest(): ${error})`;
+            this.log.error(eMsg);
+            if (eMsg.includes('getaddrinfo EAI_AGAIN') == false) {
+                console.error(eMsg);
+                this.sendSentry(error);
             }
         }
     }
 
     /**
      * Handles sentry message
-     * @param {any} error Error message for sentry
+     * @param {any} errorObject Error message for sentry
      */
-    sendSentry(error) {
+    sendSentry(errorObject) {
+        if (errorObject.message.includes('ETIMEDOUT')) return;
         try {
             if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
                 const sentryInstance = this.getPluginInstance('sentry');
                 if (sentryInstance) {
-                    sentryInstance.getSentryObject().captureException(error);
+                    sentryInstance.getSentryObject().captureException(errorObject);
                 }
             }
         } catch (error) {
