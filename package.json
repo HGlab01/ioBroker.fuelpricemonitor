@@ -27,7 +27,7 @@
     "@iobroker/adapter-core": "^2.4.0",
     "axios": "^0.24.0",
     "iobroker-jsonexplorer": "0.1.7",
-    "ping": "^0.4.1"
+    "is-online": "^9.0.1"
   },
   "deprecated": false,
   "description": "Fuel Price Monitor Austria",
