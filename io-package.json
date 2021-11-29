@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.2.8",
+    "version": "0.2.9",
     "news": {
+      "0.2.9": {
+        "en": "Bump iobroker-jsonexplorer to v0.1.8\nReplace ping-based internet-check with isOnline library",
+        "de": "iobroker-jsonexplorer auf v0.1.8 hochsetzen\nErsetzen Sie den ping-basierten Internet-Check durch die isOnline-Bibliothek",
+        "ru": "Поднимите iobroker-jsonexplorer до версии 0.1.8\nЗаменить интернет-проверку на основе ping библиотекой isOnline",
+        "pt": "Bump iobroker-jsonexplorer para v0.1.8\nSubstitua a verificação de internet baseada em ping pela biblioteca isOnline",
+        "nl": "Bump iobroker-jsonexplorer naar v0.1.8\nVervang op ping gebaseerde internetcontrole door isOnline-bibliotheek",
+        "fr": "Transférez iobroker-jsonexplorer vers la v0.1.8\nRemplacer la vérification Internet basée sur le ping par la bibliothèque isOnline",
+        "it": "Passa iobroker-jsonexplorer alla v0.1.8\nSostituisci il controllo Internet basato su ping con la libreria isOnline",
+        "es": "Pase iobroker-jsonexplorer a v0.1.8\nReemplace la verificación de Internet basada en ping con la biblioteca isOnline",
+        "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.8\nZastąp sprawdzanie internetowe oparte na pingu biblioteką isOnline",
+        "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.8\n用 isOnline 库替换基于 ping 的 Internet 检查"
+      },
       "0.2.8": {
         "en": "Bump iobroker-jsonexplorer to v0.1.7\nImprove error handling",
         "de": "iobroker-jsonexplorer auf v0.1.7 hochsetzen\nFehlerbehandlung verbessern",
@@ -74,18 +86,6 @@
         "es": "mejorar para js-controller v3.3.1",
         "pl": "poprawić dla js-controller v3.3.1",
         "zh-cn": "针对js-controller v3.3.1进行了改进"
-      },
-      "0.2.4": {
-        "en": "add feature (experimental!) to sort by ID instead of price (helps to monitor one specific gas station)\nadd attributes 'from', 'to', 'day' and 'orders'\nBump iobroker-jsonexplorer to v0.0.0-18",
-        "de": "Funktion hinzufügen (experimentell!) zum Sortieren nach ID anstelle des Preises (hilft bei der Überwachung einer bestimmten Tankstelle)\nFügen Sie die Attribute 'von', 'bis', 'Tag' und 'Bestellungen' hinzu.\nBump iobroker-jsonexplorer auf v0.0.0-18",
-        "ru": "добавить функцию (экспериментальную!) для сортировки по ID вместо цены (помогает контролировать одну конкретную АЗС)\nдобавить атрибуты \"от\", \"до\", \"день\" и \"заказы\"\nПоднимите iobroker-jsonexplorer до версии v0.0.0-18",
-        "pt": "adicionar recurso (experimental!) para classificar por ID em vez de preço (ajuda a monitorar um posto de gasolina específico)\nadicione os atributos 'de', 'para', 'dia' e 'pedidos'\nBump iobroker-jsonexplorer para v0.0.0-18",
-        "nl": "functie toevoegen (experimenteel!) om te sorteren op ID in plaats van op prijs (helpt bij het monitoren van een specifiek tankstation)\nattributen 'van', 'tot', 'dag' en 'bestellingen' toevoegen\nBump iobroker-jsonexplorer naar v0.0.0-18",
-        "fr": "ajouter une fonctionnalité (expérimentale!) pour trier par ID au lieu de prix (aide à surveiller une station-service spécifique)\najouter les attributs «de», «à», «jour» et «commandes»\nPassez iobroker-jsonexplorer à la v0.0.0-18",
-        "it": "aggiungi funzionalità (sperimentale!) per ordinare per ID invece che per prezzo (aiuta a monitorare una specifica stazione di servizio)\naggiungi attributi \"da\", \"a\", \"giorno\" e \"ordini\"\nBump iobroker-jsonexplorer alla v0.0.0-18",
-        "es": "agregue una función (¡experimental!) para ordenar por ID en lugar de precio (ayuda a monitorear una estación de servicio específica)\nagregar atributos 'desde', 'a', 'día' y 'pedidos'\nPase iobroker-jsonexplorer a v0.0.0-18",
-        "pl": "dodaj funkcję (eksperymentalnie!), aby sortować według identyfikatora zamiast ceny (pomaga monitorować jedną konkretną stację benzynową)\ndodaj atrybuty „od”, „do”, „dzień” i „zamówienia”\nZaktualizuj iobroker-jsonexplorer do v0.0.0-18",
-        "zh-cn": "添加功能（实验性！）来按ID而不是价格进行排序（有助于监视一个特定的加油站）\n添加属性“从”，“到”，“天”和“订单”\n将iobroker-jsonexplorer碰撞到v0.0.0-18"
       }
     },
     "title": "Fuel Price Monitor Austria",
