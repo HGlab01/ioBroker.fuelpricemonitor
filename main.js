@@ -12,7 +12,7 @@ const utils = require('@iobroker/adapter-core');
 const axios = require('axios');
 const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
-const ping = require('ping');
+const isOnline = require('is-online');
 
 //global variables
 let dieselSelected = false;
@@ -70,7 +70,7 @@ class FuelPriceMonitor extends utils.Adapter {
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
-        if (await this.checkInternetConnection() == false) {
+        if (await isOnline() == false) {
             this.log.error('No internet connection detected');
             this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
             return;
@@ -249,7 +249,7 @@ class FuelPriceMonitor extends utils.Adapter {
      * @param {any} errorObject Error message for sentry
      */
     sendSentry(errorObject) {
-        if (errorObject.message.includes('ETIMEDOUT')) return;
+        if (errorObject.message && errorObject.message.includes('ETIMEDOUT')) return;
         try {
             if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
                 const sentryInstance = this.getPluginInstance('sentry');
@@ -261,11 +261,6 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.error(`Error in function sendSentry(): ${error}`);
         }
     }
-
-    async checkInternetConnection(host = 'dns.google') {
-        let res = await ping.promise.probe(host);
-        return (res.alive);
-    };
 }
 
 // @ts-ignore parent is a valid property on module
