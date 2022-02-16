@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.2.9",
+    "version": "0.2.10-alpha.0",
     "news": {
+      "0.2.10-alpha.0": {
+        "en": "js-controller 4.0 readiness",
+        "de": "js-controller 4.0-Bereitschaft",
+        "ru": "готовность js-контроллера 4.0",
+        "pt": "prontidão do controlador js 4.0",
+        "nl": "js-controller 4.0 gereedheid",
+        "fr": "préparation js-controller 4.0",
+        "it": "js-controller 4.0 prontezza",
+        "es": "js-controller 4.0 preparación",
+        "pl": "Gotowość js-controller 4.0",
+        "zh-cn": "js-controller 4.0 准备就绪"
+      },
       "0.2.9": {
         "en": "Bump iobroker-jsonexplorer to v0.1.8\nReplace ping-based internet-check with isOnline library",
         "de": "iobroker-jsonexplorer auf v0.1.8 hochsetzen\nErsetzen Sie den ping-basierten Internet-Check durch die isOnline-Bibliothek",
@@ -74,18 +86,6 @@
         "es": "mejorar para js-controller v3.3.1\nPase iobroker-jsonexplorer a v0.0.0-19",
         "pl": "poprawić dla js-controller v3.3.1\nUruchom iobroker-jsonexplorer na v0.0.0-19",
         "zh-cn": "针对js-controller v3.3.1进行了改进\n将iobroker-jsonexplorer碰撞到v0.0.0-19"
-      },
-      "0.2.5-0": {
-        "en": "improve for js-controller v3.3.1",
-        "de": "verbessern für js-controller v3.3.1",
-        "ru": "улучшение для js-controller v3.3.1",
-        "pt": "melhorar para js-controller v3.3.1",
-        "nl": "verbeteren voor js-controller v3.3.1",
-        "fr": "améliorer pour js-controller v3.3.1",
-        "it": "migliorare per js-controller v3.3.1",
-        "es": "mejorar para js-controller v3.3.1",
-        "pl": "poprawić dla js-controller v3.3.1",
-        "zh-cn": "针对js-controller v3.3.1进行了改进"
       }
     },
     "title": "Fuel Price Monitor Austria",
