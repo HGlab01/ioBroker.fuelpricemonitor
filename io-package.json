@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.2.10-alpha.0",
+    "version": "0.2.10",
     "news": {
+      "0.2.10": {
+        "en": "Bump iobroker-jsonexplorer to v0.1.9\njs-controller 4.0 readiness",
+        "de": "Erweitern Sie iobroker-jsonexplorer auf v0.1.9\njs-controller 4.0-Bereitschaft",
+        "ru": "Поднимите iobroker-jsonexplorer до версии 0.1.9\nготовность js-контроллера 4.0",
+        "pt": "Suba iobroker-jsonexplorer para v0.1.9\nprontidão do controlador js 4.0",
+        "nl": "Bump iobroker-jsonexplorer naar v0.1.9\njs-controller 4.0 gereedheid",
+        "fr": "Passer iobroker-jsonexplorer à la v0.1.9\npréparation js-controller 4.0",
+        "it": "Porta iobroker-jsonexplorer alla v0.1.9\njs-controller 4.0 prontezza",
+        "es": "Bump iobroker-jsonexplorer a v0.1.9\njs-controller 4.0 preparación",
+        "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.9\nGotowość js-controller 4.0",
+        "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.9\njs-controller 4.0 准备就绪"
+      },
       "0.2.10-alpha.0": {
         "en": "js-controller 4.0 readiness",
         "de": "js-controller 4.0-Bereitschaft",
@@ -74,18 +86,6 @@
         "es": "Pase iobroker-jsonexplorer a v0.1.1\nVerifique la conexión a Internet al inicio",
         "pl": "Przenieś iobroker-jsonexplorer do wersji 0.1.1\nSprawdź połączenie internetowe podczas uruchamiania",
         "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.1\n启动时检查互联网连接"
-      },
-      "0.2.5": {
-        "en": "improve for js-controller v3.3.1\nBump iobroker-jsonexplorer to v0.0.0-19",
-        "de": "verbessern für js-controller v3.3.1\nBump iobroker-jsonexplorer auf v0.0.0-19",
-        "ru": "улучшение для js-controller v3.3.1\nУвеличьте iobroker-jsonexplorer до версии v0.0.0-19",
-        "pt": "melhorar para js-controller v3.3.1\nBump iobroker-jsonexplorer para v0.0.0-19",
-        "nl": "verbeteren voor js-controller v3.3.1\nBump iobroker-jsonexplorer naar v0.0.0-19",
-        "fr": "améliorer pour js-controller v3.3.1\nPassez iobroker-jsonexplorer à la v0.0.0-19",
-        "it": "migliorare per js-controller v3.3.1\nBump iobroker-jsonexplorer alla v0.0.0-19",
-        "es": "mejorar para js-controller v3.3.1\nPase iobroker-jsonexplorer a v0.0.0-19",
-        "pl": "poprawić dla js-controller v3.3.1\nUruchom iobroker-jsonexplorer na v0.0.0-19",
-        "zh-cn": "针对js-controller v3.3.1进行了改进\n将iobroker-jsonexplorer碰撞到v0.0.0-19"
       }
     },
     "title": "Fuel Price Monitor Austria",
