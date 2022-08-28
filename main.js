@@ -12,7 +12,7 @@ const utils = require('@iobroker/adapter-core');
 const axios = require('axios');
 const JsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
-const isOnline = require('is-online');
+const isOnline = require('@esm2cjs/is-online').default;
 
 //global variables
 let dieselSelected = false;
