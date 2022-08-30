@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.0-alpha.0",
+    "version": "0.3.0",
     "news": {
+      "0.3.0": {
+        "en": "!Breaking change! NodeJS 14.16 or higher required\n!Breaking change! ioBroker js-controller 4.0 or higher required\nBump is-online from 9.0.1 to 10.0.0",
+        "de": "! Veränderung brechen! NodeJS 14.16 oder höher erforderlich\n! Veränderung brechen! ioBroker js-controller 4.0 oder höher erforderlich\nBump is-online von 9.0.1 bis 10.0.0",
+        "ru": "! Перерыв перемен! NodeJS 14.16 или выше требуется\n! Перерыв перемен! ioBroker js-controller 4.0 или выше требуется\nBump онлайн с 9.0.1 до 10.0.0",
+        "pt": "! Mudança de ruptura! NodeJS 14.16 ou superior exigido\n! Mudança de ruptura! ioBroker js-controller 4.0 ou superior exigido\nBump is-online de 9.0.1 a 10.0.0",
+        "nl": "! Verandering. NodeJS 14.16 of hoger vereiste\n! Verandering. Quality over Quantity (QoQ) Releases Vertaling:\nBump is-online van 9.01 tot 10.0",
+        "fr": "! Changer ! NodeJS 14.16 ou plus requis\n! Changer ! ioBroker js-controller 4.0 ou supérieur requis\nBump is-online from 9.0.1 to 10.0.0",
+        "it": "! Cambiamento di rottura! NodeJS 14.16 o superiore richiesto\n! Cambiamento di rottura! ioBroker js-controller 4.0 o superiore richiesto\nBump è online da 9.0.1 a 10.0.0",
+        "es": "! ¡Cambio de ruptura! NodeJS 14.16 o superior requerido\n! ¡Cambio de ruptura! ioBroker js-controller 4.0 o superior requerido\nBump is-online from 9.0.1 to 10.0.0",
+        "pl": "! Zmiana. NodeJS 14.16 (ang.)\n! Zmiana. ioBroker js-kontroler 4.0 lub wyższych wymagań\nBump jest na linii 9.0.1 do 10.0.0",
+        "zh-cn": "! 打破沉默! 第14.16号申诉\n! 打破沉默! io Broker js-控制ler 4.0或更高需要\nBump是从9.0到10.0.0的。"
+      },
       "0.3.0-alpha.0": {
         "en": "!Breaking change! NodeJS 14.16 or higher required\n!Breaking change! ioBroker js-controller 4.0 or higher required\nBump is-online from 9.0.1 to 10.0.0",
         "de": "! Veränderung brechen! NodeJS 14.16 oder höher erforderlich\n! Veränderung brechen! ioBroker js-controller 4.0 oder höher erforderlich\nBump is-online von 9.0.1 bis 10.0.0",
@@ -74,18 +86,6 @@
         "es": "Pase iobroker-jsonexplorer a v0.1.2\nno informe el problema de getaddrinfo en Sentry (IOBROKER-FUELPRICEMONITOR-2)\nagregar atributo 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)",
         "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.2\nnie zgłaszaj problemu getaddrinfo na Sentry (IOBROKER-FUELPRICEMONITOR-2)\ndodaj atrybut „uuid” (IOBROKER-FUELPRICEMONITOR-1B)",
         "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.2\n不要在 Sentry (IOBROKER-FUELPRICEMONITOR-2) 上报告 getaddrinfo 问题\n添加属性“uuid”（IOBROKER-FUELPRICEMONITOR-1B）"
-      },
-      "0.2.6": {
-        "en": "Bump iobroker-jsonexplorer to v0.1.1\nCheck internet connection on startup",
-        "de": "Upgrade von iobroker-jsonexplorer auf v0.1.1\nInternetverbindung beim Start prüfen",
-        "ru": "Поднимите iobroker-jsonexplorer до версии 0.1.1\nПроверьте подключение к Интернету при запуске",
-        "pt": "Bump iobroker-jsonexplorer para v0.1.1\nVerifique a conexão com a Internet na inicialização",
-        "nl": "Bump iobroker-jsonexplorer naar v0.1.1\nControleer de internetverbinding bij het opstarten",
-        "fr": "Bump iobroker-jsonexplorer vers v0.1.1\nVérifier la connexion Internet au démarrage",
-        "it": "Passa iobroker-jsonexplorer alla v0.1.1\nControlla la connessione Internet all'avvio",
-        "es": "Pase iobroker-jsonexplorer a v0.1.1\nVerifique la conexión a Internet al inicio",
-        "pl": "Przenieś iobroker-jsonexplorer do wersji 0.1.1\nSprawdź połączenie internetowe podczas uruchamiania",
-        "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.1\n启动时检查互联网连接"
       }
     },
     "title": "Fuel Price Monitor Austria",
