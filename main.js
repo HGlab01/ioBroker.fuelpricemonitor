@@ -19,6 +19,7 @@ let dieselSelected = false;
 let superSelected = false;
 let gasSelected = false;
 let useIDs = false;
+let exlClosed = false;
 
 class FuelPriceMonitor extends utils.Adapter {
 
@@ -52,6 +53,7 @@ class FuelPriceMonitor extends utils.Adapter {
         gasSelected = this.config.gas;
         this.log.debug(`Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`);
         if (this.config.useIDs) useIDs = this.config.useIDs;
+        if (this.config.exlClosed) exlClosed = this.config.exlClosed;
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -129,7 +131,8 @@ class FuelPriceMonitor extends utils.Adapter {
      * @param {number} longitude
      */
     async getData(fuelType, latitude, longitude) {
-        let uri = `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=true`;
+        let includeClosed = !exlClosed;
+        let uri = `https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=${latitude}&longitude=${longitude}&fuelType=${fuelType}&includeClosed=${includeClosed}`;
         this.log.debug(`API-Call ${uri}`);
         console.log(`API-Call ${uri}`);
         return new Promise((resolve, reject) => {
