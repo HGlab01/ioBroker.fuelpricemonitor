@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.0",
+    "version": "0.3.1-alpha.0",
     "news": {
+      "0.3.1-alpha.0": {
+        "en": "Add option to exclude closed gas stations",
+        "de": "Option hinzufügen, geschlossene Tankstellen auszuschließen",
+        "ru": "Добавить опцию для исключения закрытых АЗС",
+        "pt": "Adicionar opção para excluir estações de gás fechadas",
+        "nl": "Een optie om gesloten tankstations uit te sluiten",
+        "fr": "Ajouter l ' option pour exclure les stations de gaz fermées",
+        "it": "Aggiungere l'opzione per escludere stazioni di gas chiuse",
+        "es": "Add option to exclude closed gas stations",
+        "pl": "Wykorzystywanie stacji benzynowych",
+        "uk": "Додати варіант виключення замкнених АЗС",
+        "zh-cn": "排除封闭气体站的选择"
+      },
       "0.3.0": {
         "en": "!Breaking change! NodeJS 14.16 or higher required\n!Breaking change! ioBroker js-controller 4.0 or higher required\nBump is-online from 9.0.1 to 10.0.0",
         "de": "! Veränderung brechen! NodeJS 14.16 oder höher erforderlich\n! Veränderung brechen! ioBroker js-controller 4.0 oder höher erforderlich\nBump is-online von 9.0.1 bis 10.0.0",
@@ -74,18 +87,6 @@
         "es": "Pase iobroker-jsonexplorer a v0.1.7\nMejorar el manejo de errores",
         "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.7\nPopraw obsługę błędów",
         "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.7\n改进错误处理"
-      },
-      "0.2.7": {
-        "en": "Bump iobroker-jsonexplorer to v0.1.2\ndon't report getaddrinfo issue on Sentry (IOBROKER-FUELPRICEMONITOR-2)\nadd attribute 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)",
-        "de": "Upgrade von iobroker-jsonexplorer auf v0.1.2\nkein getaddrinfo-Problem auf Sentry melden (IOBROKER-FUELPRICEMONITOR-2)\nAttribut 'uuid' hinzufügen (IOBROKER-FUELPRICEMONITOR-1B)",
-        "ru": "Поднимите iobroker-jsonexplorer до версии v0.1.2\nне сообщайте о проблеме с getaddrinfo в Sentry (IOBROKER-FUELPRICEMONITOR-2)\nдобавить атрибут uuid (IOBROKER-FUELPRICEMONITOR-1B)",
-        "pt": "Bump iobroker-jsonexplorer para v0.1.2\nnão relatar problema getaddrinfo no Sentry (IOBROKER-FUELPRICEMONITOR-2)\nadicionar atributo 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)",
-        "nl": "Bump iobroker-jsonexplorer naar v0.1.2\nmeld geen getaddrinfo-probleem op Sentry (IOBROKER-FUELPRICEMONITOR-2)\nvoeg kenmerk 'uuid' toe (IOBROKER-FUELPRICEMONITOR-1B)",
-        "fr": "Transférez iobroker-jsonexplorer vers la v0.1.2\nne signalez pas le problème getaddrinfo sur Sentry (IOBROKER-FUELPRICEMONITOR-2)\najouter l'attribut 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)",
-        "it": "Passa iobroker-jsonexplorer alla v0.1.2\nnon segnalare il problema getaddrinfo su Sentry (IOBROKER-FUELPRICEMONITOR-2)\naggiungi l'attributo 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)",
-        "es": "Pase iobroker-jsonexplorer a v0.1.2\nno informe el problema de getaddrinfo en Sentry (IOBROKER-FUELPRICEMONITOR-2)\nagregar atributo 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)",
-        "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.2\nnie zgłaszaj problemu getaddrinfo na Sentry (IOBROKER-FUELPRICEMONITOR-2)\ndodaj atrybut „uuid” (IOBROKER-FUELPRICEMONITOR-1B)",
-        "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.2\n不要在 Sentry (IOBROKER-FUELPRICEMONITOR-2) 上报告 getaddrinfo 问题\n添加属性“uuid”（IOBROKER-FUELPRICEMONITOR-1B）"
       }
     },
     "title": "Fuel Price Monitor Austria",

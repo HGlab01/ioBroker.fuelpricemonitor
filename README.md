@@ -27,6 +27,9 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+### 0.3.1-alpha.0 (2022-10-13)
+* (HGlab01) Add option to exclude closed gas stations
+
 ### 0.3.0 (2022-08-30)
 * (HGlab01) !Breaking change! NodeJS 14.16 or higher required
 * (HGlab01) !Breaking change! ioBroker js-controller 4.0 or higher required
@@ -43,11 +46,6 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
 ### 0.2.8 (2021-11-16)
 * (HGlab01) Bump iobroker-jsonexplorer to v0.1.7
 * (HGlab01) Improve error handling
-
-### 0.2.7 (2021-10-16)
-* (HGlab01) Bump iobroker-jsonexplorer to v0.1.2
-* (HGlab01) don't report getaddrinfo issue on Sentry (IOBROKER-FUELPRICEMONITOR-2)
-* (HGlab01) add attribute 'uuid' (IOBROKER-FUELPRICEMONITOR-1B)
 
 ## License
 MIT License
