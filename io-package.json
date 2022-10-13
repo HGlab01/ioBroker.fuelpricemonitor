@@ -139,7 +139,8 @@
     "super": false,
     "gas": false,
     "address": [],
-    "useIDs": false
+    "useIDs": false,
+    "exlClosed": false
   },
   "objects": [],
   "instanceObjects": []
