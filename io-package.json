@@ -142,7 +142,8 @@
     "gas": false,
     "address": [],
     "useIDs": false,
-    "exlClosed": false
+    "exlClosed": false,
+    "cheapest": false
   },
   "objects": [],
   "instanceObjects": []

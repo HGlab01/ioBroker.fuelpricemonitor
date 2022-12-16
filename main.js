@@ -20,6 +20,7 @@ let superSelected = false;
 let gasSelected = false;
 let useIDs = false;
 let exlClosed = false;
+let cheapest = false;
 
 class FuelPriceMonitor extends utils.Adapter {
 
@@ -54,6 +55,7 @@ class FuelPriceMonitor extends utils.Adapter {
         this.log.debug(`Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`);
         if (this.config.useIDs) useIDs = this.config.useIDs;
         if (this.config.exlClosed) exlClosed = this.config.exlClosed;
+        if (this.config.cheapest) cheapest = this.config.cheapest;
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -224,6 +226,8 @@ class FuelPriceMonitor extends utils.Adapter {
                 await JsonExplorer.TraverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }
 
+            if (cheapest) await this.cheapestStation();
+
             await JsonExplorer.checkExpire('*');
 
             // check for outdated states to delete whole device
@@ -245,6 +249,52 @@ class FuelPriceMonitor extends utils.Adapter {
                 this.sendSentry(error);
             }
         }
+    }
+
+    async cheapestStation() {
+        let priceSates = await this.getStatesAsync('*.prices.0.amount');
+        let listOfPrices = [];
+        let i = 0;
+        for (const idS in priceSates) {
+            this.log.debug('Check cheapestStation() for ' + idS);
+            let state = await this.getStateAsync(idS);
+            let statename = idS.split('.');
+            let stationAddress = '', stationName = '';
+
+            let nameState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.name`);
+            let addressState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.address`);
+            let cityState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.city`);
+            let postalCodeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.postalCode`);
+            if (nameState && cityState && addressState && postalCodeState && nameState.val && addressState.val && cityState.val && postalCodeState.val) {
+                stationAddress = `${postalCodeState.val} ${cityState.val}, ${addressState.val}`;
+                stationName = String(nameState.val);
+            }
+            if (state && state.val) {
+                listOfPrices[i] = [];
+                listOfPrices[i]['price'] = state.val;
+                listOfPrices[i]['address'] = stationAddress;
+                listOfPrices[i]['name'] = stationName;
+                i = i + 1;
+            }
+        }
+
+        listOfPrices.sort(function (a, b) {
+            return a['price'] - b['price'];
+        });
+
+        let line = {};
+        let jsonObject = [];
+
+        for (const station of listOfPrices) {
+            line = {
+                'price': station['price'],
+                'address': station['address'],
+                'name': station['name']
+            };
+            jsonObject.push(line);
+        }
+        this.log.debug('cheapestStation() result is ' + JSON.stringify(jsonObject));
+        await JsonExplorer.TraverseJson(jsonObject, 'cheapestOverAll', true, false);
     }
 
     /**
