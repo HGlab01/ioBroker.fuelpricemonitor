@@ -259,22 +259,26 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.debug('Check cheapestStation() for ' + idS);
             let state = await this.getStateAsync(idS);
             let statename = idS.split('.');
-            let stationAddress = '', stationName = '';
+            let stationAddress = '';
 
             let nameState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.name`);
             let addressState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.address`);
             let cityState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.city`);
             let postalCodeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.postalCode`);
-            if (nameState && cityState && addressState && postalCodeState && nameState.val && addressState.val && cityState.val && postalCodeState.val) {
+            let fuelTypeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.prices.0.fuelType`);
+            if (cityState && addressState && postalCodeState && addressState.val && cityState.val && postalCodeState.val) {
                 stationAddress = `${postalCodeState.val} ${cityState.val}, ${addressState.val}`;
-                stationName = String(nameState.val);
             }
+            let stationName = (!nameState || !nameState.val) ? '' : String(nameState.val);
+            let fuelType = (!fuelTypeState || !fuelTypeState.val) ? '' : String(fuelTypeState.val);
+
             if (state && state.val) {
                 listOfPrices[i] = [];
                 listOfPrices[i]['price'] = state.val;
                 listOfPrices[i]['address'] = stationAddress;
                 listOfPrices[i]['name'] = stationName;
-                i = i + 1;
+                listOfPrices[i]['fuelType'] = fuelType;
+                i++;
             }
         }
 
@@ -289,7 +293,8 @@ class FuelPriceMonitor extends utils.Adapter {
             line = {
                 'amount': station['price'],
                 'address': station['address'],
-                'name': station['name']
+                'name': station['name'],
+                'fuelType': station['fuelType']
             };
             jsonObject.push(line);
         }
