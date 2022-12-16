@@ -287,7 +287,7 @@ class FuelPriceMonitor extends utils.Adapter {
 
         for (const station of listOfPrices) {
             line = {
-                'price': station['price'],
+                'amount': station['price'],
                 'address': station['address'],
                 'name': station['name']
             };

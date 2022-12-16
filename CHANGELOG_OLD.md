@@ -1,4 +1,8 @@
 # Older changes
+## 0.2.8 (2021-11-16)
+* (HGlab01) Bump iobroker-jsonexplorer to v0.1.7
+* (HGlab01) Improve error handling
+
 ## 0.2.7 (2021-10-16)
 * (HGlab01) Bump iobroker-jsonexplorer to v0.1.2
 * (HGlab01) don't report getaddrinfo issue on Sentry (IOBROKER-FUELPRICEMONITOR-2)

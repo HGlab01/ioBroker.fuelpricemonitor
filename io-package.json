@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.1",
+    "version": "0.3.2-alpha.0",
     "news": {
+      "0.3.2-alpha.0": {
+        "en": "Add feature to find cheaptest stations over all locations",
+        "de": "Fügen Sie Feature hinzu, um die günstigsten Stationen über alle Standorte zu finden",
+        "ru": "Добавьте функцию, чтобы найти дешевые станции во всех местах",
+        "pt": "Adicionar recurso para encontrar estações mais baratas em todos os locais",
+        "nl": "Voeg een kenmerk toe om goedkope stations te vinden over alle locaties",
+        "fr": "Ajouter la fonctionnalité pour trouver les stations les moins chères sur tous les sites",
+        "it": "Aggiungi funzionalità per trovare stazioni più economiche in tutte le località",
+        "es": "Añadir característica para encontrar estaciones más baratas en todos los lugares",
+        "pl": "Zajmuje się znalezieniem najniższych stacji w różnych miejscach",
+        "uk": "Додати функцію для пошуку дешевих станцій по всій території",
+        "zh-cn": "在所有地点寻找廉价试验站的附加特点"
+      },
       "0.3.1": {
         "en": "Add option to exclude closed gas stations (#407)",
         "de": "Option hinzufügen, geschlossene Tankstellen auszuschließen (#407)",
@@ -76,18 +89,6 @@
         "es": "js-controller 4.0 preparación",
         "pl": "Gotowość js-controller 4.0",
         "zh-cn": "js-controller 4.0 准备就绪"
-      },
-      "0.2.9": {
-        "en": "Bump iobroker-jsonexplorer to v0.1.8\nReplace ping-based internet-check with isOnline library",
-        "de": "iobroker-jsonexplorer auf v0.1.8 hochsetzen\nErsetzen Sie den ping-basierten Internet-Check durch die isOnline-Bibliothek",
-        "ru": "Поднимите iobroker-jsonexplorer до версии 0.1.8\nЗаменить интернет-проверку на основе ping библиотекой isOnline",
-        "pt": "Bump iobroker-jsonexplorer para v0.1.8\nSubstitua a verificação de internet baseada em ping pela biblioteca isOnline",
-        "nl": "Bump iobroker-jsonexplorer naar v0.1.8\nVervang op ping gebaseerde internetcontrole door isOnline-bibliotheek",
-        "fr": "Transférez iobroker-jsonexplorer vers la v0.1.8\nRemplacer la vérification Internet basée sur le ping par la bibliothèque isOnline",
-        "it": "Passa iobroker-jsonexplorer alla v0.1.8\nSostituisci il controllo Internet basato su ping con la libreria isOnline",
-        "es": "Pase iobroker-jsonexplorer a v0.1.8\nReemplace la verificación de Internet basada en ping con la biblioteca isOnline",
-        "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.8\nZastąp sprawdzanie internetowe oparte na pingu biblioteką isOnline",
-        "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.8\n用 isOnline 库替换基于 ping 的 Internet 检查"
       }
     },
     "title": "Fuel Price Monitor Austria",
