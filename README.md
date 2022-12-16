@@ -27,7 +27,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 0.3.2 (2022-12-16)
 * (HGlab01) Add feature to find cheapest stations over all locations (#365)
 
 ### 0.3.1 (2022-10-25)

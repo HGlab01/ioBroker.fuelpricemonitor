@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.2-alpha.0",
+    "version": "0.3.2",
     "news": {
+      "0.3.2": {
+        "en": "Add feature to find cheapest stations over all locations (#365)",
+        "de": "Fügen Sie Feature hinzu, um billigste Stationen über alle Standorte zu finden #(365)",
+        "ru": "Добавить функцию, чтобы найти дешевые станции во всех местах #(365)",
+        "pt": "Adicionar recurso para encontrar estações mais baratas em todos os locais #(365)",
+        "nl": "Voeg het kenmerk toe om goedkope stations te vinden over alle locaties",
+        "fr": "Ajouter la fonctionnalité pour trouver les stations les moins chères sur tous les sites #(365)",
+        "it": "Aggiungi funzionalità per trovare stazioni più economiche in tutte le località #(365)",
+        "es": "Añadir característica para encontrar estaciones más baratas en todas las ubicaciones #(365)",
+        "pl": "Zamknięto najniższe stacje na wszystkich miejscach #(365)",
+        "uk": "Додайте функцію, щоб знайти найдешевші станції по всій території #(365)",
+        "zh-cn": "增加用于在所有地点找到最廉价的站(第65)号)"
+      },
       "0.3.2-alpha.0": {
         "en": "Add feature to find cheaptest stations over all locations",
         "de": "Fügen Sie Feature hinzu, um die günstigsten Stationen über alle Standorte zu finden",
@@ -77,18 +90,6 @@
         "es": "Bump iobroker-jsonexplorer a v0.1.9\njs-controller 4.0 preparación",
         "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.9\nGotowość js-controller 4.0",
         "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.9\njs-controller 4.0 准备就绪"
-      },
-      "0.2.10-alpha.0": {
-        "en": "js-controller 4.0 readiness",
-        "de": "js-controller 4.0-Bereitschaft",
-        "ru": "готовность js-контроллера 4.0",
-        "pt": "prontidão do controlador js 4.0",
-        "nl": "js-controller 4.0 gereedheid",
-        "fr": "préparation js-controller 4.0",
-        "it": "js-controller 4.0 prontezza",
-        "es": "js-controller 4.0 preparación",
-        "pl": "Gotowość js-controller 4.0",
-        "zh-cn": "js-controller 4.0 准备就绪"
       }
     },
     "title": "Fuel Price Monitor Austria",
