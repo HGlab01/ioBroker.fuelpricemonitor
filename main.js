@@ -226,6 +226,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 await JsonExplorer.TraverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }
 
+            await new Promise(r => setTimeout(r, 2000));
             if (cheapest) await this.cheapestStation();
 
             await JsonExplorer.checkExpire('*');
@@ -322,7 +323,7 @@ class FuelPriceMonitor extends utils.Adapter {
             jsonObjectDIE.push(line);
         }
         this.log.info('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
-        await JsonExplorer.TraverseJson(jsonObjectDIE, 'cheapestOverAllDIE', true, false);
+        await JsonExplorer.TraverseJson(jsonObjectDIE, 'cheapestOverAll_DIE', true, false);
 
         for (const station of listOfPricesSUP) {
             let line = {
@@ -334,7 +335,7 @@ class FuelPriceMonitor extends utils.Adapter {
             jsonObjectSUP.push(line);
         }
         this.log.info('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
-        await JsonExplorer.TraverseJson(jsonObjectSUP, 'cheapestOverAllSUP', true, false);
+        await JsonExplorer.TraverseJson(jsonObjectSUP, 'cheapestOverAll_SUP', true, false);
 
         for (const station of listOfPricesGAS) {
             let line = {
@@ -346,7 +347,7 @@ class FuelPriceMonitor extends utils.Adapter {
             jsonObjectGAS.push(line);
         }
         this.log.info('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
-        await JsonExplorer.TraverseJson(jsonObjectGAS, 'cheapestOverAllGAS', true, false);
+        await JsonExplorer.TraverseJson(jsonObjectGAS, 'cheapestOverAll_GAS', true, false);
     }
 
     /**
