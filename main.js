@@ -253,8 +253,8 @@ class FuelPriceMonitor extends utils.Adapter {
 
     async cheapestStation() {
         let priceSates = await this.getStatesAsync('*.prices.0.amount');
-        let listOfPrices = [];
-        let i = 0;
+        let listOfPricesDIE = [], listOfPricesSUP = [], listOfPricesGAS = [];
+        let iDIE = 0, iSUP = 0, iGAS = 0;
         for (const idS in priceSates) {
             this.log.debug('Check cheapestStation() for ' + idS);
             let state = await this.getStateAsync(idS);
@@ -273,33 +273,80 @@ class FuelPriceMonitor extends utils.Adapter {
             let fuelType = (!fuelTypeState || !fuelTypeState.val) ? '' : String(fuelTypeState.val);
 
             if (state && state.val) {
-                listOfPrices[i] = [];
-                listOfPrices[i]['price'] = state.val;
-                listOfPrices[i]['address'] = stationAddress;
-                listOfPrices[i]['name'] = stationName;
-                listOfPrices[i]['fuelType'] = fuelType;
-                i++;
+                if (fuelType == 'DIE') {
+                    listOfPricesDIE[iDIE] = [];
+                    listOfPricesDIE[iDIE]['price'] = state.val;
+                    listOfPricesDIE[iDIE]['address'] = stationAddress;
+                    listOfPricesDIE[iDIE]['name'] = stationName;
+                    listOfPricesDIE[iDIE]['fuelType'] = fuelType;
+                    iDIE++;
+                }
+                if (fuelType == 'SUP') {
+                    listOfPricesSUP[iSUP] = [];
+                    listOfPricesSUP[iSUP]['price'] = state.val;
+                    listOfPricesSUP[iSUP]['address'] = stationAddress;
+                    listOfPricesSUP[iSUP]['name'] = stationName;
+                    listOfPricesSUP[iSUP]['fuelType'] = fuelType;
+                    iSUP++;
+                }
+                if (fuelType == 'GAS') {
+                    listOfPricesGAS[iGAS] = [];
+                    listOfPricesGAS[iGAS]['price'] = state.val;
+                    listOfPricesGAS[iGAS]['address'] = stationAddress;
+                    listOfPricesGAS[iGAS]['name'] = stationName;
+                    listOfPricesGAS[iGAS]['fuelType'] = fuelType;
+                    iGAS++;
+                }
             }
         }
 
-        listOfPrices.sort(function (a, b) {
+        listOfPricesGAS.sort(function (a, b) {
+            return a['price'] - b['price'];
+        });
+        listOfPricesSUP.sort(function (a, b) {
+            return a['price'] - b['price'];
+        });
+        listOfPricesDIE.sort(function (a, b) {
             return a['price'] - b['price'];
         });
 
-        let line = {};
-        let jsonObject = [];
+        let jsonObjectDIE = [], jsonObjectSUP = [], jsonObjectGAS = [];
 
-        for (const station of listOfPrices) {
-            line = {
+        for (const station of listOfPricesDIE) {
+            let line = {
                 'amount': station['price'],
                 'address': station['address'],
                 'name': station['name'],
                 'fuelType': station['fuelType']
             };
-            jsonObject.push(line);
+            jsonObjectDIE.push(line);
         }
-        this.log.debug('cheapestStation() result is ' + JSON.stringify(jsonObject));
-        await JsonExplorer.TraverseJson(jsonObject, 'cheapestOverAll', true, false);
+        this.log.info('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
+        await JsonExplorer.TraverseJson(jsonObjectDIE, 'cheapestOverAllDIE', true, false);
+
+        for (const station of listOfPricesSUP) {
+            let line = {
+                'amount': station['price'],
+                'address': station['address'],
+                'name': station['name'],
+                'fuelType': station['fuelType']
+            };
+            jsonObjectSUP.push(line);
+        }
+        this.log.info('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
+        await JsonExplorer.TraverseJson(jsonObjectSUP, 'cheapestOverAllSUP', true, false);
+
+        for (const station of listOfPricesGAS) {
+            let line = {
+                'amount': station['price'],
+                'address': station['address'],
+                'name': station['name'],
+                'fuelType': station['fuelType']
+            };
+            jsonObjectGAS.push(line);
+        }
+        this.log.info('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
+        await JsonExplorer.TraverseJson(jsonObjectGAS, 'cheapestOverAllGAS', true, false);
     }
 
     /**
