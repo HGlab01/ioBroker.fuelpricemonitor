@@ -28,7 +28,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     ### __WORK IN PROGRESS__
 -->
 ### __WORK IN PROGRESS__
-* (HGlab01) Cheapest station now per fuel type
+* (HGlab01) Cheapest station now per fuel type (#445)
 
 ### 0.3.2 (2022-12-16)
 * (HGlab01) Add feature to find cheapest stations over all locations (#365)

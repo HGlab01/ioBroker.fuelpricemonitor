@@ -267,11 +267,14 @@ class FuelPriceMonitor extends utils.Adapter {
             let cityState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.city`);
             let postalCodeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.postalCode`);
             let fuelTypeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.prices.0.fuelType`);
+            let idState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.id`);
+
             if (cityState && addressState && postalCodeState && addressState.val && cityState.val && postalCodeState.val) {
                 stationAddress = `${postalCodeState.val} ${cityState.val}, ${addressState.val}`;
             }
             let stationName = (!nameState || !nameState.val) ? '' : String(nameState.val);
             let fuelType = (!fuelTypeState || !fuelTypeState.val) ? '' : String(fuelTypeState.val);
+            let id = (!idState || !idState.val) ? 0 : Number(idState.val);
 
             if (state && state.val) {
                 if (fuelType == 'DIE') {
@@ -280,6 +283,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     listOfPricesDIE[iDIE]['address'] = stationAddress;
                     listOfPricesDIE[iDIE]['name'] = stationName;
                     listOfPricesDIE[iDIE]['fuelType'] = fuelType;
+                    listOfPricesDIE[iDIE]['id'] = id;
                     iDIE++;
                 }
                 if (fuelType == 'SUP') {
@@ -288,6 +292,7 @@ class FuelPriceMonitor extends utils.Adapter {
                     listOfPricesSUP[iSUP]['address'] = stationAddress;
                     listOfPricesSUP[iSUP]['name'] = stationName;
                     listOfPricesSUP[iSUP]['fuelType'] = fuelType;
+                    listOfPricesSUP[iSUP]['id'] = id;
                     iSUP++;
                 }
                 if (fuelType == 'GAS') {
@@ -296,32 +301,46 @@ class FuelPriceMonitor extends utils.Adapter {
                     listOfPricesGAS[iGAS]['address'] = stationAddress;
                     listOfPricesGAS[iGAS]['name'] = stationName;
                     listOfPricesGAS[iGAS]['fuelType'] = fuelType;
+                    listOfPricesGAS[iGAS]['id'] = id;
                     iGAS++;
                 }
             }
         }
 
         listOfPricesGAS.sort(function (a, b) {
+            return a['id'] - b['id'];
+        });
+        listOfPricesGAS.sort(function (a, b) {
             return a['price'] - b['price'];
         });
         listOfPricesSUP.sort(function (a, b) {
+            return a['id'] - b['id'];
+        });
+        listOfPricesSUP.sort(function (a, b) {
             return a['price'] - b['price'];
+        });
+        listOfPricesDIE.sort(function (a, b) {
+            return a['id'] - b['id'];
         });
         listOfPricesDIE.sort(function (a, b) {
             return a['price'] - b['price'];
         });
 
         let jsonObjectDIE = [], jsonObjectSUP = [], jsonObjectGAS = [];
+        let oldID = '';
 
         for (const station of listOfPricesDIE) {
             let line = {
                 'amount': station['price'],
                 'address': station['address'],
                 'name': station['name'],
-                'fuelType': station['fuelType']
+                'fuelType': station['fuelType'],
+                'id': station['id']
             };
-            jsonObjectDIE.push(line);
+            if (station['id'] != oldID) jsonObjectDIE.push(line);
+            oldID = station['id'];
         }
+        oldID = '';
         this.log.info('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
         await JsonExplorer.TraverseJson(jsonObjectDIE, 'cheapestOverAll_DIE', true, false);
 
@@ -330,10 +349,13 @@ class FuelPriceMonitor extends utils.Adapter {
                 'amount': station['price'],
                 'address': station['address'],
                 'name': station['name'],
-                'fuelType': station['fuelType']
+                'fuelType': station['fuelType'],
+                'id': station['id']
             };
-            jsonObjectSUP.push(line);
+            if (station['id'] != oldID) jsonObjectSUP.push(line);
+            oldID = station['id'];
         }
+        oldID = '';
         this.log.info('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
         await JsonExplorer.TraverseJson(jsonObjectSUP, 'cheapestOverAll_SUP', true, false);
 
@@ -342,10 +364,13 @@ class FuelPriceMonitor extends utils.Adapter {
                 'amount': station['price'],
                 'address': station['address'],
                 'name': station['name'],
-                'fuelType': station['fuelType']
+                'fuelType': station['fuelType'],
+                'id': station['id']
             };
-            jsonObjectGAS.push(line);
+            if (station['id'] != oldID) jsonObjectGAS.push(line);
+            oldID = station['id'];
         }
+        oldID = '';
         this.log.info('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
         await JsonExplorer.TraverseJson(jsonObjectGAS, 'cheapestOverAll_GAS', true, false);
     }
