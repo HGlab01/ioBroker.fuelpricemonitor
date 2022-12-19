@@ -1,4 +1,8 @@
 # Older changes
+## 0.2.9 (2021-11-29)
+* (HGlab01) Bump iobroker-jsonexplorer to v0.1.8
+* (HGlab01) Replace ping-based internet-check with isOnline library
+
 ## 0.2.8 (2021-11-16)
 * (HGlab01) Bump iobroker-jsonexplorer to v0.1.7
 * (HGlab01) Improve error handling

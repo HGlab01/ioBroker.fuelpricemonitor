@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.2",
+    "version": "0.3.3-alpha.0",
     "news": {
+      "0.3.3-alpha.0": {
+        "en": "Cheapest station now per fuel type (#445)",
+        "de": "Günstigste Station jetzt pro Kraftstoffart #(445)",
+        "ru": "Самая дешевая станция сейчас на вид топлива #(445)",
+        "pt": "Estação mais barata agora por tipo de combustível #(445)",
+        "nl": "Cheapest station nu per brandstoftype (445)",
+        "fr": "Station la moins chère maintenant par type de carburant #(445)",
+        "it": "Stazione più economica ora per tipo di carburante #(445)",
+        "es": "Estación más barata ahora por tipo de combustible #(445)",
+        "pl": "Obecnie stacja Cheapest na paliwo typu #(445)",
+        "uk": "Найдешевші станції тепер за типом палива #(445)",
+        "zh-cn": "目前每种燃料类型(445)"
+      },
       "0.3.2": {
         "en": "Add feature to find cheapest stations over all locations (#365)",
         "de": "Fügen Sie Feature hinzu, um billigste Stationen über alle Standorte zu finden #(365)",
@@ -78,18 +91,6 @@
         "es": "! ¡Cambio de ruptura! NodeJS 14.16 o superior requerido\n! ¡Cambio de ruptura! ioBroker js-controller 4.0 o superior requerido\nBump is-online from 9.0.1 to 10.0.0",
         "pl": "! Zmiana. NodeJS 14.16 (ang.)\n! Zmiana. ioBroker js-kontroler 4.0 lub wyższych wymagań\nBump jest na linii 9.0.1 do 10.0.0",
         "zh-cn": "! 打破沉默! 第14.16号申诉\n! 打破沉默! io Broker js-控制ler 4.0或更高需要\nBump是从9.0到10.0.0的。"
-      },
-      "0.2.10": {
-        "en": "Bump iobroker-jsonexplorer to v0.1.9\njs-controller 4.0 readiness",
-        "de": "Erweitern Sie iobroker-jsonexplorer auf v0.1.9\njs-controller 4.0-Bereitschaft",
-        "ru": "Поднимите iobroker-jsonexplorer до версии 0.1.9\nготовность js-контроллера 4.0",
-        "pt": "Suba iobroker-jsonexplorer para v0.1.9\nprontidão do controlador js 4.0",
-        "nl": "Bump iobroker-jsonexplorer naar v0.1.9\njs-controller 4.0 gereedheid",
-        "fr": "Passer iobroker-jsonexplorer à la v0.1.9\npréparation js-controller 4.0",
-        "it": "Porta iobroker-jsonexplorer alla v0.1.9\njs-controller 4.0 prontezza",
-        "es": "Bump iobroker-jsonexplorer a v0.1.9\njs-controller 4.0 preparación",
-        "pl": "Podnieś iobroker-jsonexplorer do wersji 0.1.9\nGotowość js-controller 4.0",
-        "zh-cn": "将 iobroker-jsonexplorer 升级到 v0.1.9\njs-controller 4.0 准备就绪"
       }
     },
     "title": "Fuel Price Monitor Austria",
