@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "news": {
+      "0.3.4": {
+        "en": "Cheapest station from experimental to stable\nBump axios to 1.3.2",
+        "de": "Günstigste Station von experimentell bis stabil\nBump axios zu 1.3.2",
+        "ru": "Самая дешевая станция от экспериментального до стабильного\nBump осье до 1.3.2",
+        "pt": "Estação mais barata de experimental para estável\nBump axios para 1.3.2",
+        "nl": "Cheapest station van experimenteel\nBump Axios naar 1,3,2",
+        "fr": "Station la moins chère de expérimental à stable\nAxios de la boue au 1.3.2",
+        "it": "Stazione più economica da sperimentale a stabile\nAssociazioni di bumpi a 1.3.2",
+        "es": "Estación más barata de experimental a estable\nAxios de bomba a 1.3.2",
+        "pl": "Stacja Cheapest od eksperymentalnej do stabilnej stabilności\nBump axios (ang.)",
+        "uk": "Найдешевші станції від експериментального до стабільного\nБампер аксіос до 1.3.2",
+        "zh-cn": "试验到稳定地点\nBumpxios to 1.3.2"
+      },
       "0.3.3": {
         "en": "Cheapest station now per fuel type (#445)",
         "de": "Günstigste Station jetzt pro Kraftstoffart #(445)",
@@ -80,18 +93,6 @@
         "pl": "Wykorzystywanie stacji benzynowych",
         "uk": "Додати варіант виключення замкнених АЗС",
         "zh-cn": "排除封闭气体站的选择"
-      },
-      "0.3.0": {
-        "en": "!Breaking change! NodeJS 14.16 or higher required\n!Breaking change! ioBroker js-controller 4.0 or higher required\nBump is-online from 9.0.1 to 10.0.0",
-        "de": "! Veränderung brechen! NodeJS 14.16 oder höher erforderlich\n! Veränderung brechen! ioBroker js-controller 4.0 oder höher erforderlich\nBump is-online von 9.0.1 bis 10.0.0",
-        "ru": "! Перерыв перемен! NodeJS 14.16 или выше требуется\n! Перерыв перемен! ioBroker js-controller 4.0 или выше требуется\nBump онлайн с 9.0.1 до 10.0.0",
-        "pt": "! Mudança de ruptura! NodeJS 14.16 ou superior exigido\n! Mudança de ruptura! ioBroker js-controller 4.0 ou superior exigido\nBump is-online de 9.0.1 a 10.0.0",
-        "nl": "! Verandering. NodeJS 14.16 of hoger vereiste\n! Verandering. Quality over Quantity (QoQ) Releases Vertaling:\nBump is-online van 9.01 tot 10.0",
-        "fr": "! Changer ! NodeJS 14.16 ou plus requis\n! Changer ! ioBroker js-controller 4.0 ou supérieur requis\nBump is-online from 9.0.1 to 10.0.0",
-        "it": "! Cambiamento di rottura! NodeJS 14.16 o superiore richiesto\n! Cambiamento di rottura! ioBroker js-controller 4.0 o superiore richiesto\nBump è online da 9.0.1 a 10.0.0",
-        "es": "! ¡Cambio de ruptura! NodeJS 14.16 o superior requerido\n! ¡Cambio de ruptura! ioBroker js-controller 4.0 o superior requerido\nBump is-online from 9.0.1 to 10.0.0",
-        "pl": "! Zmiana. NodeJS 14.16 (ang.)\n! Zmiana. ioBroker js-kontroler 4.0 lub wyższych wymagań\nBump jest na linii 9.0.1 do 10.0.0",
-        "zh-cn": "! 打破沉默! 第14.16号申诉\n! 打破沉默! io Broker js-控制ler 4.0或更高需要\nBump是从9.0到10.0.0的。"
       }
     },
     "title": "Fuel Price Monitor Austria",
