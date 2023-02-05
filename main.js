@@ -341,7 +341,7 @@ class FuelPriceMonitor extends utils.Adapter {
             oldID = station['id'];
         }
         oldID = 0;
-        this.log.info('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
+        this.log.debug('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
         await JsonExplorer.TraverseJson(jsonObjectDIE, 'cheapestOverAll_DIE', true, false);
 
         for (const station of listOfPricesSUP) {
@@ -356,7 +356,7 @@ class FuelPriceMonitor extends utils.Adapter {
             oldID = station['id'];
         }
         oldID = 0;
-        this.log.info('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
+        this.log.debug('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
         await JsonExplorer.TraverseJson(jsonObjectSUP, 'cheapestOverAll_SUP', true, false);
 
         for (const station of listOfPricesGAS) {
@@ -371,7 +371,7 @@ class FuelPriceMonitor extends utils.Adapter {
             oldID = station['id'];
         }
         oldID = 0;
-        this.log.info('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
+        this.log.debug('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
         await JsonExplorer.TraverseJson(jsonObjectGAS, 'cheapestOverAll_GAS', true, false);
     }
 
