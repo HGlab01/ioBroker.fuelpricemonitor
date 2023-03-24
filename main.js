@@ -87,6 +87,10 @@ class FuelPriceMonitor extends utils.Adapter {
         this.log.debug('LATITUDE from config: ' + this.latitude);
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
+        const delay = Math.floor(Math.random() * 30000);
+        this.log.info(`Delay execution by ${delay}ms to better spread API calls`);
+        await this.sleep(delay);
+
         let result = await this.ExecuteRequest();
 
         if (result == 'error') {
@@ -103,10 +107,15 @@ class FuelPriceMonitor extends utils.Adapter {
     onUnload(callback) {
         try {
             this.log.info('cleaned everything up...');
+            this.unloaded = true;
             callback();
         } catch (e) {
             callback();
         }
+    }
+
+    sleep(ms) {
+        return /** @type {Promise<void>} */(new Promise(resolve => setTimeout(() => !this.unloaded && resolve(), ms)));
     }
 
     /*
