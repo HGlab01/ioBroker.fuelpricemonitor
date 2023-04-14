@@ -89,7 +89,7 @@ class FuelPriceMonitor extends utils.Adapter {
 
         const delay = Math.floor(Math.random() * 30000);
         this.log.info(`Delay execution by ${delay}ms to better spread API calls`);
-        await this.sleep(delay);
+        await JsonExplorer.sleep(delay);
 
         let result = await this.ExecuteRequest();
 
@@ -113,11 +113,7 @@ class FuelPriceMonitor extends utils.Adapter {
             callback();
         }
     }
-
-    sleep(ms) {
-        return /** @type {Promise<void>} */(new Promise(resolve => setTimeout(() => !this.unloaded && resolve(), ms)));
-    }
-
+    
     /*
     /**
      * Is called if a subscribed state changes
