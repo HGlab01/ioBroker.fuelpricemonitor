@@ -36,7 +36,7 @@
   "deprecated": false,
   "description": "Fuel Price Monitor Austria",
   "devDependencies": {
-    "@alcalzone/release-script": "^3.5.9",
+    "@alcalzone/release-script": "^3.6.0",
     "@alcalzone/release-script-plugin-iobroker": "^3.5.9",
     "@iobroker/testing": "^4.0.0",
     "@types/chai": "^4.2.11",
