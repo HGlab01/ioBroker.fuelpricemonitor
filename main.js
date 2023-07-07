@@ -10,7 +10,7 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 const axios = require('axios');
-const JsonExplorer = require('iobroker-jsonexplorer');
+const jsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 const isOnline = require('@esm2cjs/is-online').default;
 
@@ -39,7 +39,7 @@ class FuelPriceMonitor extends utils.Adapter {
         this.on('unload', this.onUnload.bind(this));
         this.latitude = 0;
         this.longitude = 0;
-        JsonExplorer.init(this, stateAttr);
+        jsonExplorer.init(this, stateAttr);
     }
 
     /**
@@ -48,7 +48,7 @@ class FuelPriceMonitor extends utils.Adapter {
     async onReady() {
         // Initialize adapter
         //get adapter configuration
-        this.log.info('Started with JSON-Explorer version ' + JsonExplorer.version);
+        this.log.info('Started with JSON-Explorer version ' + jsonExplorer.version);
         dieselSelected = this.config.diesel;
         superSelected = this.config.super;
         gasSelected = this.config.gas;
@@ -89,7 +89,7 @@ class FuelPriceMonitor extends utils.Adapter {
 
         const delay = Math.floor(Math.random() * 30000);
         this.log.info(`Delay execution by ${delay}ms to better spread API calls`);
-        await JsonExplorer.sleep(delay);
+        await jsonExplorer.sleep(delay);
 
         let result = await this.ExecuteRequest();
 
@@ -166,28 +166,28 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async ExecuteRequest() {
         try {
-            await JsonExplorer.setLastStartTime();
+            await jsonExplorer.setLastStartTime();
             let result = null;
             if (dieselSelected) {
                 result = await this.getData('DIE', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response for location Home Diesel: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, '0_Home_Diesel', true, useIDs);
+                await jsonExplorer.traverseJson(result, '0_Home_Diesel', true, useIDs);
             } else {
-                await JsonExplorer.deleteEverything('0_Home_Diesel');
+                await jsonExplorer.deleteEverything('0_Home_Diesel');
             }
             if (superSelected) {
                 result = await this.getData('SUP', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response for location Home Super: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, '0_Home_Super95', true, useIDs);
+                await jsonExplorer.traverseJson(result, '0_Home_Super95', true, useIDs);
             } else {
-                await JsonExplorer.deleteEverything('0_Home_Super95');
+                await jsonExplorer.deleteEverything('0_Home_Super95');
             }
             if (gasSelected) {
                 result = await this.getData('GAS', this.latitude, this.longitude);
                 this.log.debug(`JSON-Response for location Home CNG: ${JSON.stringify(result)}`);
-                await JsonExplorer.TraverseJson(result, '0_Home_CNG', true, useIDs);
+                await jsonExplorer.traverseJson(result, '0_Home_CNG', true, useIDs);
             } else {
-                await JsonExplorer.deleteEverything('0_Home_CNG');
+                await jsonExplorer.deleteEverything('0_Home_CNG');
             }
 
             //go trough all configured locations 
@@ -228,13 +228,13 @@ class FuelPriceMonitor extends utils.Adapter {
                     case 'SUP': fuelType = 'Super95'; break;
                     case 'GAS': fuelType = 'CNG'; break;
                 }
-                await JsonExplorer.TraverseJson(result, `${location}_${fuelType}`, true, useIDs);
+                await jsonExplorer.traverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }
 
             await new Promise(r => setTimeout(r, 2000));
             if (cheapest) await this.cheapestStation();
 
-            await JsonExplorer.checkExpire('*');
+            await jsonExplorer.checkExpire('*');
 
             // check for outdated states to delete whole device
             let statesToDelete = await this.getStatesAsync('*.0.id');
@@ -243,7 +243,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 if (state != null && state.val == null) {
                     let statename = idS.split('.');
                     this.log.debug(`State "${statename[2]}" will be deleted`);
-                    await JsonExplorer.deleteEverything(statename[2]);
+                    await jsonExplorer.deleteEverything(statename[2]);
                 }
             }
 
@@ -347,7 +347,7 @@ class FuelPriceMonitor extends utils.Adapter {
         }
         oldID = 0;
         this.log.debug('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
-        await JsonExplorer.TraverseJson(jsonObjectDIE, 'cheapestOverAll_DIE', true, false);
+        await jsonExplorer.traverseJson(jsonObjectDIE, 'cheapestOverAll_DIE', true, false);
 
         for (const station of listOfPricesSUP) {
             let line = {
@@ -362,7 +362,7 @@ class FuelPriceMonitor extends utils.Adapter {
         }
         oldID = 0;
         this.log.debug('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
-        await JsonExplorer.TraverseJson(jsonObjectSUP, 'cheapestOverAll_SUP', true, false);
+        await jsonExplorer.traverseJson(jsonObjectSUP, 'cheapestOverAll_SUP', true, false);
 
         for (const station of listOfPricesGAS) {
             let line = {
@@ -377,7 +377,7 @@ class FuelPriceMonitor extends utils.Adapter {
         }
         oldID = 0;
         this.log.debug('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
-        await JsonExplorer.TraverseJson(jsonObjectGAS, 'cheapestOverAll_GAS', true, false);
+        await jsonExplorer.traverseJson(jsonObjectGAS, 'cheapestOverAll_GAS', true, false);
     }
 
     /**
