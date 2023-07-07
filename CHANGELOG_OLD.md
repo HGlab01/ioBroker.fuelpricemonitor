@@ -1,4 +1,9 @@
 # Older changes
+## 0.3.0 (2022-08-30)
+* (HGlab01) !Breaking change! NodeJS 14.16 or higher required
+* (HGlab01) !Breaking change! ioBroker js-controller 4.0 or higher required
+* (HGlab01) Bump is-online from 9.0.1 to 10.0.0
+
 ## 0.2.10 (2022-02-24)
 * (HGlab01) Bump iobroker-jsonexplorer to v0.1.9
 * (HGlab01) js-controller 4.0 readiness

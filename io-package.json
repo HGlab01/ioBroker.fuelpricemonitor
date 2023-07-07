@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "news": {
+      "0.3.5": {
+        "en": "Spread API calls\nBump ioBroker-jsonExplorer to 0.1.12",
+        "de": "API-Anrufe verbreiten\nBump ioBroker-jsonExplorer bis 0,1.12",
+        "ru": "Spread API звонки\nBump ioBroker-jsonExplorer до 0.1.12",
+        "pt": "Abrir chamadas API\nBump ioBroker-jsonExplorer para 0.1.12",
+        "nl": "Vertaling:\nBump ioBroker-JsonExplorer tot 0.1.12",
+        "fr": "Spread API appels\nBump ioBroker-jsonExplorer to 0.1.12",
+        "it": "Distribuire le chiamate API\nBump ioBroker-jsonExplorer a 0.1.12",
+        "es": "Spread API llamadas\nBump ioBroker-jsonExplorer to 0.1.12",
+        "pl": "Spreaded API call\nBump ioBroker-jsonExplorer (ang.)",
+        "uk": "Спред API виклики\nBump ioBroker-jsonExplorer до 0.1.12",
+        "zh-cn": "宣传\nBumpio Broker-json Explorer to 0.12"
+      },
       "0.3.4": {
         "en": "Cheapest station from experimental to stable\nBump axios to 1.3.2",
         "de": "Günstigste Station von experimentell bis stabil\nBump axios zu 1.3.2",
@@ -80,19 +93,6 @@
         "pl": "W celu wykluczenia zamkniętej stacji benzynowej (#407)",
         "uk": "Додайте варіант виключення замкнених АЗС (#407)",
         "zh-cn": "增加排除封闭气体站的选择(第407号)"
-      },
-      "0.3.1-alpha.0": {
-        "en": "Add option to exclude closed gas stations",
-        "de": "Option hinzufügen, geschlossene Tankstellen auszuschließen",
-        "ru": "Добавить опцию для исключения закрытых АЗС",
-        "pt": "Adicionar opção para excluir estações de gás fechadas",
-        "nl": "Een optie om gesloten tankstations uit te sluiten",
-        "fr": "Ajouter l ' option pour exclure les stations de gaz fermées",
-        "it": "Aggiungere l'opzione per escludere stazioni di gas chiuse",
-        "es": "Add option to exclude closed gas stations",
-        "pl": "Wykorzystywanie stacji benzynowych",
-        "uk": "Додати варіант виключення замкнених АЗС",
-        "zh-cn": "排除封闭气体站的选择"
       }
     },
     "title": "Fuel Price Monitor Austria",
