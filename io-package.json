@@ -95,20 +95,36 @@
         "zh-cn": "增加排除封闭气体站的选择(第407号)"
       }
     },
-    "title": "Fuel Price Monitor Austria",
     "titleLang": {
       "en": "Fuel Price Monitor Austria",
-      "de": "Spritpreismonitor Österreich"
+      "de": "Spritpreismonitor Österreich",
+      "ru": "Fuel Price Monitor Austria",
+      "pt": "Fuel Price Monitor Austria",
+      "nl": "Fuel Price Monitor Austria",
+      "fr": "Fuel Price Monitor Austria",
+      "it": "Fuel Price Monitor Austria",
+      "es": "Fuel Price Monitor Austria",
+      "pl": "Fuel Price Monitor Austria",
+      "uk": "Fuel Price Monitor Austria",
+      "zh-cn": "Fuel Price Monitor Austria"
     },
     "desc": {
       "en": "Fuel Price Monitor Austria",
-      "de": "Spritpreismonitor Österreich"
+      "de": "Spritpreismonitor Österreich",
+      "ru": "Fuel Price Monitor Austria",
+      "pt": "Fuel Price Monitor Austria",
+      "nl": "Fuel Price Monitor Austria",
+      "fr": "Fuel Price Monitor Austria",
+      "it": "Fuel Price Monitor Austria",
+      "es": "Fuel Price Monitor Austria",
+      "pl": "Fuel Price Monitor Austria",
+      "uk": "Fuel Price Monitor Austria",
+      "zh-cn": "Fuel Price Monitor Austria"
     },
     "authors": [
       "HGlab01 <iobroker.fuelpricemonitor@gmail.com>"
     ],
     "keywords": [
-      "ioBroker",
       "Spritpreismonitor Österreich",
       "Benzin",
       "Diesel",
