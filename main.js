@@ -231,7 +231,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 await jsonExplorer.traverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }
 
-            await new Promise(r => setTimeout(r, 2000));
+            await jsonExplorer.sleep(2000);
             if (cheapest) await this.cheapestStation();
 
             await jsonExplorer.checkExpire('*');
