@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.5",
+    "version": "0.3.6-alpha.0",
     "news": {
+      "0.3.6-alpha.0": {
+        "en": "switch to Admin5 UI for configuration",
+        "de": "admin5 UI zur Konfiguration wechseln",
+        "ru": "перейти на Admin5 UI для конфигурации",
+        "pt": "mudar para Admin5 UI para configuração",
+        "nl": "vertaling:",
+        "fr": "passer à Admin5 UI pour la configuration",
+        "it": "passare a Admin5 UI per la configurazione",
+        "es": "cambiar a Admin5 UI para configuración",
+        "pl": "przełącza się do interfejsu Admin5 dla konfiguracji",
+        "uk": "перемикач до Admin5 UI для конфігурації",
+        "zh-cn": "改为:"
+      },
       "0.3.5": {
         "en": "Spread API calls\nBump ioBroker-jsonExplorer to 0.1.12",
         "de": "API-Anrufe verbreiten\nBump ioBroker-jsonExplorer bis 0,1.12",
@@ -80,19 +93,6 @@
         "pl": "Zajmuje się znalezieniem najniższych stacji w różnych miejscach",
         "uk": "Додати функцію для пошуку дешевих станцій по всій території",
         "zh-cn": "在所有地点寻找廉价试验站的附加特点"
-      },
-      "0.3.1": {
-        "en": "Add option to exclude closed gas stations (#407)",
-        "de": "Option hinzufügen, geschlossene Tankstellen auszuschließen (#407)",
-        "ru": "Добавить опцию для исключения закрытых АЗС (#407)",
-        "pt": "Adicionar opção para excluir estações de gás fechadas (#407)",
-        "nl": "Een optie om gesloten tankstations uit te sluiten",
-        "fr": "Ajouter une option pour exclure les stations de gaz fermées (#407)",
-        "it": "Aggiungi l'opzione per escludere stazioni di gas chiuse (#407)",
-        "es": "Add option to exclude closed gas stations (#407)",
-        "pl": "W celu wykluczenia zamkniętej stacji benzynowej (#407)",
-        "uk": "Додайте варіант виключення замкнених АЗС (#407)",
-        "zh-cn": "增加排除封闭气体站的选择(第407号)"
       }
     },
     "titleLang": {

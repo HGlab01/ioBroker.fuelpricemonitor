@@ -27,7 +27,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 0.3.6-alpha.0 (2023-08-04)
 * (HGlab01) switch to Admin5 UI for configuration
 
 ### 0.3.5 (2023-07-07)
@@ -45,9 +45,6 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
 * (HGlab01) Add feature to find cheapest stations over all locations (#365)
 * (HGlab01) Bump ioBroker-jsonExplorer to 0.1.10
 * (HGlab01) Bump axios to 1.2.1
-
-### 0.3.1 (2022-10-25)
-* (HGlab01) Add option to exclude closed gas stations (#407)
 
 ## License
 MIT License

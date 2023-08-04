@@ -1,4 +1,7 @@
 # Older changes
+## 0.3.1 (2022-10-25)
+* (HGlab01) Add option to exclude closed gas stations (#407)
+
 ## 0.3.0 (2022-08-30)
 * (HGlab01) !Breaking change! NodeJS 14.16 or higher required
 * (HGlab01) !Breaking change! ioBroker js-controller 4.0 or higher required
