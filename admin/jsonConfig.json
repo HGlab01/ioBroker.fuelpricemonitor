@@ -1,0 +1,113 @@
+{
+    "i18n": false,
+    "type": "tabs",
+    "items": {
+        "Fuel types": {
+            "type": "panel",
+            "label": "Fuel types",
+            "items": {
+                "_text1": {
+                    "type": "staticText",
+                    "text": "Choose your fuel types for your home location! Additional locations can be set in next tab."
+                },
+                "super": {
+                    "type": "checkbox",
+                    "newLine": true,
+                    "label": "Super",
+                    "default": false
+                },
+                "diesel": {
+                    "type": "checkbox",
+                    "label": "Diesel",
+                    "default": false
+                },
+                "gas": {
+                    "type": "checkbox",
+                    "label": "CNG",
+                    "default": false
+                }
+            }
+        },
+        "locations": {
+            "type": "panel",
+            "label": "Additional locations",
+            "items": {
+                "address": {
+                    "type": "table",
+                    "label": "Locations",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "location",
+                            "title": "Location",
+                            "filter": false,
+                            "sort": false
+                        },
+                        {
+                            "type": "number",
+                            "attr": "latitude",
+                            "title": "Latitude",
+                            "filter": false,
+                            "sort": false
+                        },
+                        {
+                            "type": "number",
+                            "attr": "longitude",
+                            "title": "Longitude",
+                            "filter": false,
+                            "sort": false
+                        },
+                        {
+                            "type": "select",
+                            "attr": "fuelType",
+                            "title": "Fuel type",
+                            "filter": false,
+                            "sort": false,
+                            "options": [
+                                {
+                                    "label": "Diesel",
+                                    "value": "DIE"
+                                },
+                                {
+                                    "label": "Super 95",
+                                    "value": "SUP"
+                                },
+                                {
+                                    "label": "CNG",
+                                    "value": "GAS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "_text1": {
+                    "type": "staticText",
+                    "text": "Latitude and Longitude can be calculated with this Calculator https://www.gps-coordinates.net/",
+                    "newLine": true
+                }
+            }
+        },
+        "settings": {
+            "type": "panel",
+            "label": "Additional settings",
+            "items": {
+                "useIDs": {
+                    "type": "checkbox",
+                    "newLine": true,
+                    "label": "Use IDs for sort",
+                    "default": false
+                },
+                "exlClosed": {
+                    "type": "checkbox",
+                    "label": "Exclude closed gas stations",
+                    "default": false
+                },
+                "cheapest": {
+                    "type": "checkbox",
+                    "label": "Show cheapest stations over all locations",
+                    "default": false
+                }
+            }
+        }
+    }
+}
