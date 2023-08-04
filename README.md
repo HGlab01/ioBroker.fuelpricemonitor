@@ -27,6 +27,9 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+### __WORK IN PROGRESS__
+* (HGlab01) switch to Admin5 UI for configuration
+
 ### 0.3.5 (2023-07-07)
 * (HGlab01) Spread API calls
 * (HGlab01) Bump ioBroker-jsonExplorer to 0.1.12
