@@ -79,6 +79,11 @@
                             ]
                         }
                     ]
+                },
+                "_text1": {
+                    "type": "staticText",
+                    "text": "Latitude and Longitude can be calculated with this Calculator https://www.gps-coordinates.net/",
+                    "newLine": true
                 }
             }
         },
