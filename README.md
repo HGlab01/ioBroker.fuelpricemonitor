@@ -27,7 +27,7 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### 0.3.6-alpha.0 (2023-08-04)
+### 0.3.6 (2023-08-10)
 * (HGlab01) switch to Admin5 UI for configuration
 
 ### 0.3.5 (2023-07-07)

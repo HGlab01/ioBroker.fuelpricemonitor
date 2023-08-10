@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.6-alpha.0",
+    "version": "0.3.6",
     "news": {
+      "0.3.6": {
+        "en": "switch to Admin5 UI for configuration",
+        "de": "admin5 UI zur Konfiguration wechseln",
+        "ru": "перейти на Admin5 UI для конфигурации",
+        "pt": "mudar para Admin5 UI para configuração",
+        "nl": "vertaling:",
+        "fr": "passer à Admin5 UI pour la configuration",
+        "it": "passare a Admin5 UI per la configurazione",
+        "es": "cambiar a Admin5 UI para configuración",
+        "pl": "przełącza się do interfejsu Admin5 dla konfiguracji",
+        "uk": "перемикач до Admin5 UI для конфігурації",
+        "zh-cn": "改为:"
+      },
       "0.3.6-alpha.0": {
         "en": "switch to Admin5 UI for configuration",
         "de": "admin5 UI zur Konfiguration wechseln",
@@ -80,19 +93,6 @@
         "pl": "Zamknięto najniższe stacje na wszystkich miejscach #(365)",
         "uk": "Додайте функцію, щоб знайти найдешевші станції по всій території #(365)",
         "zh-cn": "增加用于在所有地点找到最廉价的站(第65)号)"
-      },
-      "0.3.2-alpha.0": {
-        "en": "Add feature to find cheaptest stations over all locations",
-        "de": "Fügen Sie Feature hinzu, um die günstigsten Stationen über alle Standorte zu finden",
-        "ru": "Добавьте функцию, чтобы найти дешевые станции во всех местах",
-        "pt": "Adicionar recurso para encontrar estações mais baratas em todos os locais",
-        "nl": "Voeg een kenmerk toe om goedkope stations te vinden over alle locaties",
-        "fr": "Ajouter la fonctionnalité pour trouver les stations les moins chères sur tous les sites",
-        "it": "Aggiungi funzionalità per trovare stazioni più economiche in tutte le località",
-        "es": "Añadir característica para encontrar estaciones más baratas en todos los lugares",
-        "pl": "Zajmuje się znalezieniem najniższych stacji w różnych miejscach",
-        "uk": "Додати функцію для пошуку дешевих станцій по всій території",
-        "zh-cn": "在所有地点寻找廉价试验站的附加特点"
       }
     },
     "titleLang": {
