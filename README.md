@@ -27,6 +27,9 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+### __WORK IN PROGRESS__
+* (HGlab01) !Breaking change! NodeJS 16 or higher required
+
 ### 0.3.6 (2023-08-10)
 * (HGlab01) switch to Admin5 UI for configuration
 
