@@ -7,11 +7,11 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.2.0   | :white_check_mark: |
-| 0.1.4   | :x: |
-| 0.0.1   | :x:                |
+| 0.4.*0*   | :white_check_mark: |
+| 0.3.*   | :x: |
+| 0.2.*   | :x: |
 
 ## Reporting a Vulnerability
 
-Please report (suspected) security vulnerabilities to iobroker.followthesun@gmail.com.  
+Please report (suspected) security vulnerabilities to <myiobrokeradapters@gmail.com>.  
 If the issue is confirmed, we will release a patch as soon as possible depending on complexity but typically within a few days.
