@@ -1,4 +1,9 @@
 # Older changes
+## 0.3.2 (2022-12-16)
+* (HGlab01) Add feature to find cheapest stations over all locations (#365)
+* (HGlab01) Bump ioBroker-jsonExplorer to 0.1.10
+* (HGlab01) Bump axios to 1.2.1
+
 ## 0.3.1 (2022-10-25)
 * (HGlab01) Add option to exclude closed gas stations (#407)
 

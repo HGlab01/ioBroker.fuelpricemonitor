@@ -27,12 +27,12 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 0.4.0-alpha.0 (2023-11-28)
 * (HGlab01) Breaking changes
     - Node 18.0 or higher
     - ioBroker host (js-controller) 5.0 or higher
 * (HGlab01) Bump axios to 1.6.2
-    
+
 ### 0.3.6 (2023-08-10)
 * (HGlab01) switch to Admin5 UI for configuration
 
@@ -46,11 +46,6 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
 
 ### 0.3.3 (2022-12-22)
 * (HGlab01) Cheapest station now per fuel type (#445)
-
-### 0.3.2 (2022-12-16)
-* (HGlab01) Add feature to find cheapest stations over all locations (#365)
-* (HGlab01) Bump ioBroker-jsonExplorer to 0.1.10
-* (HGlab01) Bump axios to 1.2.1
 
 ## License
 MIT License
