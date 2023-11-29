@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.3.6",
+    "version": "0.4.0-alpha.0",
     "news": {
+      "0.4.0-alpha.0": {
+        "en": "Breaking changes\nNode 18.0 or higher\nioBroker host (js-controller) 5.0 or higher\nBump axios to 1.6.2",
+        "de": "Veränderungsraten\nNode 18.0 oder höher\nioBroker host (js-controller) 5.0 oder höher\nBump axios zu 1.6.2",
+        "ru": "Перерыв изменений\nNode 18.0 или выше\nioBroker host (js-controller) 5.0 или выше\nBump осье до 1.6.2",
+        "pt": "Alterações de ruptura\nNode 18.0 ou superior\nhospedeiro ioBroker (js-controller) 5.0 ou superior\nBump axios para 1.6.2",
+        "nl": "Breaking changes\nNode 18.0 of hoger\nioBroker gastheer (js-controller) 5,0 of hoger\nBump Axios naar 1.6.2",
+        "fr": "Changements de rupture\nNode 18.0 ou supérieur\nioBroker host (js-controller) 5.0 ou supérieur\nAxyose de bouillon à 1.6.2",
+        "it": "Cambiamenti di rottura\nNodo 18.0 o superiore\nioBroker host (js-controller) 5.0 o superiore\nAssio di bump a 1.6.2",
+        "es": "Cambios de ruptura\nNodo 18.0 o superior\nioBroker host (js-controller) 5.0 o superior\nAxios de bomba a 1.6.2",
+        "pl": "Zmiany\n18.0 lub więcej\nioBroker host (js-controller) 5.0 lub wyższe\nBump axios to 1.6.2 (ang.)",
+        "uk": "Зміни\nNode 18.0 або вище\nioBroker host (js-controller) 5.0 або вище\nБампер аксіос до 1.6.2",
+        "zh-cn": "断 变\n第18.0或更高\nio Broker收容(控制员)5.0或更高。\nBumpxios to 1.6.2"
+      },
       "0.3.6": {
         "en": "switch to Admin5 UI for configuration",
         "de": "admin5 UI zur Konfiguration wechseln",
@@ -80,19 +93,6 @@
         "pl": "Obecnie stacja Cheapest na paliwo typu #(445)",
         "uk": "Найдешевші станції тепер за типом палива #(445)",
         "zh-cn": "目前每种燃料类型(445)"
-      },
-      "0.3.2": {
-        "en": "Add feature to find cheapest stations over all locations (#365)",
-        "de": "Fügen Sie Feature hinzu, um billigste Stationen über alle Standorte zu finden #(365)",
-        "ru": "Добавить функцию, чтобы найти дешевые станции во всех местах #(365)",
-        "pt": "Adicionar recurso para encontrar estações mais baratas em todos os locais #(365)",
-        "nl": "Voeg het kenmerk toe om goedkope stations te vinden over alle locaties",
-        "fr": "Ajouter la fonctionnalité pour trouver les stations les moins chères sur tous les sites #(365)",
-        "it": "Aggiungi funzionalità per trovare stazioni più economiche in tutte le località #(365)",
-        "es": "Añadir característica para encontrar estaciones más baratas en todas las ubicaciones #(365)",
-        "pl": "Zamknięto najniższe stacje na wszystkich miejscach #(365)",
-        "uk": "Додайте функцію, щоб знайти найдешевші станції по всій території #(365)",
-        "zh-cn": "增加用于在所有地点找到最廉价的站(第65)号)"
       }
     },
     "titleLang": {
@@ -122,7 +122,7 @@
       "zh-cn": "Fuel Price Monitor Austria"
     },
     "authors": [
-      "HGlab01 <iobroker.fuelpricemonitor@gmail.com>"
+      "HGlab01 <myiobrokeradapters@gmail.com>"
     ],
     "keywords": [
       "Spritpreismonitor Österreich",
@@ -152,7 +152,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=4.0.0"
+        "js-controller": ">=5.0.0"
       }
     ],
     "plugins": {
