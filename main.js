@@ -13,6 +13,7 @@ const axios = require('axios');
 const jsonExplorer = require('iobroker-jsonexplorer');
 const stateAttr = require(`${__dirname}/lib/stateAttr.js`); // Load attribute library
 const isOnline = require('@esm2cjs/is-online').default;
+const { version } = require('./package.json');
 
 //global variables
 let dieselSelected = false;
@@ -47,6 +48,7 @@ class FuelPriceMonitor extends utils.Adapter {
      */
     async onReady() {
         // Initialize adapter
+        jsonExplorer.sendVersionInfo(version);
         //get adapter configuration
         this.log.info('Started with JSON-Explorer version ' + jsonExplorer.version);
         dieselSelected = this.config.diesel;
