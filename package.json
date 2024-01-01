@@ -28,7 +28,7 @@
   "dependencies": {
     "@esm2cjs/is-online": "^10.0.0",
     "@iobroker/adapter-core": "^3.0.4",
-    "axios": "^1.6.2",
+    "axios": "^1.6.3",
     "iobroker-jsonexplorer": "0.1.15"
   },
   "deprecated": false,
