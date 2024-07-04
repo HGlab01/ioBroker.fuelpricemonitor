@@ -115,7 +115,7 @@ class FuelPriceMonitor extends utils.Adapter {
             callback();
         }
     }
-    
+
     /*
     /**
      * Is called if a subscribed state changes
