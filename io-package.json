@@ -130,7 +130,11 @@
       "Diesel",
       "Treibstoff"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "tier": 3,
     "platform": "Javascript/Node.js",
     "main": "main.js",
     "icon": "fuelpricemonitor.png",
