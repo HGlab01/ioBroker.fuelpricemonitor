@@ -1,4 +1,7 @@
 # Older changes
+## 0.3.3 (2022-12-22)
+* (HGlab01) Cheapest station now per fuel type (#445)
+
 ## 0.3.2 (2022-12-16)
 * (HGlab01) Add feature to find cheapest stations over all locations (#365)
 * (HGlab01) Bump ioBroker-jsonExplorer to 0.1.10
