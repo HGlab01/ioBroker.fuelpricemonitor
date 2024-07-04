@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.4.1-alpha.0",
+    "version": "0.4.1",
     "news": {
+      "0.4.1": {
+        "en": "fix \"Method \"deleteDevice\" is deprecated\" (#692)\nBump axios to 1.7.2\nBump ioBroker-jsonExplorer to 0.1.16",
+        "de": "fix \"Methode \"deleteDevice\" ist depreciert\" (#692)\nBump axios bis 1.7.2\nBump ioBroker-jsonExplorer bis 0,1.16",
+        "ru": "исправить \"Method \"deleteDevice\" депрецировано\" (#692)\nBump axios to 1.7.2\nBump ioBroker-jsonExplorer до 0.1.16",
+        "pt": "corrigir \"Method \"deleteDevice\" é depreciado\" (#692)\nBump axios para 1.7.2\nBump ioBroker-jsonExplorer para 0.1.16",
+        "nl": "fix \"Methode \"deleteDevice\" is verouderd\" (#692)\nBump axios naar 1.7.2\nBump ioBroker-jsonExplorer naar 0,1.16",
+        "fr": "correction \"La méthode \"deleteDevice\" est obsolète\" (#692)\nAxios de pompe à 1.7.2\nBump ioBroker-jsonExplorer à 0,1.16",
+        "it": "fix \"Method \"deleteDevice\" è deprecato\" (#692)\nAssio di bump a 1.7.2\nBump ioBroker-jsonExplorer a 0.1.16",
+        "es": "\"Method \"deleteDevice\" está deprecatado\" (#692)\nBump axios a 1.7.2\nBump ioBroker-jsonExplorer a 0,1.16",
+        "pl": "fix \"Method\" deleteDevice \"is deprecated\" (# 692)\nAxios Bump do 1.7.2\nBump jOBroker- jsonExplorer do 0.1.16",
+        "uk": "виправити \"Method \"deleteDevice\" (#692)\nБампер аксіос до 1.7.2\nBump ioBroker-jsonExplorer до 0.1.16",
+        "zh-cn": "固定“ deleteDevice” (# 692)\n横轴改为1.7.2\n弹跳 ioBroker-json 爆炸器改为0.1.16"
+      },
       "0.4.1-alpha.0": {
         "en": "fix \"Method \"deleteDevice\" is deprecated\" (#692)\nBump axios to 1.7.2\nBump ioBroker-jsonExplorer to 0.1.16",
         "de": "fix \"Methode \"deleteDevice\" ist depreciert\" (#692)\nBump axios bis 1.7.2\nBump ioBroker-jsonExplorer bis 0,1.16",
@@ -80,19 +93,6 @@
         "pl": "Spreaded API call\nBump ioBroker-jsonExplorer (ang.)",
         "uk": "Спред API виклики\nBump ioBroker-jsonExplorer до 0.1.12",
         "zh-cn": "宣传\nBumpio Broker-json Explorer to 0.12"
-      },
-      "0.3.4": {
-        "en": "Cheapest station from experimental to stable\nBump axios to 1.3.2",
-        "de": "Günstigste Station von experimentell bis stabil\nBump axios zu 1.3.2",
-        "ru": "Самая дешевая станция от экспериментального до стабильного\nBump осье до 1.3.2",
-        "pt": "Estação mais barata de experimental para estável\nBump axios para 1.3.2",
-        "nl": "Cheapest station van experimenteel\nBump Axios naar 1,3,2",
-        "fr": "Station la moins chère de expérimental à stable\nAxios de la boue au 1.3.2",
-        "it": "Stazione più economica da sperimentale a stabile\nAssociazioni di bumpi a 1.3.2",
-        "es": "Estación más barata de experimental a estable\nAxios de bomba a 1.3.2",
-        "pl": "Stacja Cheapest od eksperymentalnej do stabilnej stabilności\nBump axios (ang.)",
-        "uk": "Найдешевші станції від експериментального до стабільного\nБампер аксіос до 1.3.2",
-        "zh-cn": "试验到稳定地点\nBumpxios to 1.3.2"
       }
     },
     "titleLang": {
