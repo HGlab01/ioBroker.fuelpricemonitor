@@ -84,12 +84,12 @@ class FuelPriceMonitor extends utils.Adapter {
         else {
             this.log.debug('Internet connection detected. Everything fine!');
         }
-        this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
-        this.longitude = Math.round(obj.common.longitude * 100000) / 100000;
+        this.latitude = Math.round(parseFloat(obj.common.latitude) * 100000) / 100000;
+        this.longitude = Math.round(parseFloat(obj.common.longitude) * 100000) / 100000;
         this.log.debug('LATITUDE from config: ' + this.latitude);
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
-        const delay = Math.floor(Math.random() * 30000);
+        const delay = Math.floor(Math.random() * 30000); //30000
         this.log.info(`Delay execution by ${delay}ms to better spread API calls`);
         await jsonExplorer.sleep(delay);
 
@@ -379,7 +379,7 @@ class FuelPriceMonitor extends utils.Adapter {
         }
         oldID = 0;
         this.log.debug('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
-        await jsonExplorer.traverseJson(jsonObjectGAS, 'cheapestOverAll_GAS', true, false);
+        await jsonExplorer.traverseJson(jsonObjectGAS, 'cheapestOverAll_CNG', true, false);
     }
 
     /**
