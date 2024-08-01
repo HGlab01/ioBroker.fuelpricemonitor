@@ -23,6 +23,7 @@ let useIDs = false;
 let exlClosed = false;
 let cheapest = false;
 
+// @ts-ignore
 class FuelPriceMonitor extends utils.Adapter {
 
     /**
@@ -111,7 +112,7 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.info('cleaned everything up...');
             this.unloaded = true;
             callback();
-        } catch (e) {
+        } catch  {
             callback();
         }
     }
@@ -159,8 +160,8 @@ class FuelPriceMonitor extends utils.Adapter {
                 .catch(error => {
                     console.error('Error in getData(): ' + error);
                     reject(error);
-                })
-        })
+                });
+        });
     }
 
     /**
@@ -192,7 +193,7 @@ class FuelPriceMonitor extends utils.Adapter {
                 await jsonExplorer.deleteEverything('0_Home_CNG');
             }
 
-            //go trough all configured locations 
+            //go trough all configured locations
             for (const i in this.config.address) {
                 // @ts-ignore
                 let location = this.config.address[i].location;
