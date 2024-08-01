@@ -112,7 +112,7 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.info('cleaned everything up...');
             this.unloaded = true;
             callback();
-        } catch (e) {
+        } catch  {
             callback();
         }
     }
