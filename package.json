@@ -26,6 +26,7 @@
     "Treibstoff"
   ],
   "dependencies": {
+    "@alcalzone/release-script-plugin-license": "^3.7.0",
     "@esm2cjs/is-online": "^10.0.0",
     "@iobroker/adapter-core": "^3.1.6",
     "axios": "^1.7.4",
@@ -61,5 +62,13 @@
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit",
     "release": "release-script"
-  }
+  },
+  "files": [
+    "admin/",
+    "lib/*.js",
+    "main.js",
+    "io-package.json",
+    "LICENSE",
+    "*.md"
+  ]
 }
