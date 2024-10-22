@@ -14,17 +14,32 @@
                     "type": "checkbox",
                     "newLine": true,
                     "label": "Super",
-                    "default": false
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 2,
+                    "xl": 2
                 },
                 "diesel": {
                     "type": "checkbox",
                     "label": "Diesel",
-                    "default": false
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 2,
+                    "xl": 2
                 },
                 "gas": {
                     "type": "checkbox",
                     "label": "CNG",
-                    "default": false
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 2,
+                    "xl": 2
                 }
             }
         },
@@ -95,17 +110,32 @@
                     "type": "checkbox",
                     "newLine": true,
                     "label": "Use IDs for sort",
-                    "default": false
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 3,
+                    "xl": 3
                 },
                 "exlClosed": {
                     "type": "checkbox",
                     "label": "Exclude closed gas stations",
-                    "default": false
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 3,
+                    "xl": 3
                 },
                 "cheapest": {
                     "type": "checkbox",
                     "label": "Show cheapest stations over all locations",
-                    "default": false
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 3,
+                    "xl": 3
                 }
             }
         }
