@@ -8,7 +8,12 @@
             "items": {
                 "_text1": {
                     "type": "staticText",
-                    "text": "Choose your fuel types for your home location! Additional locations can be set in next tab."
+                    "text": "Choose your fuel types for your home location! Additional locations can be set in next tab.",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
                 },
                 "super": {
                     "type": "checkbox",
@@ -50,6 +55,11 @@
                 "address": {
                     "type": "table",
                     "label": "Locations",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
                     "items": [
                         {
                             "type": "text",
@@ -98,7 +108,12 @@
                 "_text1": {
                     "type": "staticText",
                     "text": "Latitude and Longitude can be calculated with this Calculator https://www.gps-coordinates.net/",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
                 }
             }
         },
