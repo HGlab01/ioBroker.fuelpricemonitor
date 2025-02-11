@@ -31,7 +31,6 @@
     "axios": "^1.7.9",
     "iobroker-jsonexplorer": "^0.1.16"
   },
-  "deprecated": false,
   "description": "Fuel Price Monitor Austria",
   "devDependencies": {
     "@alcalzone/release-script": "^3.8.0",
