@@ -28,7 +28,7 @@
   "dependencies": {
     "@esm2cjs/is-online": "^10.0.0",
     "@iobroker/adapter-core": "^3.2.3",
-    "axios": "^1.7.9",
+    "axios": "^1.8.2",
     "iobroker-jsonexplorer": "^0.1.16"
   },
   "description": "Fuel Price Monitor Austria",
