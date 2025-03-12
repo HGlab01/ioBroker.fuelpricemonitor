@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "news": {
+      "0.4.2": {
+        "en": "Bump axios to 1.8.3",
+        "de": "Bump axios zu 1.8.3",
+        "ru": "Аксиос удара до 1,8.3",
+        "pt": "Bump axios para 1.8.3",
+        "nl": "Bump axio's tot 1.8.3",
+        "fr": "Axios bouffés à 1.8.3",
+        "it": "Assio di bump a 1.8.3",
+        "es": "Axios de bomba a 1.8.3",
+        "pl": "Axios bump do 1.8.3",
+        "uk": "Бампер аксіос до 1.8.3",
+        "zh-cn": "横轴改为1.8.3"
+      },
       "0.4.1": {
         "en": "fix \"Method \"deleteDevice\" is deprecated\" (#692)\nBump axios to 1.7.2\nBump ioBroker-jsonExplorer to 0.1.16",
         "de": "fix \"Methode \"deleteDevice\" ist depreciert\" (#692)\nBump axios bis 1.7.2\nBump ioBroker-jsonExplorer bis 0,1.16",
@@ -80,19 +93,6 @@
         "pl": "przełącza się do interfejsu Admin5 dla konfiguracji",
         "uk": "перемикач до Admin5 UI для конфігурації",
         "zh-cn": "改为:"
-      },
-      "0.3.5": {
-        "en": "Spread API calls\nBump ioBroker-jsonExplorer to 0.1.12",
-        "de": "API-Anrufe verbreiten\nBump ioBroker-jsonExplorer bis 0,1.12",
-        "ru": "Spread API звонки\nBump ioBroker-jsonExplorer до 0.1.12",
-        "pt": "Abrir chamadas API\nBump ioBroker-jsonExplorer para 0.1.12",
-        "nl": "Vertaling:\nBump ioBroker-JsonExplorer tot 0.1.12",
-        "fr": "Spread API appels\nBump ioBroker-jsonExplorer to 0.1.12",
-        "it": "Distribuire le chiamate API\nBump ioBroker-jsonExplorer a 0.1.12",
-        "es": "Spread API llamadas\nBump ioBroker-jsonExplorer to 0.1.12",
-        "pl": "Spreaded API call\nBump ioBroker-jsonExplorer (ang.)",
-        "uk": "Спред API виклики\nBump ioBroker-jsonExplorer до 0.1.12",
-        "zh-cn": "宣传\nBumpio Broker-json Explorer to 0.12"
       }
     },
     "titleLang": {

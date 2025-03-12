@@ -1,4 +1,8 @@
 # Older changes
+## 0.3.4 (2023-02-05)
+* (HGlab01) Cheapest station from experimental to stable
+* (HGlab01) Bump axios to 1.3.2
+
 ## 0.3.3 (2022-12-22)
 * (HGlab01) Cheapest station now per fuel type (#445)
 
