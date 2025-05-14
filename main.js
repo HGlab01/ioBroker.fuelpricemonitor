@@ -39,8 +39,8 @@ class FuelPriceMonitor extends utils.Adapter {
         //this.on('stateChange', this.onStateChange.bind(this));
         //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        this.latitude = 0;
-        this.longitude = 0;
+        /** @type {number} */
+        this.latitude = 0, this.longitude = 0;
         jsonExplorer.init(this, stateAttr);
     }
 
@@ -70,8 +70,8 @@ class FuelPriceMonitor extends utils.Adapter {
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
-        this.latitude = parseFloat(obj.common.latitude);
-        this.longitude = parseFloat(obj.common.longitude);
+        if (obj?.common?.latitude != null) this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
+        if (obj?.common?.longitude != null) this.longitude = Math.round(obj.common.longitude * 100000) / 100000;
         if (!this.latitude || !this.longitude) {
             this.log.error('Latitude or Longitude not set in main configuration!');
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
@@ -85,8 +85,6 @@ class FuelPriceMonitor extends utils.Adapter {
         else {
             this.log.debug('Internet connection detected. Everything fine!');
         }
-        this.latitude = Math.round(parseFloat(obj.common.latitude) * 100000) / 100000;
-        this.longitude = Math.round(parseFloat(obj.common.longitude) * 100000) / 100000;
         this.log.debug('LATITUDE from config: ' + this.latitude);
         this.log.debug('LONGITUDE from config: ' + this.longitude);
 
@@ -112,7 +110,7 @@ class FuelPriceMonitor extends utils.Adapter {
             this.log.info('cleaned everything up...');
             this.unloaded = true;
             callback();
-        } catch  {
+        } catch {
             callback();
         }
     }
@@ -158,8 +156,15 @@ class FuelPriceMonitor extends utils.Adapter {
                     }
                 })
                 .catch(error => {
-                    console.error('Error in getData(): ' + error);
-                    reject(error);
+                    if (error?.response?.data) {
+                        console.error('Error in getData(): ' + error + ' with response ' + JSON.stringify(error.response.data));
+                        this.log.error('Error to get market prices ' + error + ' with response ' + JSON.stringify(error.response.data));
+                    } else {
+                        console.error('Error in getData(): ' + error);
+                        this.log.error('Error to get market prices ' + error);
+                    }
+                    if (error?.response?.status >= 500) resolve(null);
+                    else reject(error);
                 });
         });
     }
