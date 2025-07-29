@@ -23,11 +23,9 @@ let useIDs = false;
 let exlClosed = false;
 let cheapest = false;
 
-// @ts-ignore
 class FuelPriceMonitor extends utils.Adapter {
-
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options] is the options to use for the adapter
      */
     constructor(options) {
         super({
@@ -39,8 +37,7 @@ class FuelPriceMonitor extends utils.Adapter {
         //this.on('stateChange', this.onStateChange.bind(this));
         //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        /** @type {number} */
-        this.latitude = 0, this.longitude = 0;
+        ((this.latitude = 0), (this.longitude = 0));
         jsonExplorer.init(this, stateAttr);
     }
 
@@ -51,14 +48,22 @@ class FuelPriceMonitor extends utils.Adapter {
         // Initialize adapter
         jsonExplorer.sendVersionInfo(version);
         //get adapter configuration
-        this.log.info('Started with JSON-Explorer version ' + jsonExplorer.version);
+        this.log.info(`Started with JSON-Explorer version ${jsonExplorer.version}`);
         dieselSelected = this.config.diesel;
         superSelected = this.config.super;
         gasSelected = this.config.gas;
-        this.log.debug(`Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`);
-        if (this.config.useIDs) useIDs = this.config.useIDs;
-        if (this.config.exlClosed) exlClosed = this.config.exlClosed;
-        if (this.config.cheapest) cheapest = this.config.cheapest;
+        this.log.debug(
+            `Diesel | Super | CNG for location Home selected : ${dieselSelected} | ${superSelected} | ${gasSelected}`,
+        );
+        if (this.config.useIDs) {
+            useIDs = this.config.useIDs;
+        }
+        if (this.config.exlClosed) {
+            exlClosed = this.config.exlClosed;
+        }
+        if (this.config.cheapest) {
+            cheapest = this.config.cheapest;
+        }
 
         //subscribe relevant states changes
         //this.subscribeStates('STATENAME');
@@ -70,23 +75,27 @@ class FuelPriceMonitor extends utils.Adapter {
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
-        if (obj?.common?.latitude != null) this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
-        if (obj?.common?.longitude != null) this.longitude = Math.round(obj.common.longitude * 100000) / 100000;
+        if (obj?.common?.latitude != null) {
+            this.latitude = Math.round(obj.common.latitude * 100000) / 100000;
+        }
+        if (obj?.common?.longitude != null) {
+            this.longitude = Math.round(obj.common.longitude * 100000) / 100000;
+        }
         if (!this.latitude || !this.longitude) {
             this.log.error('Latitude or Longitude not set in main configuration!');
             this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
             return;
         }
-        if (await isOnline() == false) {
+        if ((await isOnline()) == false) {
             this.log.error('No internet connection detected');
             this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
             return;
         }
-        else {
-            this.log.debug('Internet connection detected. Everything fine!');
-        }
-        this.log.debug('LATITUDE from config: ' + this.latitude);
-        this.log.debug('LONGITUDE from config: ' + this.longitude);
+
+        this.log.debug('Internet connection detected. Everything fine!');
+
+        this.log.debug(`LATITUDE from config: ${this.latitude}`);
+        this.log.debug(`LONGITUDE from config: ${this.longitude}`);
 
         const delay = Math.floor(Math.random() * 30000); //30000
         this.log.info(`Delay execution by ${delay}ms to better spread API calls`);
@@ -103,7 +112,8 @@ class FuelPriceMonitor extends utils.Adapter {
 
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
-     * @param {() => void} callback
+     *
+     * @param {() => void} callback is the callback that has to be called under any circumstances!
      */
     onUnload(callback) {
         try {
@@ -134,9 +144,10 @@ class FuelPriceMonitor extends utils.Adapter {
 
     /**
      * Retrieves fuel data from REST-API
+     *
      * @param {string} fuelType can be DIE or SUP or GAS
-     * @param {number} latitude
-     * @param {number} longitude
+     * @param {number} latitude is the latitude of the location
+     * @param {number} longitude is the longitude of the location
      */
     async getData(fuelType, latitude, longitude) {
         let includeClosed = !exlClosed;
@@ -144,9 +155,10 @@ class FuelPriceMonitor extends utils.Adapter {
         this.log.debug(`API-Call ${uri}`);
         console.log(`API-Call ${uri}`);
         return new Promise((resolve, reject) => {
-            // @ts-ignore
-            axios.get(uri)
-                .then((response) => {
+            axios
+                // @ts-expect-error // eslint-disable-next-line no-undef
+                .get(uri)
+                .then(response => {
                     if (!response || !response.data) {
                         throw new Error(`Respone empty for URL ${uri} with status code ${response.status}`);
                     } else {
@@ -157,14 +169,21 @@ class FuelPriceMonitor extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error?.response?.data) {
-                        console.error('Error in getData(): ' + error + ' with response ' + JSON.stringify(error.response.data));
-                        this.log.error('Error to get market prices ' + error + ' with response ' + JSON.stringify(error.response.data));
+                        console.error(
+                            `Error in getData(): ${error} with response ${JSON.stringify(error.response.data)}`,
+                        );
+                        this.log.error(
+                            `Error to get market prices ${error} with response ${JSON.stringify(error.response.data)}`,
+                        );
                     } else {
-                        console.error('Error in getData(): ' + error);
-                        this.log.error('Error to get market prices ' + error);
+                        console.error(`Error in getData(): ${error}`);
+                        this.log.error(`Error to get market prices ${error}`);
                     }
-                    if (error?.response?.status >= 500) resolve(null);
-                    else reject(error);
+                    if (error?.response?.status >= 500) {
+                        resolve(null);
+                    } else {
+                        reject(error);
+                    }
                 });
         });
     }
@@ -200,13 +219,13 @@ class FuelPriceMonitor extends utils.Adapter {
 
             //go trough all configured locations
             for (const i in this.config.address) {
-                // @ts-ignore
+                // @ts-expect-error location exists
                 let location = this.config.address[i].location;
-                // @ts-ignore
+                // @ts-expect-error latitude exists
                 let latitude = parseFloat(this.config.address[i].latitude);
-                // @ts-ignore
+                // @ts-expect-error longitude exists
                 let longitude = parseFloat(this.config.address[i].longitude);
-                // @ts-ignore
+                // @ts-expect-error fuelType exists
                 let fuelType = this.config.address[i].fuelType;
 
                 if (!location) {
@@ -225,22 +244,32 @@ class FuelPriceMonitor extends utils.Adapter {
                 latitude = Math.round(latitude * 100000) / 100000;
                 longitude = Math.round(longitude * 100000) / 100000;
 
-                this.log.debug(`Location | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} | ${fuelType}`);
+                this.log.debug(
+                    `Location | Latitude | Longitude | Fueltype: ${location} | ${latitude} | ${longitude} | ${fuelType}`,
+                );
 
                 //call API and create states
                 result = await this.getData(fuelType, latitude, longitude);
                 this.log.debug(`JSON-Response for ${location}: ${JSON.stringify(result)}`);
                 console.log(`JSON-Response for ${location}: ${JSON.stringify(result)}`);
                 switch (fuelType) {
-                    case 'DIE': fuelType = 'Diesel'; break;
-                    case 'SUP': fuelType = 'Super95'; break;
-                    case 'GAS': fuelType = 'CNG'; break;
+                    case 'DIE':
+                        fuelType = 'Diesel';
+                        break;
+                    case 'SUP':
+                        fuelType = 'Super95';
+                        break;
+                    case 'GAS':
+                        fuelType = 'CNG';
+                        break;
                 }
                 await jsonExplorer.traverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }
 
             await jsonExplorer.sleep(2000);
-            if (cheapest) await this.cheapestStation();
+            if (cheapest) {
+                await this.cheapestStation();
+            }
 
             await jsonExplorer.checkExpire('*');
 
@@ -254,7 +283,6 @@ class FuelPriceMonitor extends utils.Adapter {
                     await jsonExplorer.deleteEverything(statename[2]);
                 }
             }
-
         } catch (error) {
             let eMsg = `Error in ExecuteRequest(): ${error})`;
             this.log.error(eMsg);
@@ -267,27 +295,50 @@ class FuelPriceMonitor extends utils.Adapter {
 
     async cheapestStation() {
         let amountSates = await this.getStatesAsync('*.prices.0.amount');
-        let listOfPricesDIE = [], listOfPricesSUP = [], listOfPricesGAS = [];
-        let iDIE = 0, iSUP = 0, iGAS = 0;
+        let listOfPricesDIE = [],
+            listOfPricesSUP = [],
+            listOfPricesGAS = [];
+        let iDIE = 0,
+            iSUP = 0,
+            iGAS = 0;
         for (const idS in amountSates) {
-            this.log.debug('Check cheapestStation() for ' + idS);
+            this.log.debug(`Check cheapestStation() for ${idS}`);
             let state = await this.getStateAsync(idS);
             let statename = idS.split('.');
             let stationAddress = '';
 
-            let nameState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.name`);
-            let addressState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.address`);
-            let cityState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.city`);
-            let postalCodeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.postalCode`);
-            let fuelTypeState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.prices.0.fuelType`);
-            let idState = await this.getStateAsync(`${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.id`);
+            let nameState = await this.getStateAsync(
+                `${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.name`,
+            );
+            let addressState = await this.getStateAsync(
+                `${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.address`,
+            );
+            let cityState = await this.getStateAsync(
+                `${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.city`,
+            );
+            let postalCodeState = await this.getStateAsync(
+                `${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.location.postalCode`,
+            );
+            let fuelTypeState = await this.getStateAsync(
+                `${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.prices.0.fuelType`,
+            );
+            let idState = await this.getStateAsync(
+                `${statename[0]}.${statename[1]}.${statename[2]}.${statename[3]}.id`,
+            );
 
-            if (cityState && addressState && postalCodeState && addressState.val && cityState.val && postalCodeState.val) {
+            if (
+                cityState &&
+                addressState &&
+                postalCodeState &&
+                addressState.val &&
+                cityState.val &&
+                postalCodeState.val
+            ) {
                 stationAddress = `${postalCodeState.val} ${cityState.val}, ${addressState.val}`;
             }
-            let stationName = (!nameState || !nameState.val) ? '' : String(nameState.val);
-            let fuelType = (!fuelTypeState || !fuelTypeState.val) ? '' : String(fuelTypeState.val);
-            let id = (!idState || !idState.val) ? 0 : Number(idState.val);
+            let stationName = !nameState || !nameState.val ? '' : String(nameState.val);
+            let fuelType = !fuelTypeState || !fuelTypeState.val ? '' : String(fuelTypeState.val);
+            let id = !idState || !idState.val ? 0 : Number(idState.val);
 
             if (state && state.val) {
                 if (fuelType == 'DIE') {
@@ -339,61 +390,72 @@ class FuelPriceMonitor extends utils.Adapter {
             return a['amount'] - b['amount'];
         });
 
-        let jsonObjectDIE = [], jsonObjectSUP = [], jsonObjectGAS = [];
+        let jsonObjectDIE = [],
+            jsonObjectSUP = [],
+            jsonObjectGAS = [];
         let oldID = 0;
 
         for (const station of listOfPricesDIE) {
             let line = {
-                'amount': station['amount'],
-                'address': station['address'],
-                'name': station['name'],
-                'fuelType': station['fuelType'],
-                'id': station['id']
+                amount: station['amount'],
+                address: station['address'],
+                name: station['name'],
+                fuelType: station['fuelType'],
+                id: station['id'],
             };
-            if (station['id'] != oldID) jsonObjectDIE.push(line);
+            if (station['id'] != oldID) {
+                jsonObjectDIE.push(line);
+            }
             oldID = station['id'];
         }
         oldID = 0;
-        this.log.debug('cheapestStation() result DIE is ' + JSON.stringify(jsonObjectDIE));
+        this.log.debug(`cheapestStation() result DIE is ${JSON.stringify(jsonObjectDIE)}`);
         await jsonExplorer.traverseJson(jsonObjectDIE, 'cheapestOverAll_DIE', true, false);
 
         for (const station of listOfPricesSUP) {
             let line = {
-                'amount': station['amount'],
-                'address': station['address'],
-                'name': station['name'],
-                'fuelType': station['fuelType'],
-                'id': station['id']
+                amount: station['amount'],
+                address: station['address'],
+                name: station['name'],
+                fuelType: station['fuelType'],
+                id: station['id'],
             };
-            if (station['id'] != oldID) jsonObjectSUP.push(line);
+            if (station['id'] != oldID) {
+                jsonObjectSUP.push(line);
+            }
             oldID = station['id'];
         }
         oldID = 0;
-        this.log.debug('cheapestStation() result SUP is ' + JSON.stringify(jsonObjectSUP));
+        this.log.debug(`cheapestStation() result SUP is ${JSON.stringify(jsonObjectSUP)}`);
         await jsonExplorer.traverseJson(jsonObjectSUP, 'cheapestOverAll_SUP', true, false);
 
         for (const station of listOfPricesGAS) {
             let line = {
-                'amount': station['amount'],
-                'address': station['address'],
-                'name': station['name'],
-                'fuelType': station['fuelType'],
-                'id': station['id']
+                amount: station['amount'],
+                address: station['address'],
+                name: station['name'],
+                fuelType: station['fuelType'],
+                id: station['id'],
             };
-            if (station['id'] != oldID) jsonObjectGAS.push(line);
+            if (station['id'] != oldID) {
+                jsonObjectGAS.push(line);
+            }
             oldID = station['id'];
         }
         oldID = 0;
-        this.log.debug('cheapestStation() result GAS is ' + JSON.stringify(jsonObjectGAS));
+        this.log.debug(`cheapestStation() result GAS is ${JSON.stringify(jsonObjectGAS)}`);
         await jsonExplorer.traverseJson(jsonObjectGAS, 'cheapestOverAll_CNG', true, false);
     }
 
     /**
      * Handles sentry message
+     *
      * @param {any} errorObject Error message for sentry
      */
     sendSentry(errorObject) {
-        if (errorObject.message && errorObject.message.includes('ETIMEDOUT')) return;
+        if (errorObject.message && errorObject.message.includes('ETIMEDOUT')) {
+            return;
+        }
         try {
             if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
                 const sentryInstance = this.getPluginInstance('sentry');
@@ -407,13 +469,13 @@ class FuelPriceMonitor extends utils.Adapter {
     }
 }
 
-// @ts-ignore parent is a valid property on module
+// @ts-expect-error parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options] is the options to use for the adapter
      */
-    module.exports = (options) => new FuelPriceMonitor(options);
+    module.exports = options => new FuelPriceMonitor(options);
 } else {
     // otherwise start the instance directly
     new FuelPriceMonitor();
