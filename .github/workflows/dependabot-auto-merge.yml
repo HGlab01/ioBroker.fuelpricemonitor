@@ -47,23 +47,23 @@ jobs:
               echo "::notice::Detected MINOR update from $OLD to $NEW"
             else
               echo "version_change=major" >> $GITHUB_OUTPUT
-              echo "::warning::Detected MAJOR update from $OLD to $NEW – skipping auto-merge"
+              echo "::notice::Detected MAJOR update from $OLD to $NEW – skipping auto-merge"
             fi
           else
             echo "version_change=unknown" >> $GITHUB_OUTPUT
-            echo "::warning::Could not parse SemVer from PR title. Skipping merge for safety."
+            echo "::notice::Could not parse SemVer from PR title. Skipping auto-merge."
           fi
           echo "::endgroup::"
 
-      # --- DevDependency-Erkennung aus PR-Body ---
+      # --- DevDependency-Erkennung aus dem PR-Titel ---
       - name: Check if PR targets a devDependency
         id: devcheck
         run: |
-          BODY="${{ github.event.pull_request.body }}"
-          echo "::group::Checking for devDependency in PR body"
-          echo "PR body: $BODY"
+          TITLE="${{ github.event.pull_request.title }}"
+          echo "::group::Checking for devDependency in PR title"
+          echo "PR title: $TITLE"
 
-          if echo "$BODY" | grep -iq "dev dependency"; then
+          if echo "$TITLE" | grep -iq "deps-dev"; then
             echo "is_dev_dependency=true" >> $GITHUB_OUTPUT
             echo "::notice::PR targets a devDependency."
           else
