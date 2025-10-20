@@ -85,7 +85,7 @@ jobs:
           if [[ "${{ steps.devcheck.outputs.is_dev_dependency }}" == "true" ]]; then
             TYPE_LABEL="dev-dependency"
           else
-            TYPE_LABEL="dependency"
+            # TYPE_LABEL="dependency"
           fi
       
           # SemVer
