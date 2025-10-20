@@ -71,6 +71,32 @@ jobs:
             echo "::notice::PR does not target a devDependency."
           fi
           echo "::endgroup::"
+          
+      # --- Set labels ---
+      - name: Add labels based on SemVer and dependency type
+        env:
+          GH_TOKEN: ${{ secrets.AUTO_MERGE_TOKEN }}
+        run: |
+          NUMBER=${{ github.event.pull_request.number }}
+          TYPE_LABEL=""
+          SEMVER_LABEL=""
+      
+          # Dependency-Typ
+          if [[ "${{ steps.devcheck.outputs.is_dev_dependency }}" == "true" ]]; then
+            TYPE_LABEL="dev-dependency"
+          else
+            TYPE_LABEL="dependency"
+          fi
+      
+          # SemVer
+          case "${{ steps.version.outputs.version_change }}" in
+            patch) SEMVER_LABEL="patch" ;;
+            minor) SEMVER_LABEL="minor" ;;
+            major) SEMVER_LABEL="major" ;;
+          esac
+      
+          echo "Adding labels: $TYPE_LABEL, $SEMVER_LABEL"
+          gh pr edit "$NUMBER" --add-label "$TYPE_LABEL" --add-label "$SEMVER_LABEL"
 
       # --- Merge-Schritt ---
       - name: Enable Auto-Merge if patch or minor devDependency
