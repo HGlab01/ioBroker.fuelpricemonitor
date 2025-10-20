@@ -83,6 +83,5 @@ jobs:
           echo "Version type: ${{ steps.version.outputs.version_change }}"
           echo "DevDependency: ${{ steps.devcheck.outputs.is_dev_dependency }}"
           echo "PR #${{ github.event.pull_request.number }} will be merged."
-          gh auth login --with-token <<< "$GH_TOKEN"
           gh pr merge "${{ github.event.pull_request.number }}" --auto --merge --delete-branch
           echo "::endgroup::"
