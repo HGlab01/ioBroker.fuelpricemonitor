@@ -1,27 +1,54 @@
-# Automatically merge Dependabot PRs when version comparison is within the range
-# that is configured in .github/auto-merge.yml
-
 name: Auto-Merge Dependabot PRs
 
 on:
-  # WARNING: This needs to be run in the PR base, DO NOT build untrusted code in this action
-  # details under https://github.blog/changelog/2021-02-19-github-actions-workflows-triggered-by-dependabot-prs-will-run-with-read-only-permissions/
   pull_request_target:
+    types:
+      - opened
+      - labeled
+      - synchronize
 
 jobs:
-  auto-merge:
+  auto_merge_conditional:
+    # Pre-check: Only run if the pull request author is 'dependabot[bot]'
     if: github.actor == 'dependabot[bot]'
+    
     runs-on: ubuntu-latest
+    
+    # Permissions: Essential for merging and deleting the branch using GITHUB_TOKEN
+    permissions:
+      contents: write
+      pull-requests: write
+      
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Check if PR should be auto-merged
-        uses: ahmadnassri/action-dependabot-auto-merge@v2
-        with:
-          # In order to use this, you need to go to https://github.com/settings/tokens and
-          # create a Personal Access Token with the permission "public_repo".
-          # Enter this token in your repository settings under "Secrets" and name it AUTO_MERGE_TOKEN
-          github-token: ${{ secrets.AUTO_MERGE_TOKEN }}
-          # By default, squash and merge, so Github chooses nice commit messages
-          command: squash and merge
+      - name: Enable Auto-Merge (Patch/Minor Logic) ✅
+        # Logic check based on expected labels provided by Dependabot.
+        # The merge is only attempted if one of the three conditions is met.
+        if: |
+          # Logic 1: Patch updates for Production dependencies
+          (
+            contains(github.event.pull_request.labels.*.name, 'dependency-type:production') && 
+            contains(github.event.pull_request.labels.*.name, 'semver:patch')
+          )
+          ||
+          # Logic 2: Minor updates for Security fixes
+          (
+            contains(github.event.pull_request.labels.*.name, 'dependency-type:security') && 
+            contains(github.event.pull_request.labels.*.name, 'semver:minor')
+          )
+          ||
+          # Logic 3: Minor updates for Development dependencies
+          (
+            contains(github.event.pull_request.labels.*.name, 'dependency-type:development') && 
+            contains(github.event.pull_request.labels.*.name, 'semver:minor')
+          )
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          echo "Conditions met. Enabling auto-merge for PR number '$PR_NUMBER'."
+          
+          # gh pr merge --auto waits for all required branch protection checks (e.g., tests) to pass.
+          gh pr merge $PR_NUMBER --auto --squash --delete-branch
