@@ -54,6 +54,8 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
 * (HGlab01) Spread API calls
 * (HGlab01) Bump ioBroker-jsonExplorer to 0.1.12
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
