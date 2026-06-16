@@ -1,4 +1,8 @@
 # Older changes
+## 0.3.5 (2023-07-07)
+* (HGlab01) Spread API calls
+* (HGlab01) Bump ioBroker-jsonExplorer to 0.1.12
+
 ## 0.3.4 (2023-02-05)
 * (HGlab01) Cheapest station from experimental to stable
 * (HGlab01) Bump axios to 1.3.2

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "news": {
+      "0.4.3": {
+        "en": "some small improvements\nBump axios to 1.18.0",
+        "de": "einige kleine verbesserungen\nBump Axios zu 1.18.0",
+        "ru": "некоторые небольшие улучшения\nАксиос удара до 1,18,0",
+        "pt": "algumas pequenas melhorias\nBump axios a 1.18.0",
+        "nl": "enkele kleine verbeteringen\nBump axios naar 1.18.0",
+        "fr": "quelques petites améliorations\nAxios de pompe à 1.18.0",
+        "it": "alcuni piccoli miglioramenti\nAssio di bump a 1.18.0",
+        "es": "algunas mejoras pequeñas\nAxios de bomba a 1.18.0",
+        "pl": "niektóre niewielkie ulepszenia\nAxios bump do 1.18.0",
+        "uk": "деякі невеликі поліпшення\nБампер аксіос до 1.18.0",
+        "zh-cn": "一些小改进\n轴向1.18.0"
+      },
       "0.4.2": {
         "en": "Bump axios to 1.8.3",
         "de": "Bump axios zu 1.8.3",
@@ -69,19 +82,6 @@
         "zh-cn": "断 变\n第18.0或更高\nio Broker收容(控制员)5.0或更高。\nBumpxios to 1.6.2"
       },
       "0.3.6": {
-        "en": "switch to Admin5 UI for configuration",
-        "de": "admin5 UI zur Konfiguration wechseln",
-        "ru": "перейти на Admin5 UI для конфигурации",
-        "pt": "mudar para Admin5 UI para configuração",
-        "nl": "vertaling:",
-        "fr": "passer à Admin5 UI pour la configuration",
-        "it": "passare a Admin5 UI per la configurazione",
-        "es": "cambiar a Admin5 UI para configuración",
-        "pl": "przełącza się do interfejsu Admin5 dla konfiguracji",
-        "uk": "перемикач до Admin5 UI для конфігурації",
-        "zh-cn": "改为:"
-      },
-      "0.3.6-alpha.0": {
         "en": "switch to Admin5 UI for configuration",
         "de": "admin5 UI zur Konfiguration wechseln",
         "ru": "перейти на Admin5 UI для конфигурации",
