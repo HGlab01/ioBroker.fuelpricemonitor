@@ -72,7 +72,7 @@ class FuelPriceMonitor extends utils.Adapter {
         let obj = await this.getForeignObjectAsync('system.config');
         if (!obj) {
             this.log.error('Adapter was not able to read iobroker configuration');
-            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
+            this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT);
             return;
         }
         if (obj?.common?.latitude != null) {
@@ -83,12 +83,12 @@ class FuelPriceMonitor extends utils.Adapter {
         }
         if (!this.latitude || !this.longitude) {
             this.log.error('Latitude or Longitude not set in main configuration!');
-            this.terminate ? this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT) : process.exit(0);
+            this.terminate(utils.EXIT_CODES.INVALID_CONFIG_OBJECT);
             return;
         }
         if ((await isOnline()) == false) {
             this.log.error('No internet connection detected');
-            this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
+            this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION);
             return;
         }
 
@@ -104,9 +104,9 @@ class FuelPriceMonitor extends utils.Adapter {
         let result = await this.ExecuteRequest();
 
         if (result == 'error') {
-            this.terminate ? this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION) : process.exit(0);
+            this.terminate(utils.EXIT_CODES.UNCAUGHT_EXCEPTION);
         } else {
-            this.terminate ? this.terminate(0) : process.exit(0);
+            this.terminate(0);
         }
     }
 
@@ -156,7 +156,6 @@ class FuelPriceMonitor extends utils.Adapter {
         console.log(`API-Call ${uri}`);
         return new Promise((resolve, reject) => {
             axios
-                // @ts-expect-error // eslint-disable-next-line no-undef
                 .get(uri)
                 .then(response => {
                     if (!response || !response.data) {
