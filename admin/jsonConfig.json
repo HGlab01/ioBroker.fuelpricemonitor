@@ -4,11 +4,35 @@
     "items": {
         "Fuel types": {
             "type": "panel",
-            "label": "Fuel types",
+            "label": {
+                "en": "Fuel types",
+                "de": "Kraftstoffarten",
+                "ru": "Виды топлива",
+                "pt": "Tipos de combustível",
+                "nl": "Brandstofsoorten",
+                "fr": "Types de carburant",
+                "it": "Tipi di carburante",
+                "es": "Tipos de combustible",
+                "pl": "Rodzaje paliwa",
+                "uk": "Види палива",
+                "zh-cn": "燃料类型"
+            },
             "items": {
                 "_text1": {
                     "type": "staticText",
-                    "text": "Choose your fuel types for your home location! Additional locations can be set in next tab.",
+                    "text": {
+                        "en": "Choose your fuel types for your home location! Additional locations can be set in next tab.",
+                        "de": "Wähle deine Kraftstoffarten für deinen Heimatstandort! Weitere Standorte können im nächsten Tab eingestellt werden.",
+                        "ru": "Выберите виды топлива для вашего домашнего местоположения! Дополнительные местоположения можно задать на следующей вкладке.",
+                        "pt": "Escolha os seus tipos de combustível para a sua localização principal! Localizações adicionais podem ser definidas no próximo separador.",
+                        "nl": "Kies uw brandstofsoorten voor uw thuislocatie! Extra locaties kunnen worden ingesteld op het volgende tabblad.",
+                        "fr": "Choisissez vos types de carburant pour votre emplacement principal ! Des emplacements supplémentaires peuvent être définis dans l'onglet suivant.",
+                        "it": "Scegli i tuoi tipi di carburante per la tua posizione principale! Ulteriori posizioni possono essere impostate nella scheda successiva.",
+                        "es": "¡Elige tus tipos de combustible para tu ubicación principal! Las ubicaciones adicionales se pueden configurar en la siguiente pestaña.",
+                        "pl": "Wybierz rodzaje paliwa dla swojej lokalizacji głównej! Dodatkowe lokalizacje można ustawić w następnej zakładce.",
+                        "uk": "Виберіть види палива для вашого основного місцезнаходження! Додаткові місця можна налаштувати на наступній вкладці.",
+                        "zh-cn": "为您的主要位置选择燃料类型！可在下一个选项卡中设置其他位置。"
+                    },
                     "xs": 12,
                     "sm": 12,
                     "md": 12,
@@ -18,7 +42,19 @@
                 "super": {
                     "type": "checkbox",
                     "newLine": true,
-                    "label": "Super",
+                    "label": {
+                        "en": "Super",
+                        "de": "Super",
+                        "ru": "Супер",
+                        "pt": "Super",
+                        "nl": "Super",
+                        "fr": "Super",
+                        "it": "Super",
+                        "es": "Super",
+                        "pl": "Super",
+                        "uk": "Супер",
+                        "zh-cn": "超级"
+                    },
                     "default": false,
                     "xs": 12,
                     "sm": 12,
@@ -28,7 +64,19 @@
                 },
                 "diesel": {
                     "type": "checkbox",
-                    "label": "Diesel",
+                    "label": {
+                        "en": "Diesel",
+                        "de": "Diesel",
+                        "ru": "Дизель",
+                        "pt": "Diesel",
+                        "nl": "Diesel",
+                        "fr": "Diesel",
+                        "it": "Diesel",
+                        "es": "Diésel",
+                        "pl": "Diesel",
+                        "uk": "Дизель",
+                        "zh-cn": "柴油"
+                    },
                     "default": false,
                     "xs": 12,
                     "sm": 12,
@@ -38,23 +86,59 @@
                 },
                 "gas": {
                     "type": "checkbox",
-                    "label": "CNG",
+                    "label": {
+                        "en": "CNG",
+                        "de": "CNG",
+                        "ru": "КПГ",
+                        "pt": "GNC",
+                        "nl": "CNG",
+                        "fr": "GNC",
+                        "it": "GNC",
+                        "es": "GNC",
+                        "pl": "CNG",
+                        "uk": "КПГ",
+                        "zh-cn": "压缩天然气"
+                    },
                     "default": false,
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 2, 
+                    "lg": 2,
                     "xl": 2
                 }
             }
         },
         "locations": {
             "type": "panel",
-            "label": "Additional locations",
+            "label": {
+                "en": "Additional locations",
+                "de": "Weitere Standorte",
+                "ru": "Дополнительные местоположения",
+                "pt": "Localizações adicionais",
+                "nl": "Extra locaties",
+                "fr": "Emplacements supplémentaires",
+                "it": "Posizioni aggiuntive",
+                "es": "Ubicaciones adicionales",
+                "pl": "Dodatkowe lokalizacje",
+                "uk": "Додаткові місця",
+                "zh-cn": "其他位置"
+            },
             "items": {
                 "address": {
                     "type": "table",
-                    "label": "Locations",
+                    "label": {
+                        "en": "Locations",
+                        "de": "Standorte",
+                        "ru": "Местоположения",
+                        "pt": "Localizações",
+                        "nl": "Locaties",
+                        "fr": "Emplacements",
+                        "it": "Posizioni",
+                        "es": "Ubicaciones",
+                        "pl": "Lokalizacje",
+                        "uk": "Місця",
+                        "zh-cn": "位置"
+                    },
                     "xs": 12,
                     "sm": 12,
                     "md": 12,
@@ -64,41 +148,125 @@
                         {
                             "type": "text",
                             "attr": "location",
-                            "title": "Location",
+                            "title": {
+                                "en": "Location",
+                                "de": "Standort",
+                                "ru": "Местоположение",
+                                "pt": "Localização",
+                                "nl": "Locatie",
+                                "fr": "Emplacement",
+                                "it": "Posizione",
+                                "es": "Ubicación",
+                                "pl": "Lokalizacja",
+                                "uk": "Місце",
+                                "zh-cn": "位置"
+                            },
                             "filter": false,
                             "sort": false
                         },
                         {
                             "type": "number",
                             "attr": "latitude",
-                            "title": "Latitude",
+                            "title": {
+                                "en": "Latitude",
+                                "de": "Breitengrad",
+                                "ru": "Широта",
+                                "pt": "Latitude",
+                                "nl": "Breedtegraad",
+                                "fr": "Latitude",
+                                "it": "Latitudine",
+                                "es": "Latitud",
+                                "pl": "Szerokość geograficzna",
+                                "uk": "Широта",
+                                "zh-cn": "纬度"
+                            },
                             "filter": false,
                             "sort": false
                         },
                         {
                             "type": "number",
                             "attr": "longitude",
-                            "title": "Longitude",
+                            "title": {
+                                "en": "Longitude",
+                                "de": "Längengrad",
+                                "ru": "Долгота",
+                                "pt": "Longitude",
+                                "nl": "Lengtegraad",
+                                "fr": "Longitude",
+                                "it": "Longitudine",
+                                "es": "Longitud",
+                                "pl": "Długość geograficzna",
+                                "uk": "Довгота",
+                                "zh-cn": "经度"
+                            },
                             "filter": false,
                             "sort": false
                         },
                         {
                             "type": "select",
                             "attr": "fuelType",
-                            "title": "Fuel type",
+                            "title": {
+                                "en": "Fuel type",
+                                "de": "Kraftstoffart",
+                                "ru": "Вид топлива",
+                                "pt": "Tipo de combustível",
+                                "nl": "Brandstofsoort",
+                                "fr": "Type de carburant",
+                                "it": "Tipo di carburante",
+                                "es": "Tipo de combustible",
+                                "pl": "Rodzaj paliwa",
+                                "uk": "Вид палива",
+                                "zh-cn": "燃料类型"
+                            },
                             "filter": false,
                             "sort": false,
                             "options": [
                                 {
-                                    "label": "Diesel",
+                                    "label": {
+                                        "en": "Diesel",
+                                        "de": "Diesel",
+                                        "ru": "Дизель",
+                                        "pt": "Diesel",
+                                        "nl": "Diesel",
+                                        "fr": "Diesel",
+                                        "it": "Diesel",
+                                        "es": "Diésel",
+                                        "pl": "Diesel",
+                                        "uk": "Дизель",
+                                        "zh-cn": "柴油"
+                                    },
                                     "value": "DIE"
                                 },
                                 {
-                                    "label": "Super 95",
+                                    "label": {
+                                        "en": "Super 95",
+                                        "de": "Super 95",
+                                        "ru": "Супер 95",
+                                        "pt": "Super 95",
+                                        "nl": "Super 95",
+                                        "fr": "Super 95",
+                                        "it": "Super 95",
+                                        "es": "Super 95",
+                                        "pl": "Super 95",
+                                        "uk": "Супер 95",
+                                        "zh-cn": "超级95"
+                                    },
                                     "value": "SUP"
                                 },
                                 {
-                                    "label": "CNG",
+                                    "label": {
+                                        "en": "CNG",
+                                        "de": "CNG",
+                                        "ru": "КПГ",
+                                        "pt": "GNC",
+                                        "nl": "CNG",
+                                        "fr": "GNC",
+                                        "it": "GNC",
+                                        "es": "GNC",
+                                        "pl": "CNG",
+                                        "uk": "КПГ",
+                                        "zh-cn": "压缩天然气"
+                                    },
                                     "value": "GAS"
                                 }
                             ]
@@ -107,7 +275,19 @@
                 },
                 "_text1": {
                     "type": "staticText",
-                    "text": "Latitude and Longitude can be calculated with this Calculator https://www.gps-coordinates.net/",
+                    "text": {
+                        "en": "Latitude and Longitude can be calculated with this Calculator https://www.gps-coordinates.net/",
+                        "de": "Breiten- und Längengrad können mit diesem Rechner berechnet werden: https://www.gps-coordinates.net/",
+                        "ru": "Широту и долготу можно вычислить с помощью этого калькулятора: https://www.gps-coordinates.net/",
+                        "pt": "A latitude e longitude podem ser calculadas com esta calculadora: https://www.gps-coordinates.net/",
+                        "nl": "Breedte- en lengtegraad kunnen worden berekend met deze calculator: https://www.gps-coordinates.net/",
+                        "fr": "La latitude et la longitude peuvent être calculées avec cette calculatrice : https://www.gps-coordinates.net/",
+                        "it": "Latitudine e longitudine possono essere calcolate con questa calcolatrice: https://www.gps-coordinates.net/",
+                        "es": "La latitud y la longitud se pueden calcular con esta calculadora: https://www.gps-coordinates.net/",
+                        "pl": "Szerokość i długość geograficzną można obliczyć za pomocą tego kalkulatora: https://www.gps-coordinates.net/",
+                        "uk": "Широту та довготу можна розрахувати за допомогою цього калькулятора: https://www.gps-coordinates.net/",
+                        "zh-cn": "纬度和经度可以通过此计算器计算：https://www.gps-coordinates.net/"
+                    },
                     "newLine": true,
                     "xs": 12,
                     "sm": 12,
@@ -119,12 +299,36 @@
         },
         "settings": {
             "type": "panel",
-            "label": "Additional settings",
+            "label": {
+                "en": "Additional settings",
+                "de": "Weitere Einstellungen",
+                "ru": "Дополнительные настройки",
+                "pt": "Configurações adicionais",
+                "nl": "Extra instellingen",
+                "fr": "Paramètres supplémentaires",
+                "it": "Impostazioni aggiuntive",
+                "es": "Configuraciones adicionales",
+                "pl": "Dodatkowe ustawienia",
+                "uk": "Додаткові налаштування",
+                "zh-cn": "其他设置"
+            },
             "items": {
                 "useIDs": {
                     "type": "checkbox",
                     "newLine": true,
-                    "label": "Use IDs for sort",
+                    "label": {
+                        "en": "Use IDs for sort",
+                        "de": "IDs zum Sortieren verwenden",
+                        "ru": "Использовать ID для сортировки",
+                        "pt": "Usar IDs para ordenação",
+                        "nl": "IDs gebruiken voor sortering",
+                        "fr": "Utiliser les IDs pour le tri",
+                        "it": "Usa ID per l'ordinamento",
+                        "es": "Usar IDs para ordenar",
+                        "pl": "Użyj ID do sortowania",
+                        "uk": "Використовувати ID для сортування",
+                        "zh-cn": "使用ID排序"
+                    },
                     "default": false,
                     "xs": 12,
                     "sm": 12,
@@ -134,7 +338,19 @@
                 },
                 "exlClosed": {
                     "type": "checkbox",
-                    "label": "Exclude closed gas stations",
+                    "label": {
+                        "en": "Exclude closed gas stations",
+                        "de": "Geschlossene Tankstellen ausschließen",
+                        "ru": "Исключить закрытые заправочные станции",
+                        "pt": "Excluir postos de combustível fechados",
+                        "nl": "Gesloten tankstations uitsluiten",
+                        "fr": "Exclure les stations-service fermées",
+                        "it": "Escludi stazioni di servizio chiuse",
+                        "es": "Excluir gasolineras cerradas",
+                        "pl": "Wyklucz zamknięte stacje paliw",
+                        "uk": "Виключити закриті заправні станції",
+                        "zh-cn": "排除已关闭的加油站"
+                    },
                     "default": false,
                     "xs": 12,
                     "sm": 12,
@@ -144,7 +360,19 @@
                 },
                 "cheapest": {
                     "type": "checkbox",
-                    "label": "Show cheapest stations over all locations",
+                    "label": {
+                        "en": "Show cheapest stations over all locations",
+                        "de": "Günstigste Tankstellen über alle Standorte anzeigen",
+                        "ru": "Показывать самые дешёвые станции по всем местоположениям",
+                        "pt": "Mostrar postos mais baratos em todas as localizações",
+                        "nl": "Goedkoopste tankstations over alle locaties tonen",
+                        "fr": "Afficher les stations les moins chères sur toutes les localisations",
+                        "it": "Mostra le stazioni più economiche in tutte le posizioni",
+                        "es": "Mostrar las gasolineras más baratas en todas las ubicaciones",
+                        "pl": "Pokaż najtańsze stacje na wszystkich lokalizacjach",
+                        "uk": "Показувати найдешевші станції по всіх місцях",
+                        "zh-cn": "显示所有位置中最便宜的加油站"
+                    },
                     "default": false,
                     "xs": 12,
                     "sm": 12,
