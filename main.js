@@ -22,6 +22,7 @@ let gasSelected = false;
 let useIDs = false;
 let exlClosed = false;
 let cheapest = false;
+let exlOpeningHours = false;
 
 class FuelPriceMonitor extends utils.Adapter {
     /**
@@ -63,6 +64,10 @@ class FuelPriceMonitor extends utils.Adapter {
         }
         if (this.config.cheapest) {
             cheapest = this.config.cheapest;
+        }
+
+        if (this.config.exlOpeningHours) {
+            exlOpeningHours = this.config.exlOpeningHours;
         }
 
         //subscribe relevant states changes
@@ -196,6 +201,9 @@ class FuelPriceMonitor extends utils.Adapter {
             let result = null;
             if (dieselSelected) {
                 result = await this.getData('DIE', this.latitude, this.longitude);
+                if (exlOpeningHours) {
+                    result.forEach(obj => delete obj.openingHours);
+                }
                 this.log.debug(`JSON-Response for location Home Diesel: ${JSON.stringify(result)}`);
                 await jsonExplorer.traverseJson(result, '0_Home_Diesel', true, useIDs);
             } else {
@@ -203,6 +211,9 @@ class FuelPriceMonitor extends utils.Adapter {
             }
             if (superSelected) {
                 result = await this.getData('SUP', this.latitude, this.longitude);
+                if (exlOpeningHours) {
+                    result.forEach(obj => delete obj.openingHours);
+                }
                 this.log.debug(`JSON-Response for location Home Super: ${JSON.stringify(result)}`);
                 await jsonExplorer.traverseJson(result, '0_Home_Super95', true, useIDs);
             } else {
@@ -210,6 +221,9 @@ class FuelPriceMonitor extends utils.Adapter {
             }
             if (gasSelected) {
                 result = await this.getData('GAS', this.latitude, this.longitude);
+                if (exlOpeningHours) {
+                    result.forEach(obj => delete obj.openingHours);
+                }
                 this.log.debug(`JSON-Response for location Home CNG: ${JSON.stringify(result)}`);
                 await jsonExplorer.traverseJson(result, '0_Home_CNG', true, useIDs);
             } else {
@@ -261,6 +275,9 @@ class FuelPriceMonitor extends utils.Adapter {
                     case 'GAS':
                         fuelType = 'CNG';
                         break;
+                }
+                if (exlOpeningHours) {
+                    result.forEach(obj => delete obj.openingHours);
                 }
                 await jsonExplorer.traverseJson(result, `${location}_${fuelType}`, true, useIDs);
             }

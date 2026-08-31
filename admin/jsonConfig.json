@@ -379,6 +379,28 @@
                     "md": 6,
                     "lg": 3,
                     "xl": 3
+                },
+                "exlOpeningHours": {
+                    "type": "checkbox",
+                    "label": {
+                        "en": "Skip opening hours",
+                        "de": "Öffnungszeiten überspringen",
+                        "ru": "Пропустить часы работы",
+                        "pt": "Ignorar o horário de funcionamento",
+                        "nl": "Openingstijden overslaan",
+                        "fr": "Passer les heures d'ouverture",
+                        "it": "Salta gli orari di apertura",
+                        "es": "Omitir el horario de apertura",
+                        "pl": "Pomiń godziny otwarcia",
+                        "uk": "Пропустити години роботи",
+                        "zh-cn": "跳过营业时间"
+                    },
+                    "default": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 3,
+                    "xl": 3
                 }
             }
         }
