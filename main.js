@@ -161,10 +161,10 @@ class FuelPriceMonitor extends utils.Adapter {
         console.log(`API-Call ${uri}`);
         return new Promise((resolve, reject) => {
             axios
-                .get(uri)
+                .get(uri, { timeout: 20000 })
                 .then(response => {
                     if (!response || !response.data) {
-                        throw new Error(`Respone empty for URL ${uri} with status code ${response.status}`);
+                        throw new Error(`Response empty for URL ${uri} with status code ${response.status}`);
                     } else {
                         this.log.debug(`Response in GetData(): [${response.status}] ${JSON.stringify(response.data)}`);
                         console.log(`Response in GetData(): [${response.status}] ${JSON.stringify(response.data)}`);
