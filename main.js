@@ -34,9 +34,6 @@ class FuelPriceMonitor extends utils.Adapter {
             name: 'fuelpricemonitor',
         });
         this.on('ready', this.onReady.bind(this));
-        //this.on('objectChange', this.onObjectChange.bind(this));
-        //this.on('stateChange', this.onStateChange.bind(this));
-        //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
         ((this.latitude = 0), (this.longitude = 0));
         jsonExplorer.init(this, stateAttr);
@@ -69,9 +66,6 @@ class FuelPriceMonitor extends utils.Adapter {
         if (this.config.exlOpeningHours) {
             exlOpeningHours = this.config.exlOpeningHours;
         }
-
-        //subscribe relevant states changes
-        //this.subscribeStates('STATENAME');
 
         //get Geodata from configuration
         let obj = await this.getForeignObjectAsync('system.config');
@@ -130,23 +124,6 @@ class FuelPriceMonitor extends utils.Adapter {
         }
     }
 
-    /*
-    /**
-     * Is called if a subscribed state changes
-     * @param {string} id
-     * @param {ioBroker.State | null | undefined} state
-     */
-    /*
-    onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-        } else {
-            // The state was deleted
-            this.log.debug(`state ${id} deleted`);
-        }
-    }*/
-
     /**
      * Retrieves fuel data from REST-API
      *
@@ -161,10 +138,10 @@ class FuelPriceMonitor extends utils.Adapter {
         console.log(`API-Call ${uri}`);
         return new Promise((resolve, reject) => {
             axios
-                .get(uri)
+                .get(uri, { timeout: 20000 })
                 .then(response => {
                     if (!response || !response.data) {
-                        throw new Error(`Respone empty for URL ${uri} with status code ${response.status}`);
+                        throw new Error(`Response empty for URL ${uri} with status code ${response.status}`);
                     } else {
                         this.log.debug(`Response in GetData(): [${response.status}] ${JSON.stringify(response.data)}`);
                         console.log(`Response in GetData(): [${response.status}] ${JSON.stringify(response.data)}`);

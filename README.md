@@ -27,6 +27,10 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
+### __WORK IN PROGRESS__
+* (HGlab01) add feature to exclude opening hours (state subtree of hours to be delete one time manually)
+* (HGlab01) Bump axios to 1.20.0
+
 ### 0.4.3 (2026-06-16)
 * (HGlab01) some small improvements
 * (HGlab01) Bump axios to 1.18.0
