@@ -34,9 +34,6 @@ class FuelPriceMonitor extends utils.Adapter {
             name: 'fuelpricemonitor',
         });
         this.on('ready', this.onReady.bind(this));
-        //this.on('objectChange', this.onObjectChange.bind(this));
-        //this.on('stateChange', this.onStateChange.bind(this));
-        //this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
         ((this.latitude = 0), (this.longitude = 0));
         jsonExplorer.init(this, stateAttr);
@@ -69,9 +66,6 @@ class FuelPriceMonitor extends utils.Adapter {
         if (this.config.exlOpeningHours) {
             exlOpeningHours = this.config.exlOpeningHours;
         }
-
-        //subscribe relevant states changes
-        //this.subscribeStates('STATENAME');
 
         //get Geodata from configuration
         let obj = await this.getForeignObjectAsync('system.config');
@@ -129,23 +123,6 @@ class FuelPriceMonitor extends utils.Adapter {
             callback();
         }
     }
-
-    /*
-    /**
-     * Is called if a subscribed state changes
-     * @param {string} id
-     * @param {ioBroker.State | null | undefined} state
-     */
-    /*
-    onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-        } else {
-            // The state was deleted
-            this.log.debug(`state ${id} deleted`);
-        }
-    }*/
 
     /**
      * Retrieves fuel data from REST-API
