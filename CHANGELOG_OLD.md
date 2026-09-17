@@ -1,4 +1,7 @@
 # Older changes
+## 0.3.6 (2023-08-10)
+* (HGlab01) switch to Admin5 UI for configuration
+
 ## 0.3.5 (2023-07-07)
 * (HGlab01) Spread API calls
 * (HGlab01) Bump ioBroker-jsonExplorer to 0.1.12

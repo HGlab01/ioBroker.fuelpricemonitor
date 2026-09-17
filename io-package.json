@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "fuelpricemonitor",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "news": {
+      "0.4.4": {
+        "en": "add feature to exclude opening hours (state subtree of hours to be delete one time manually)\nBump axios to 1.20.0\nCleanups",
+        "de": "Funktion zum Ausschließen der Öffnungszeiten hinzufügen (Teilbaum manuell löschen)\nAxios auf 1.20.0\nAufräumen",
+        "ru": "добавить функцию исключения часов работы (укажите поддерево часов, которое нужно удалить один раз вручную)\nПоднимитесь на ось 1.20.0\nУборки",
+        "pt": "adicionar recurso para excluir horários (defina manualmente uma subárvore)\nAumente axios a 1.20.0\nLimpezas",
+        "nl": "functie toevoegen om openingstijden uit te sluiten (vermeld een substructuur van de uren die u één keer handmatig moet verwijderen)\nAxios naar 1.20.0 brengen\nOpruimingen",
+        "fr": "ajouter une fonction pour exclure les heures d'ouverture (indiquer le sous-arbre à supprimer manuellement)\nBump Axios à 1.20.0\nNettoyages",
+        "it": "aggiungere una funzione per escludere gli orari di apertura\nPassa axios a 1.20.0\nPulizie",
+        "es": "añadir función para excluir el horario (indique el subárbol horario para eliminarlo una vez manualmente)\nBump axios a 1.20.0\nLimpiezas",
+        "pl": "dodaj funkcję, aby wykluczyć godziny otwarcia (poddrzewo stanów godzin do usunięcia jednorazowo ręcznie)\nBump axios do 1.20.0\nCzyszczenia",
+        "uk": "додати функцію для виключення годин роботи (піддерево годин стану, яке потрібно видалити один раз вручну)\nПідвищіть аксіос до 1.20.0\nПрибирання",
+        "zh-cn": "添加排除营业时间的功能（状态子树要手动删除一次）\n将 axios 升级到 1.20.0\n清理"
+      },
       "0.4.3": {
         "en": "some small improvements\nBump axios to 1.18.0",
         "de": "einige kleine verbesserungen\nBump Axios zu 1.18.0",
@@ -80,19 +93,6 @@
         "pl": "Zmiany\n18.0 lub więcej\nioBroker host (js-controller) 5.0 lub wyższe\nBump axios to 1.6.2 (ang.)",
         "uk": "Зміни\nNode 18.0 або вище\nioBroker host (js-controller) 5.0 або вище\nБампер аксіос до 1.6.2",
         "zh-cn": "断 变\n第18.0或更高\nio Broker收容(控制员)5.0或更高。\nBumpxios to 1.6.2"
-      },
-      "0.3.6": {
-        "en": "switch to Admin5 UI for configuration",
-        "de": "admin5 UI zur Konfiguration wechseln",
-        "ru": "перейти на Admin5 UI для конфигурации",
-        "pt": "mudar para Admin5 UI para configuração",
-        "nl": "vertaling:",
-        "fr": "passer à Admin5 UI pour la configuration",
-        "it": "passare a Admin5 UI per la configurazione",
-        "es": "cambiar a Admin5 UI para configuración",
-        "pl": "przełącza się do interfejsu Admin5 dla konfiguracji",
-        "uk": "перемикач до Admin5 UI для конфігурації",
-        "zh-cn": "改为:"
       }
     },
     "titleLang": {

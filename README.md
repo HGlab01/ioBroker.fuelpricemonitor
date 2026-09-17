@@ -27,9 +27,10 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     Placeholder for the next version (at the beginning of the line):
     ### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 0.4.4 (2026-09-17)
 * (HGlab01) add feature to exclude opening hours (state subtree of hours to be delete one time manually)
 * (HGlab01) Bump axios to 1.20.0
+* (HGlab01) Cleanups
 
 ### 0.4.3 (2026-06-16)
 * (HGlab01) some small improvements
@@ -48,9 +49,6 @@ Default schedule is done every 20 minutes as cron job in the instance tab.
     - Node.js 18.0 or higher
     - ioBroker host (js-controller) 5.0 or higher
 * (HGlab01) Bump axios to 1.6.2
-
-### 0.3.6 (2023-08-10)
-* (HGlab01) switch to Admin5 UI for configuration
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
